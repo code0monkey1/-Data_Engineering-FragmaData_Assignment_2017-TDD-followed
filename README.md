@@ -8,17 +8,13 @@ Assignment :
 The dataset can be downloaded from the link :
 https://grouplens.org/datasets/movielens/1m/
 
------------------
-context :
-----------------
+
 SUMMARY
 ================================================================================
 
 These files contain 1,000,209 anonymous ratings of approximately 3,900 movies 
 made by 6,040 MovieLens users who joined MovieLens in 2000.
 ================================================================================
-
-
 RATINGS FILE DESCRIPTION
 ================================================================================
 
