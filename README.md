@@ -1,4 +1,4 @@
-# FragmaData_2017_Assignment_Movie
+# FragmaData_2017_Assignment_Movies
 
 ---------------------
 Assignment : 
@@ -8,7 +8,7 @@ Assignment :
 The dataset can be downloaded from the link :
 ---------------------
 https://grouplens.org/datasets/movielens/1m/
----------------------
+
 
 
 
