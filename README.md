@@ -79,7 +79,7 @@ information are included in this data set.
 MOVIES FILE DESCRIPTION
 ================================================================================
 
-Movie information is in the file "movies.dat" and is in the following
+model.Movie information is in the file "movies.dat" and is in the following
 format:
 
 MovieID::Title::Genres

@@ -3,6 +3,7 @@ package model;
 import model.customerFieldEnums.EAgeRange;
 import model.customerFieldEnums.EGender;
 import model.customerFieldEnums.EOccupation;
+import util.Validate;
 
 public final class Customer {
 
@@ -96,10 +97,10 @@ public final class Customer {
                 this.ageRange = EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR;
                 break;
             case 35:
-                this.ageRange = EAgeRange.THIRTY_FIVE_TO_FOURTY_FOUR;
+                this.ageRange = EAgeRange.THIRTY_FIVE_TO_FORTY_FOUR;
                 break;
             case 45:
-                this.ageRange = EAgeRange.FOURTY_FIVE_TO_FOURTY_NINE;
+                this.ageRange = EAgeRange.FORTY_FIVE_TO_FORTY_NINE;
                 break;
             case 50:
                 this.ageRange = EAgeRange.FIFTY_TO_FIFTY_FIVE;
@@ -115,18 +116,14 @@ public final class Customer {
 
     public void assignID(String id) {
         id = id.trim();
-        this.id = Integer.parseInt(id);
+        int ID = Integer.parseInt(id);
 
-
-        if (!idWithinPermissibleRange()) {
+        if (!Validate.customerIdInRange(ID)) {
             throw new IllegalArgumentException("user id not in range ");
         }
+        this.id = ID;
     }
 
-    private boolean idWithinPermissibleRange() {
-
-        return this.id >= 1 && this.id <= 6040;
-    }
 
     public void assignGender(String gender) {
         gender = gender.trim();
