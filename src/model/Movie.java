@@ -3,25 +3,28 @@ package model;
 import model.movieFiledEnums.EGenre;
 import util.Validate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Movie {
     private int id; //MovieIDs range between 1 and 3952
     private String title;
-    private EGenre genre;
+    private List<EGenre> genreList;
 
 
     public Movie(String id,
                  String title,
-                 String genre) {
-        assignID(id);
+                 List<String> Genre) {
+
+
+        this.id = returnID(id);
         this.title = title.trim().toUpperCase(); //done to avoid inconsistency
-        assignGenre(genre);
+        this.genreList = returnGenreList(Genre);
 
     }
 
-    private void assignID(String id) {
+    private int returnID(String id) {
 
         id = id.trim();
 
@@ -29,23 +32,27 @@ public class Movie {
 
         if (!Validate.movieIdInRange(ID)) {
             throw new IllegalArgumentException("ID out of range");
-        } else this.id = ID;
+        } else return ID;
     }
 
 
-    private void assignGenre(String genre) {
-        int genreIndex = getValidGenreIndex(genre);
-        this.genre = processAndGetGenre(genreIndex);
+    private List<EGenre> returnGenreList(List<String> Genre) {
+        List<EGenre> genreList = new ArrayList<>();
 
+        for (String genre : Genre) {
+            int genreIndex = returnGenreIndex(genre);
+            genreList.add(returnGenre(genreIndex));
+        }
+        return genreList;
     }
 
-    private EGenre processAndGetGenre(int index) {
+    private EGenre returnGenre(int index) {
         EGenre[] genreArray = EGenre.values();
         return genreArray[index];
     }
 
 
-    private int getValidGenreIndex(String genre) {
+    private int returnGenreIndex(String genre) {
         genre = genre.trim();
 
         List<String> genreList = Arrays.asList("Action",
@@ -87,7 +94,7 @@ public class Movie {
         return title;
     }
 
-    public EGenre getGenre() {
-        return genre;
+    public List<EGenre> getGenre() {
+        return genreList;
     }
 }

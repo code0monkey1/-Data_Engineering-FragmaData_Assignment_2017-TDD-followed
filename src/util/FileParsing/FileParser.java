@@ -2,16 +2,16 @@ package util.FileParsing;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileParser {
-    List<String> entriesList;
+    List<List<String>> entriesList;
     private String fileName;
     private String splitToken;
 
     public FileParser(String fileName, String splitToken) {
         this.fileName = fileName;
-
         this.splitToken = splitToken;
     }
 
@@ -24,7 +24,8 @@ public class FileParser {
 
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] lineEntries = line.split(splitToken);
+                List<String> entry = Arrays.asList(line.split(splitToken));
+                entriesList.add(entry);
             }
 
         } catch (FileNotFoundException e) {
@@ -32,10 +33,10 @@ public class FileParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    public List<String> getEntriesList() {
+
+    public List<List<String>> getEntriesList() {
         return entriesList;
     }
 }
