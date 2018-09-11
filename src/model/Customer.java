@@ -78,36 +78,39 @@ public final class Customer {
         final int AGE = Integer.parseInt(age);
 
         if (!ageGreaterThanZero(AGE)) throw new IllegalArgumentException("age is negative or zero");
-        else processAge(AGE);
+        else this.ageRange = returnAgeRange(AGE);
     }
+
 
     private boolean ageGreaterThanZero(int AGE) {
         return AGE > 0;
     }
 
-    private void processAge(int AGE) {
+    private EAgeRange returnAgeRange(int AGE) {
+
         switch (AGE) {
+
             case 1:
-                this.ageRange = EAgeRange.UNDER_EIGHTEEN;
-                break;
+                return EAgeRange.UNDER_EIGHTEEN;
+
             case 18:
-                this.ageRange = EAgeRange.EIGHTEEN_TO_TWENTY_FOUR;
-                break;
+                return EAgeRange.EIGHTEEN_TO_TWENTY_FOUR;
+
             case 25:
-                this.ageRange = EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR;
-                break;
+                return EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR;
+
             case 35:
-                this.ageRange = EAgeRange.THIRTY_FIVE_TO_FORTY_FOUR;
-                break;
+                return EAgeRange.THIRTY_FIVE_TO_FORTY_FOUR;
+
             case 45:
-                this.ageRange = EAgeRange.FORTY_FIVE_TO_FORTY_NINE;
-                break;
+                return EAgeRange.FORTY_FIVE_TO_FORTY_NINE;
+
             case 50:
-                this.ageRange = EAgeRange.FIFTY_TO_FIFTY_FIVE;
-                break;
+                return EAgeRange.FIFTY_TO_FIFTY_FIVE;
+
             case 56:
-                this.ageRange = EAgeRange.FIFTY_SIX_AND_OVER;
-                break;
+                return EAgeRange.FIFTY_SIX_AND_OVER;
+
             default:
                 throw new IllegalArgumentException(" age not in permissible range ");
         }
