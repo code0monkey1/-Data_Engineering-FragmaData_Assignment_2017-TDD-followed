@@ -7,14 +7,15 @@ import java.util.List;
 public class FileParser {
     List<String> entriesList;
     private String fileName;
-    private int fields;
+    private String splitToken;
 
-    public FileParser(String fileName, int fileds) {
+    public FileParser(String fileName, String splitToken) {
         this.fileName = fileName;
-        this.fields = fileds;
+
+        this.splitToken = splitToken;
     }
 
-    public void processFileAndGenerateEntriesList(String fileName) {
+    public void processFile(String fileName) {
         entriesList = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
@@ -23,7 +24,7 @@ public class FileParser {
 
             while ((line = bufferedReader.readLine()) != null) {
 
-                String[] lineEntries = line.split("::");
+                String[] lineEntries = line.split(splitToken);
             }
 
         } catch (FileNotFoundException e) {
