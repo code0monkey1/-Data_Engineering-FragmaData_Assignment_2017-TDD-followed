@@ -20,30 +20,30 @@ public final class Customer {
              String occupation,
              String zipCode) {
 
-        assignID(id);
-        assignGender(gender);
-        assignAge(age);
-        assignOccupation(occupation);
+        this.id=returnID(id);
+        this.gender = returnGender(gender);
+        this.ageRange = returnAgeRange(age);
+        this.occupation = returnOccupation(occupation);
         this.zipCode = zipCode;
     }
 
-    private void assignOccupation(String occupation) {
+    private EOccupation returnOccupation(String occupation) {
         occupation = occupation.trim();
 
         final int OCCUPATION_INDEX = Integer.parseInt(occupation);
 
-        if (!occupationIndexInRange(OCCUPATION_INDEX))
-            throw new IllegalArgumentException("undefined occupation");
-        else {
-            processOccupation(OCCUPATION_INDEX);
-        }
+        if (!occupationIndexInRange(OCCUPATION_INDEX)) throw new IllegalArgumentException("undefined occupation");
+
+        final EOccupation eOccupation = returnOccupationType(OCCUPATION_INDEX);
+
+        return eOccupation;
 
     }
 
-    private void processOccupation(int OCCUPATION_INDEX) {
+    private EOccupation returnOccupationType(int OCCUPATION_INDEX) {
         EOccupation values[] = EOccupation.values();
 
-        this.occupation = values[OCCUPATION_INDEX];
+        return values[OCCUPATION_INDEX];
 // From the  Document :
 //            *0:"other" or not specified
 //	          *1:"academic/educator"
@@ -72,13 +72,14 @@ public final class Customer {
         return OCCUPATION >= 0 && OCCUPATION <= 20;
     }
 
-    private void assignAge(String age) {
+    private EAgeRange returnAgeRange(String age) {
         age = age.trim();
 
         final int AGE = Integer.parseInt(age);
 
         if (!ageGreaterThanZero(AGE)) throw new IllegalArgumentException("age is negative or zero");
-        else this.ageRange = returnAgeRange(AGE);
+
+        return returnRange(AGE);
     }
 
 
@@ -86,7 +87,7 @@ public final class Customer {
         return AGE > 0;
     }
 
-    private EAgeRange returnAgeRange(int AGE) {
+    private EAgeRange returnRange(int AGE) {
 
         switch (AGE) {
 
@@ -117,24 +118,23 @@ public final class Customer {
     }
 
 
-    public void assignID(String id) {
+    public int returnID(String id) {
         id = id.trim();
         int ID = Integer.parseInt(id);
 
-        if (!Validate.customerIdInRange(ID)) {
-            throw new IllegalArgumentException("user id not in range ");
-        }
-        this.id = ID;
+        if (!Validate.customerIdInRange(ID)) throw new IllegalArgumentException("user id not in range ");
+
+        return ID;
     }
 
 
-    public void assignGender(String gender) {
+    public EGender returnGender(String gender) {
         gender = gender.trim();
 
         if (gender.equals("M")) {
-            this.gender = EGender.MALE;
+            return EGender.MALE;
         } else if (gender.equals("F")) {
-            this.gender = EGender.FEMALE;
+            return EGender.FEMALE;
         } else {
             throw new IllegalArgumentException("gender not male or female");
         }
