@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileParser {
-    List<List<String>> rawEntriesList;
-    private String fileName;
-    private String parseToken;
+    private List<List<String>> rawEntriesList;
+    private final String fileName;
+    private final String parseToken;
 
     public FileParser(String fileName, String parseToken) {
         this.rawEntriesList = returnEntriesList(fileName, parseToken);
@@ -16,7 +16,7 @@ public class FileParser {
     }
 
     private List<List<String>> returnEntriesList(String fileName, String parseToken) {
-        rawEntriesList = new ArrayList<>();
+        List<List<String>> tempRawEntriesList = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
 
@@ -31,7 +31,7 @@ public class FileParser {
                 for (String element : entry) {
                     entryList.add(element.trim());
                 }
-                rawEntriesList.add(entryList);
+                tempRawEntriesList.add(entryList);
 
             }
 
@@ -40,7 +40,7 @@ public class FileParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return rawEntriesList;
+        return tempRawEntriesList;
     }
 
 

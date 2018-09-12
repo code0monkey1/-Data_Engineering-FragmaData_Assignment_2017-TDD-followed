@@ -26,7 +26,7 @@ public class RatingsFileParserTest {
 
     @Test
     public void rawList_has182Entries() {
-        assertEquals(182, ratingsFileParser.rawEntriesList.size());
+        assertEquals(182, ratingsFileParser.getRawEntriesList().size());
     }
 
     @Test
