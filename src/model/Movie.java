@@ -1,48 +1,62 @@
 package model;
 
+import conditions.Condition;
+import conditions.MovieIdValid;
 import model.movieFiledEnums.EGenre;
-import util.Validate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Movie {
-    private int id; //MovieIDs range between 1 and 3952
-    private String title;
-    private List<EGenre> genreList;
+
+public final class Movie {
+    private final int id;
+    private final String title;
+    private final List<EGenre> genreList;
 
 
     public Movie(String id,
                  String title,
-                 List<String> Genre) {
-
+                 String Genre) {
 
         this.id = returnID(id);
-        this.title = title.trim().toUpperCase(); //done to avoid inconsistency
+        this.title = title;
         this.genreList = returnGenreList(Genre);
 
     }
 
+
     private int returnID(String id) {
 
-        id = id.trim();
-
         int ID = Integer.parseInt(id);
+        Condition condition = new MovieIdValid(ID);
 
-        if (!Validate.movieIdInRange(ID)) {
+        if (!condition.valid()) { //MovieIDs range between 1 and 3952
             throw new IllegalArgumentException("ID out of range");
         } else return ID;
     }
 
 
-    private List<EGenre> returnGenreList(List<String> Genre) {
+    private List<EGenre> returnGenreList(String GenreString) {
+        List<String> GenreStringList = returnGenreStringList(GenreString);
         List<EGenre> genreList = new ArrayList<>();
 
-        for (String genre : Genre) {
+        for (String genre : GenreStringList) {
             int genreIndex = returnGenreIndex(genre);
             genreList.add(returnGenre(genreIndex));
         }
+        return genreList;
+    }
+
+    private List<String> returnGenreStringList(String genre) {
+        List<String> genreList = new ArrayList<>();
+
+        String[] genreArray = genre.split("\\|");
+
+        for (String genreElement : genreArray) {
+            genreList.add(genreElement.trim());
+        }
+
         return genreList;
     }
 
@@ -77,7 +91,9 @@ public class Movie {
         int genreIndex = genreList.indexOf(genre);
 
         if (!genreIndexFound(genreIndex)) {
-            throw new IllegalArgumentException("Movie index not found");
+            throw new IllegalArgumentException("Genre index not found" +
+                    " genre : " + genre + " movie title : " +
+                    this.title);
         }
         return genreIndex;
     }

@@ -2,21 +2,21 @@ package util.FileParsing;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FileParser {
-    List<List<String>> entriesList;
+    List<List<String>> rawEntriesList;
     private String fileName;
-    private String splitToken;
+    private String parseToken;
 
-    public FileParser(String fileName, String splitToken) {
+    public FileParser(String fileName, String parseToken) {
+        this.rawEntriesList = returnEntriesList(fileName, parseToken);
         this.fileName = fileName;
-        this.splitToken = splitToken;
+        this.parseToken = parseToken;
     }
 
-    public void processFile(String fileName) {
-        entriesList = new ArrayList<>();
+    public List<List<String>> returnEntriesList(String fileName, String parseToken) {
+        rawEntriesList = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
 
@@ -24,8 +24,15 @@ public class FileParser {
 
             while ((line = bufferedReader.readLine()) != null) {
 
-                List<String> entry = Arrays.asList(line.split(splitToken));
-                entriesList.add(entry);
+                String[] entry = line.split(parseToken);
+
+                List<String> entryList = new ArrayList<>();
+
+                for (String element : entry) {
+                    entryList.add(element.trim());
+                }
+                rawEntriesList.add(entryList);
+
             }
 
         } catch (FileNotFoundException e) {
@@ -33,10 +40,11 @@ public class FileParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return rawEntriesList;
     }
 
 
-    public List<List<String>> getEntriesList() {
-        return entriesList;
+    public List<List<String>> getRawEntriesList() {
+        return rawEntriesList;
     }
 }

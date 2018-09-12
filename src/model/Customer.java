@@ -1,26 +1,27 @@
 package model;
 
+import conditions.Condition;
+import conditions.CustomerIdValid;
 import model.customerFieldEnums.EAgeRange;
 import model.customerFieldEnums.EGender;
 import model.customerFieldEnums.EOccupation;
-import util.Validate;
 
 public final class Customer {
 
-    private int id;
-    private EGender gender;
+    private final int id;
+    private final EGender gender;
     private EAgeRange ageRange;
     private EOccupation occupation;
     private String zipCode;
 
     //UserID::Gender::Age::Occupation::Zip-code
-    Customer(String id,
-             String gender,
-             String age,
-             String occupation,
-             String zipCode) {
+    public Customer(String id,
+                    String gender,
+                    String age,
+                    String occupation,
+                    String zipCode) {
 
-        this.id=returnID(id);
+        this.id = returnID(id);
         this.gender = returnGender(gender);
         this.ageRange = returnAgeRange(age);
         this.occupation = returnOccupation(occupation);
@@ -32,7 +33,8 @@ public final class Customer {
 
         final int OCCUPATION_INDEX = Integer.parseInt(occupation);
 
-        if (!occupationIndexInRange(OCCUPATION_INDEX)) throw new IllegalArgumentException("undefined occupation");
+        if (!occupationIndexInRange(OCCUPATION_INDEX))
+            throw new IllegalArgumentException("undefined occupation");
 
         final EOccupation eOccupation = returnOccupationType(OCCUPATION_INDEX);
 
@@ -118,17 +120,18 @@ public final class Customer {
     }
 
 
-    public int returnID(String id) {
+    private int returnID(String id) {
         id = id.trim();
         int ID = Integer.parseInt(id);
 
-        if (!Validate.customerIdInRange(ID)) throw new IllegalArgumentException("user id not in range ");
+        Condition condition = new CustomerIdValid(ID);
+        if (!condition.valid()) throw new IllegalArgumentException("user id not in range ");
 
         return ID;
     }
 
 
-    public EGender returnGender(String gender) {
+    private EGender returnGender(String gender) {
         gender = gender.trim();
 
         if (gender.equals("M")) {
