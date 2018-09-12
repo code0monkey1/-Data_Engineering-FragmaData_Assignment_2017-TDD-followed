@@ -1,7 +1,7 @@
 package model;
 
 import conditions.Condition;
-import conditions.MovieIdValid;
+import conditions.MovieID;
 import model.movieFiledEnums.EGenre;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public final class Movie {
     private int returnID(String id) {
 
         int ID = Integer.parseInt(id);
-        Condition condition = new MovieIdValid(ID);
+        Condition condition = new MovieID(ID);
 
         if (!condition.valid()) { //MovieIDs range between 1 and 3952
             throw new IllegalArgumentException("ID out of range");
