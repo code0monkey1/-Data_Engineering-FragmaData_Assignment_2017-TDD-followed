@@ -35,9 +35,6 @@ public final class RatingsFileParser extends FileParser {
         Map<Integer, Map<Integer, RatingAndTime>> tempCustomerMovieRatingMap = new HashMap<>();
 
         for (List<String> rawEntry : rawEntriesList) {
-            //Debugging
-              System.out.println(tempCustomerMovieRatingMap);
-            //  System.out.println(rawEntry);
 
             if (!hasValidFields(rawEntry)) continue; // ignore entry with invalid fields
 
@@ -67,7 +64,7 @@ public final class RatingsFileParser extends FileParser {
             //if it does just enter the movie entry ( override it if the user has already rated this movie)
             movieIdRatingTimeMap.put(MOVIE_ID, ratingAndTime);
 
-            //finally assign the movieIdRatingand Time map to customerID map
+            //finally assign the movieId Rating and Time map to customerID map
 
             tempCustomerMovieRatingMap.put(CUSTOMER_ID, movieIdRatingTimeMap);
 

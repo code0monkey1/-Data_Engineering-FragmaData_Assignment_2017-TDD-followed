@@ -15,7 +15,7 @@ public class FileParser {
         this.parseToken = parseToken;
     }
 
-    public List<List<String>> returnEntriesList(String fileName, String parseToken) {
+    private List<List<String>> returnEntriesList(String fileName, String parseToken) {
         rawEntriesList = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
@@ -44,7 +44,7 @@ public class FileParser {
     }
 
 
-    public List<List<String>> getRawEntriesList() {
+    protected List<List<String>> getRawEntriesList() {
         return rawEntriesList;
     }
 }

@@ -29,7 +29,7 @@ public final class MovieFileParser extends FileParser {
         // Entry format : MovieID , Title ,Genres
 
         List<List<String>> movieEntriesList = this.getRawEntriesList();
-        System.out.println(rawEntriesList);
+//        System.out.println(rawEntriesList);
         for (List<String> movieEntry : movieEntriesList) {
             if (!hasValidFields(movieEntry)) {
                 throw new IllegalArgumentException("fields size illegal");
