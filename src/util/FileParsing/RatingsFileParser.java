@@ -28,11 +28,18 @@ public final class RatingsFileParser extends FileParser {
         customerMovieRatingMap = returnCustomerMovieRatingMap();
     }
 
+
     private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap() {
 
         List<List<String>> rawEntriesList = this.getRawEntriesList();
         Map<Integer, Map<Integer, RatingAndTime>> tempCustomerMovieRatingMap = new HashMap<>();
+
         for (List<String> rawEntry : rawEntriesList) {
+            //Debugging
+              System.out.println(tempCustomerMovieRatingMap);
+            //  System.out.println(rawEntry);
+
+            if (!hasValidFields(rawEntry)) continue; // ignore entry with invalid fields
 
             //extract info of each entry
 
@@ -50,7 +57,7 @@ public final class RatingsFileParser extends FileParser {
 
             //find out if map entry for user exists , if not assign a new hashmap
 
-            Map<Integer, RatingAndTime> movieIdRatingTimeMap = customerMovieRatingMap.getOrDefault(CUSTOMER_ID, new HashMap<>());
+            Map<Integer, RatingAndTime> movieIdRatingTimeMap = tempCustomerMovieRatingMap.getOrDefault(CUSTOMER_ID, new HashMap<>());
 
             String rating = rawEntry.get(2);
             String timeStamp = rawEntry.get(3);
@@ -62,7 +69,7 @@ public final class RatingsFileParser extends FileParser {
 
             //finally assign the movieIdRatingand Time map to customerID map
 
-            this.customerMovieRatingMap.put(CUSTOMER_ID, movieIdRatingTimeMap);
+            tempCustomerMovieRatingMap.put(CUSTOMER_ID, movieIdRatingTimeMap);
 
         }
 
@@ -70,11 +77,24 @@ public final class RatingsFileParser extends FileParser {
         return tempCustomerMovieRatingMap;
     }
 
+    private boolean hasValidFields(List<String> rawEntry) {
+        return rawEntry.size() == fields;
+    }
+
     private RatingAndTime returnRatingAndTime(String rating, String time) {
         RatingAndTime ratingAndTime = new RatingAndTime(rating, time);
 
         return ratingAndTime;
     }
+
+    public Map<Integer, Map<Integer, RatingAndTime>> getCustomerMovieRatingMap() {
+        return customerMovieRatingMap;
+    }
+
+
+//    public static void main(String[] args) {
+//        RatingsFileParser ratingsFileParser = new RatingsFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::", 4);
+//    }
 
 
 }

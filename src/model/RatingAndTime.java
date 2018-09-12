@@ -34,4 +34,11 @@ public class RatingAndTime {
         return RATING >= 1 && RATING <= 5;
     }
 
+    @Override
+    public String toString() {
+        return "RatingAndTime{" +
+                "rating=" + rating +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }

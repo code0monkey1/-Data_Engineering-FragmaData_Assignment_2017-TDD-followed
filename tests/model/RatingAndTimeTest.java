@@ -23,4 +23,9 @@ public class RatingAndTimeTest {
 
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void rating_isIncorrect() {
+        RatingAndTime ratingAndTime = new RatingAndTime("6", "343423");
+    }
+
 }

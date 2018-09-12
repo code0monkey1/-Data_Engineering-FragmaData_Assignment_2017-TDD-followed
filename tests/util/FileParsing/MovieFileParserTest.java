@@ -5,11 +5,10 @@ import model.movieFiledEnums.EGenre;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.Array;
 import java.util.Arrays;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MovieFileParserTest {
     private MovieFileParser movieFileParser;
@@ -21,10 +20,11 @@ public class MovieFileParserTest {
 
     @Test
     public void map_genreListValid() {
+
         Map<Integer, Movie> idMovieMap = movieFileParser.getIdMovieMap();
         assertEquals(Arrays.asList(EGenre.ANIMATION, EGenre.CHILDRENS, EGenre.COMEDY), idMovieMap.get(1).getGenre());
         assertEquals(Arrays.asList(EGenre.ACTION, EGenre.ADVENTURE, EGenre.THRILLER), idMovieMap.get(10).getGenre());
-        assertEquals(Arrays.asList(EGenre.ADVENTURE,EGenre.CHILDRENS), idMovieMap.get(8).getGenre());
+        assertEquals(Arrays.asList(EGenre.ADVENTURE, EGenre.CHILDRENS), idMovieMap.get(8).getGenre());
 
     }
 
