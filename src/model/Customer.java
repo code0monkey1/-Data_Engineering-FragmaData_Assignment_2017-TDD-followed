@@ -1,7 +1,7 @@
 package model;
 
 import conditions.Condition;
-import conditions.CustomerIdValid;
+import conditions.CustomerID;
 import model.customerFieldEnums.EAgeRange;
 import model.customerFieldEnums.EGender;
 import model.customerFieldEnums.EOccupation;
@@ -124,7 +124,7 @@ public final class Customer {
         id = id.trim();
         int ID = Integer.parseInt(id);
 
-        Condition condition = new CustomerIdValid(ID);
+        Condition condition = new CustomerID(ID);
         if (!condition.valid()) throw new IllegalArgumentException("user id not in range ");
 
         return ID;

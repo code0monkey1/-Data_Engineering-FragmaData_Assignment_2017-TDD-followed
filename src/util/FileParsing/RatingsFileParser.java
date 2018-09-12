@@ -1,9 +1,9 @@
 package util.FileParsing;
 
-import conditions.AllConditions;
+import conditions.AllConditionsHold;
 import conditions.Condition;
-import conditions.CustomerIdValid;
-import conditions.MovieIdValid;
+import conditions.CustomerID;
+import conditions.MovieID;
 import model.RatingAndTime;
 
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public final class RatingsFileParser extends FileParser {
             int CUSTOMER_ID = Integer.parseInt(customerId);
             int MOVIE_ID = Integer.parseInt(movieId);
 
-            Condition condition = new AllConditions(new CustomerIdValid(CUSTOMER_ID), new MovieIdValid(MOVIE_ID));
+            Condition condition = new AllConditionsHold(new CustomerID(CUSTOMER_ID), new MovieID(MOVIE_ID));
 
             if (!condition.valid())
                 throw new IllegalArgumentException("Customer ID or Movie ID Illegal");
