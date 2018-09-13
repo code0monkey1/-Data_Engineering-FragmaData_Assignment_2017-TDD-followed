@@ -1,6 +1,6 @@
 package util.FileParsing;
 
-import conditions.AllConditionsHold;
+import conditions.AllConditionsPass;
 import conditions.Condition;
 import conditions.CustomerID;
 import conditions.MovieID;
@@ -19,24 +19,23 @@ import java.util.Map;
 //        Each user has at least 20 ratings
 
 public final class RatingsFileParser extends FileParser {
-    private int fields;
     private Map<Integer, Map<Integer, RatingAndTime>> customerMovieRatingMap;
 
     public RatingsFileParser(String fileName, String parseToken, int fields) {
         super(fileName, parseToken);
-        this.fields = fields;
-        customerMovieRatingMap = returnCustomerMovieRatingMap();
+        customerMovieRatingMap = returnCustomerMovieRatingMap(fields);
+
     }
 
 
-    private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap() {
+    private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap(int fields) {
 
-        List<List<String>> rawEntriesList = this.getRawEntriesList();
+        List<List<String>> rawEntriesList = this.getRawList();
         Map<Integer, Map<Integer, RatingAndTime>> tempCustomerMovieRatingMap = new HashMap<>();
 
         for (List<String> rawEntry : rawEntriesList) {
 
-            if (!hasValidFields(rawEntry)) continue; // ignore entry with invalid fields
+            if (!hasValidFields(rawEntry, fields)) continue; // ignore entry with invalid fields
 
             //extract info of each entry
 
@@ -47,9 +46,9 @@ public final class RatingsFileParser extends FileParser {
             int CUSTOMER_ID = Integer.parseInt(customerId);
             int MOVIE_ID = Integer.parseInt(movieId);
 
-            Condition condition = new AllConditionsHold(new CustomerID(CUSTOMER_ID), new MovieID(MOVIE_ID));
+            Condition customerIdAndMovieIdValue = new AllConditionsPass(new CustomerID(CUSTOMER_ID), new MovieID(MOVIE_ID));
 
-            if (!condition.valid())
+            if (!customerIdAndMovieIdValue.isValid())
                 throw new IllegalArgumentException("Customer ID or Movie ID Illegal");
 
             //find out if map entry for user exists , if not assign a new hashmap
@@ -74,7 +73,7 @@ public final class RatingsFileParser extends FileParser {
         return tempCustomerMovieRatingMap;
     }
 
-    private boolean hasValidFields(List<String> rawEntry) {
+    private boolean hasValidFields(List<String> rawEntry, int fields) {
         return rawEntry.size() == fields;
     }
 

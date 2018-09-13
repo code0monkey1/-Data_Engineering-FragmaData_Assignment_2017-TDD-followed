@@ -125,7 +125,7 @@ public final class Customer {
         int ID = Integer.parseInt(id);
 
         Condition condition = new CustomerID(ID);
-        if (!condition.valid()) throw new IllegalArgumentException("user id not in range ");
+        if (!condition.isValid()) throw new IllegalArgumentException("user id not in range ");
 
         return ID;
     }

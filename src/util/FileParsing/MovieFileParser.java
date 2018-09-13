@@ -1,5 +1,7 @@
 package util.FileParsing;
 
+import conditions.Condition;
+import conditions.FieldCount;
 import model.Movie;
 
 import java.util.HashMap;
@@ -9,7 +11,6 @@ import java.util.Map;
 public final class MovieFileParser extends FileParser {
 
     private Map<Integer, Movie> idMovieMap;
-    private int fields;
 
     public Map<Integer, Movie> getIdMovieMap() {
         return idMovieMap;
@@ -18,20 +19,21 @@ public final class MovieFileParser extends FileParser {
 
     public MovieFileParser(String fileName, String parseToken, int fields) {
         super(fileName, parseToken);
-        this.fields = fields;
-        idMovieMap = returnIdMovieMap();
-
+        idMovieMap = returnIdMovieMap(fields);
     }
 
-    private Map<Integer, Movie> returnIdMovieMap() {
+    private Map<Integer, Movie> returnIdMovieMap(int fields) {
 
         Map<Integer, Movie> tempIdMoviesMap = new HashMap<>();
         // Entry format : MovieID , Title ,Genres
 
-        List<List<String>> movieEntriesList = this.getRawEntriesList();
+        List<List<String>> movieEntriesList = this.getRawList();
 //        System.out.println(rawEntriesList);
+
         for (List<String> movieEntry : movieEntriesList) {
-            if (!hasValidFields(movieEntry)) {
+            Condition movieEntryFieldCount = new FieldCount(fields, movieEntry);
+
+            if (!movieEntryFieldCount.isValid()) {
                 throw new IllegalArgumentException("fields size illegal");
             }
 
@@ -51,10 +53,6 @@ public final class MovieFileParser extends FileParser {
         Movie movie = new Movie(id, title, genre);
 
         return movie;
-    }
-
-    private boolean hasValidFields(List<String> entry) {
-        return entry.size() == fields;
     }
 
 

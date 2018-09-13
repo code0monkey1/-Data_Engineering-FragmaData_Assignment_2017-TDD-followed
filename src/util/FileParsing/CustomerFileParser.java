@@ -1,5 +1,7 @@
 package util.FileParsing;
 
+import conditions.Condition;
+import conditions.FieldCount;
 import model.Customer;
 
 import java.util.HashMap;
@@ -10,31 +12,33 @@ public final class CustomerFileParser extends FileParser {
 
 
     private Map<Integer, Customer> idCustomerMap;
-    private int fields;
 
     public CustomerFileParser(String fileName, String parseToken, int fields) {
         super(fileName, parseToken);
-        this.fields = fields;
-        this.idCustomerMap = returnIdCustomerMap();
+        this.idCustomerMap = returnIdCustomerMap(fields);
     }
 
-    private Map<Integer, Customer> returnIdCustomerMap() {
+    private Map<Integer, Customer> returnIdCustomerMap(int fields) {
         Map<Integer, Customer> tempIDCustomerMap = new HashMap<>();
 
-        List<List<String>> customerList = this.getRawEntriesList();
+        List<List<String>> customerList = this.getRawList();
 
         // Format : UserID::Gender::Age::Occupation::Zip-code
         for (List<String> customerEntry : customerList) {
 
-            if (customerEntry.size() != fields) {
+            Condition customerEntryFieldCount = new FieldCount(fields, customerEntry);
+
+            if (!customerEntryFieldCount.isValid()) {
                 throw new IllegalArgumentException("illegal field size");
+            } else {
+                Customer customer = returnCustomer(customerEntry);
+                tempIDCustomerMap.put(customer.getId(), customer);
             }
-            Customer customer = returnCustomer(customerEntry);
-            tempIDCustomerMap.put(customer.getId(), customer);
 
         }
         return tempIDCustomerMap;
     }
+
 
     private Customer returnCustomer(List<String> customerEntry) {
 

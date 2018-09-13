@@ -31,7 +31,7 @@ public final class Movie {
         int ID = Integer.parseInt(id);
         Condition condition = new MovieID(ID);
 
-        if (!condition.valid()) { //MovieIDs range between 1 and 3952
+        if (!condition.isValid()) { //MovieIDs range between 1 and 3952
             throw new IllegalArgumentException("ID out of range");
         } else return ID;
     }

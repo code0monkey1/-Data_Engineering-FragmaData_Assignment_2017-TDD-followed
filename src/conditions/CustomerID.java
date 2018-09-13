@@ -10,7 +10,7 @@ public class CustomerID implements Condition {
     }
 
     @Override
-    public boolean valid() {
+    public boolean isValid() {
         return id >= min && id <= max;
     }
 }

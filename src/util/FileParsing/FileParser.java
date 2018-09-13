@@ -1,22 +1,27 @@
 package util.FileParsing;
 
+import wrappers.ListOfStringLists;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileParser {
-    private List<List<String>> rawEntriesList;
     private final String fileName;
     private final String parseToken;
+    private ListOfStringLists rawList;
+
 
     public FileParser(String fileName, String parseToken) {
-        this.rawEntriesList = returnEntriesList(fileName, parseToken);
-        this.fileName = fileName;
         this.parseToken = parseToken;
+        this.rawList = returnEntriesList(fileName, parseToken);
+
+        this.fileName = fileName;
+
     }
 
-    private List<List<String>> returnEntriesList(String fileName, String parseToken) {
-        List<List<String>> tempRawEntriesList = new ArrayList<>();
+    private ListOfStringLists returnEntriesList(String fileName, String parseToken) {
+        ListOfStringLists tempRawEntriesList = new ListOfStringLists();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
 
@@ -44,7 +49,7 @@ public class FileParser {
     }
 
 
-    protected List<List<String>> getRawEntriesList() {
-        return rawEntriesList;
+    protected List<List<String>> getRawList() {
+        return rawList.getListOfLists();
     }
 }
