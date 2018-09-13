@@ -1,6 +1,6 @@
 package util.FileParsing;
 
-import conditions.AllConditionsPass;
+import conditions.AllConditions;
 import conditions.Condition;
 import conditions.CustomerID;
 import conditions.MovieID;
@@ -46,7 +46,7 @@ public final class RatingsFileParser extends FileParser {
             int CUSTOMER_ID = Integer.parseInt(customerId);
             int MOVIE_ID = Integer.parseInt(movieId);
 
-            Condition customerIdAndMovieIdValue = new AllConditionsPass(new CustomerID(CUSTOMER_ID), new MovieID(MOVIE_ID));
+            Condition customerIdAndMovieIdValue = new AllConditions(new CustomerID(CUSTOMER_ID), new MovieID(MOVIE_ID));
 
             if (!customerIdAndMovieIdValue.isValid())
                 throw new IllegalArgumentException("Customer ID or Movie ID Illegal");

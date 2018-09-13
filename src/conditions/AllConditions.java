@@ -1,10 +1,10 @@
 package conditions;
 
-public class AllConditionsPass implements Condition {
+public class AllConditions implements Condition {
 
     private Condition[] conditions;
 
-    public AllConditionsPass(Condition... conditions) {
+    public AllConditions(Condition... conditions) {
         this.conditions = conditions;
     }
 

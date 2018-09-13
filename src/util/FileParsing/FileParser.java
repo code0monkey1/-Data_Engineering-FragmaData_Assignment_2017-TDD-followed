@@ -15,7 +15,6 @@ public class FileParser {
     public FileParser(String fileName, String parseToken) {
         this.parseToken = parseToken;
         this.rawList = returnEntriesList(fileName, parseToken);
-
         this.fileName = fileName;
 
     }
@@ -31,14 +30,11 @@ public class FileParser {
 
                 String[] entry = line.split(parseToken);
 
-                List<String> entryList = new ArrayList<>();
+                List<String> cleanEntriesList = returnCleanList(entry);
 
-                for (String element : entry) {
-                    entryList.add(element.trim());
-                }
-                tempRawEntriesList.add(entryList);
-
+                tempRawEntriesList.add(cleanEntriesList);
             }
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -46,6 +42,15 @@ public class FileParser {
             e.printStackTrace();
         }
         return tempRawEntriesList;
+    }
+
+    private List<String> returnCleanList(String[] entry) {
+        List<String> entryList = new ArrayList<>();
+
+        for (String element : entry) {
+            entryList.add(element.trim());
+        }
+        return entryList;
     }
 
 

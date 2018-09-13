@@ -11,7 +11,7 @@ import java.util.Map;
 public final class CustomerFileParser extends FileParser {
 
 
-    private Map<Integer, Customer> idCustomerMap;
+    private final Map<Integer, Customer> idCustomerMap;
 
     public CustomerFileParser(String fileName, String parseToken, int fields) {
         super(fileName, parseToken);
@@ -45,10 +45,10 @@ public final class CustomerFileParser extends FileParser {
         String id = customerEntry.get(0);
         String gender = customerEntry.get(1);
         String age = customerEntry.get(2);
-        String occpation = customerEntry.get(3);
+        String occupation = customerEntry.get(3);
         String zip = customerEntry.get(4);
 
-        Customer customer = new Customer(id, gender, age, occpation, zip);
+        Customer customer = new Customer(id, gender, age, occupation, zip);
         return customer;
     }
 
