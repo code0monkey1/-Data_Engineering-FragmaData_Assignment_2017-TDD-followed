@@ -4,18 +4,21 @@ import model.Movie;
 import model.movieFiledEnums.EGenre;
 import org.junit.Before;
 import org.junit.Test;
+import util.mapping.MovieMapper;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 public class MovieFileParserTest {
-    private MovieFileParser movieFileParser;
+    private MovieMapper movieFileParser;
 
     @Before
     public void setUp() {
-        this.movieFileParser = new MovieFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::", 3);
+        FileParser fileParser=new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        this.movieFileParser = new MovieMapper(fileParser , 3);
     }
 
     @Test

@@ -54,7 +54,7 @@ public class FileParser {
     }
 
 
-    protected List<List<String>> getRawList() {
+    public List<List<String>> getRawList() {
         return rawList.getListOfLists();
     }
 }

@@ -29,10 +29,10 @@ public final class Movie {
     private int returnID(String id) {
 
         int ID = Integer.parseInt(id);
-        Condition condition = new MovieID(ID);
+        Condition movieID = new MovieID(ID);
 
-        if (!condition.isValid()) { //MovieIDs range between 1 and 3952
-            throw new IllegalArgumentException("ID out of range");
+        if (!movieID.isValid()) {
+            throw new IllegalArgumentException("ID out of range (MovieIDs range between 1 and 3952 ) :"+ID);
         } else return ID;
     }
 

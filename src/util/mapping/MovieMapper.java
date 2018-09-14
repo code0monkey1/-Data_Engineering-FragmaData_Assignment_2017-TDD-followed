@@ -1,33 +1,29 @@
-package util.FileParsing;
+package util.mapping;
 
 import conditions.Condition;
 import conditions.FieldCount;
 import model.Movie;
+import util.FileParsing.FileParser;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class MovieFileParser extends FileParser {
+public final class MovieMapper {
 
     private Map<Integer, Movie> idMovieMap;
 
-    public Map<Integer, Movie> getIdMovieMap() {
-        return idMovieMap;
+
+    public MovieMapper(FileParser fileParser, int fields) {
+        this.idMovieMap = returnIdMovieMap(fileParser, fields);
     }
 
-
-    public MovieFileParser(String fileName, String parseToken, int fields) {
-        super(fileName, parseToken);
-        idMovieMap = returnIdMovieMap(fields);
-    }
-
-    private Map<Integer, Movie> returnIdMovieMap(int fields) {
+    private Map<Integer, Movie> returnIdMovieMap(FileParser fileParser, int fields) {
 
         Map<Integer, Movie> tempIdMoviesMap = new HashMap<>();
         // Entry format : MovieID , Title ,Genres
 
-        List<List<String>> movieEntriesList = this.getRawList();
+        List<List<String>> movieEntriesList = fileParser.getRawList();
 //        System.out.println(rawEntriesList);
 
         for (List<String> movieEntry : movieEntriesList) {
@@ -56,8 +52,7 @@ public final class MovieFileParser extends FileParser {
     }
 
 
-    public static void main(String[] args) {
-
+    public Map<Integer, Movie> getIdMovieMap() {
+        return idMovieMap;
     }
-
 }

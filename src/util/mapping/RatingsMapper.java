@@ -1,10 +1,11 @@
-package util.FileParsing;
+package util.mapping;
 
 import conditions.AllConditions;
 import conditions.Condition;
 import conditions.CustomerID;
 import conditions.MovieID;
 import model.RatingAndTime;
+import util.FileParsing.FileParser;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,19 +19,19 @@ import java.util.Map;
 //        Timestamp is represented in seconds since the epoch as returned by time(2)
 //        Each user has at least 20 ratings
 
-public final class RatingsFileParser extends FileParser {
+public final class RatingsMapper {
     private Map<Integer, Map<Integer, RatingAndTime>> customerMovieRatingMap;
 
-    public RatingsFileParser(String fileName, String parseToken, int fields) {
-        super(fileName, parseToken);
-        customerMovieRatingMap = returnCustomerMovieRatingMap(fields);
+    public RatingsMapper(FileParser fileParser, int fields) {
+
+        customerMovieRatingMap = returnCustomerMovieRatingMap(fileParser, fields);
 
     }
 
 
-    private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap(int fields) {
+    private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap(FileParser fileParser, int fields) {
 
-        List<List<String>> rawEntriesList = this.getRawList();
+        List<List<String>> rawEntriesList = fileParser.getRawList();
         Map<Integer, Map<Integer, RatingAndTime>> tempCustomerMovieRatingMap = new HashMap<>();
 
         for (List<String> rawEntry : rawEntriesList) {
@@ -89,7 +90,7 @@ public final class RatingsFileParser extends FileParser {
 
 
 //    public static void main(String[] args) {
-//        RatingsFileParser ratingsFileParser = new RatingsFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::", 4);
+//        RatingsMapper ratingsFileParser = new RatingsMapper("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::", 4);
 //    }
 
 

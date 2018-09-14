@@ -1,27 +1,27 @@
-package util.FileParsing;
+package util.mapping;
 
 import conditions.Condition;
 import conditions.FieldCount;
 import model.Customer;
+import util.FileParsing.FileParser;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class CustomerFileParser extends FileParser {
+public final class CustomerMapper {
 
 
     private final Map<Integer, Customer> idCustomerMap;
 
-    public CustomerFileParser(String fileName, String parseToken, int fields) {
-        super(fileName, parseToken);
-        this.idCustomerMap = returnIdCustomerMap(fields);
+    public CustomerMapper(FileParser fileParser, int fields) {
+        this.idCustomerMap = returnIdCustomerMap(fileParser,fields);
     }
 
-    private Map<Integer, Customer> returnIdCustomerMap(int fields) {
+    private Map<Integer, Customer> returnIdCustomerMap(FileParser fileParser, int fields) {
         Map<Integer, Customer> tempIDCustomerMap = new HashMap<>();
 
-        List<List<String>> customerList = this.getRawList();
+        List<List<String>> customerList = fileParser.getRawList();
 
         // Format : UserID::Gender::Age::Occupation::Zip-code
         for (List<String> customerEntry : customerList) {
