@@ -4,7 +4,7 @@ import conditions.AllConditions;
 import conditions.Condition;
 import conditions.CustomerID;
 import conditions.MovieID;
-import model.RatingAndTime;
+import model.primaryObjects.RatingAndTime;
 import util.FileParsing.FileParser;
 
 import java.util.HashMap;
@@ -20,11 +20,11 @@ import java.util.Map;
 //        Each user has at least 20 ratings
 
 public final class RatingsMapper {
-    private Map<Integer, Map<Integer, RatingAndTime>> customerMovieRatingMap;
+    private Map<Integer, Map<Integer, RatingAndTime>> customerIDMovieIDRatingAndTimeMap;
 
     public RatingsMapper(FileParser fileParser, int fields) {
 
-        customerMovieRatingMap = returnCustomerMovieRatingMap(fileParser, fields);
+        customerIDMovieIDRatingAndTimeMap = returnCustomerMovieRatingMap(fileParser, fields);
 
     }
 
@@ -84,8 +84,8 @@ public final class RatingsMapper {
         return ratingAndTime;
     }
 
-    public Map<Integer, Map<Integer, RatingAndTime>> getCustomerMovieRatingMap() {
-        return customerMovieRatingMap;
+    public Map<Integer, Map<Integer, RatingAndTime>> getCustomerIDMovieIDRatingAndTimeMap() {
+        return customerIDMovieIDRatingAndTimeMap;
     }
 
 

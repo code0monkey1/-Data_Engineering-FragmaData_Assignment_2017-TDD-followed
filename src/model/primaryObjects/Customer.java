@@ -1,4 +1,4 @@
-package model;
+package model.primaryObjects;
 
 import conditions.Condition;
 import conditions.CustomerID;

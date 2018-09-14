@@ -1,4 +1,4 @@
-package model;
+package model.primaryObjects;
 
 public class RatingAndTime {
 

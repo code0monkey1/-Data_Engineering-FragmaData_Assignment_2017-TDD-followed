@@ -1,42 +1,43 @@
 package util.FileParsing;
 
-import model.Movie;
 import model.movieFiledEnums.EGenre;
+import model.primaryObjects.Movie;
+import model.primaryObjects.MovieInfo;
 import org.junit.Before;
 import org.junit.Test;
 import util.mapping.MovieMapper;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 public class MovieFileParserTest {
-    private MovieMapper movieFileParser;
+
+    MovieInfo movieInfo;
 
     @Before
     public void setUp() {
-        FileParser fileParser=new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
-        this.movieFileParser = new MovieMapper(fileParser , 3);
+        FileParser fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        MovieMapper movieMapper = new MovieMapper(fileParser, 3);
+        movieInfo = new MovieInfo(movieMapper.getIdMovieMap());
     }
 
     @Test
     public void map_genreListValid() {
 
-        Map<Integer, Movie> idMovieMap = movieFileParser.getIdMovieMap();
-        assertEquals(Arrays.asList(EGenre.ANIMATION, EGenre.CHILDRENS, EGenre.COMEDY), idMovieMap.get(1).getGenre());
-        assertEquals(Arrays.asList(EGenre.ACTION, EGenre.ADVENTURE, EGenre.THRILLER), idMovieMap.get(10).getGenre());
-        assertEquals(Arrays.asList(EGenre.ADVENTURE, EGenre.CHILDRENS), idMovieMap.get(8).getGenre());
+        assertEquals(Arrays.asList(EGenre.ANIMATION, EGenre.CHILDRENS, EGenre.COMEDY), movieInfo.getGenreList(1));
+        assertEquals(Arrays.asList(EGenre.ACTION, EGenre.ADVENTURE, EGenre.THRILLER), movieInfo.getGenreList(10));
+        assertEquals(Arrays.asList(EGenre.ADVENTURE, EGenre.CHILDRENS), movieInfo.getGenreList(8));
 
     }
 
     @Test
     public void map_nameOfMovieValid() {
-        Map<Integer, Movie> idMovieMap = movieFileParser.getIdMovieMap();
-        assertEquals("Toy Story (1995)", idMovieMap.get(1).getTitle());
-        assertEquals("GoldenEye (1995)", idMovieMap.get(10).getTitle());
-        assertEquals("Tom and Huck (1995)", idMovieMap.get(8).getTitle());
+
+        assertEquals("Toy Story (1995)", movieInfo.getTitle(1));
+        assertEquals("GoldenEye (1995)",movieInfo.getTitle(10));
+        assertEquals("Tom and Huck (1995)", movieInfo.getTitle(8));
 
     }
 

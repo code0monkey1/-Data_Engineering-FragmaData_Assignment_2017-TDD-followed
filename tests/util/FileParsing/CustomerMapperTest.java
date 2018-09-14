@@ -1,6 +1,6 @@
 package util.FileParsing;
 
-import model.Customer;
+import model.primaryObjects.Customer;
 import model.customerFieldEnums.EAgeRange;
 import model.customerFieldEnums.EGender;
 import model.customerFieldEnums.EOccupation;

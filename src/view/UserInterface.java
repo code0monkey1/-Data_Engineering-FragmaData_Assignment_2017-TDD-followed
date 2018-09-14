@@ -1,9 +1,7 @@
 package view;
 
 import controller.Statistics;
-import model.Movie;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -50,11 +48,11 @@ public class UserInterface {
 
         switch (option) {
             case "1":
-                System.out.println("To display top N most viewed movies with their movie names ,%n enter the N number ");
+                System.out.println("To display top N most viewed movies with their movie names , enter the N number");
                 int n = Integer.parseInt(reader.nextLine());
-                Map<Integer, Movie> idMovieMap = statistics.getIdMovieMap();
 
-                statistics.displayTopNMoviesWithCount(n, idMovieMap);
+
+                statistics.displayTopNMoviesWithCount(n);
                 break;
             case "2":
                 break;

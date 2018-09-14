@@ -1,4 +1,4 @@
-package model;
+package model.primaryObjects;
 
 import conditions.Condition;
 import conditions.MovieID;
@@ -32,7 +32,7 @@ public final class Movie {
         Condition movieID = new MovieID(ID);
 
         if (!movieID.isValid()) {
-            throw new IllegalArgumentException("ID out of range (MovieIDs range between 1 and 3952 ) :"+ID);
+            throw new IllegalArgumentException("ID out of range (MovieIDs range between 1 and 3952 ) :" + ID);
         } else return ID;
     }
 
@@ -110,7 +110,7 @@ public final class Movie {
         return title;
     }
 
-    public List<EGenre> getGenre() {
+    public List<EGenre> getGenreList() {
         return genreList;
     }
 }

@@ -2,7 +2,7 @@ package util.mapping;
 
 import conditions.Condition;
 import conditions.FieldCount;
-import model.Movie;
+import model.primaryObjects.Movie;
 import util.FileParsing.FileParser;
 
 import java.util.HashMap;

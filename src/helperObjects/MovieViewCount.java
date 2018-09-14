@@ -1,13 +1,7 @@
-package tempHelperObjects;
+package helperObjects;
 
 public class MovieViewCount implements Comparable<MovieViewCount> {
-    public int getMovieID() {
-        return movieID;
-    }
 
-    public int getCount() {
-        return count;
-    }
 
     private int movieID;
     private int count;
@@ -43,5 +37,17 @@ public class MovieViewCount implements Comparable<MovieViewCount> {
                 "movieID=" + movieID +
                 ", count=" + count +
                 '}';
+    }
+
+    public int getMovieID() {
+        return movieID;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void incrementViewCount() {
+        this.count++;
     }
 }

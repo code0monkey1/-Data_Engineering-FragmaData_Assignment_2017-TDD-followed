@@ -1,6 +1,7 @@
 package model;
 
 import model.movieFiledEnums.EGenre;
+import model.primaryObjects.Movie;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -21,10 +22,10 @@ public class MovieTest {
     @Test
     public void genre_defined() {
         Movie movie = new Movie("234", "pholon ki baraat", " Action|Sci-Fi ");
-        assertEquals(Arrays.asList(EGenre.ACTION,EGenre.SCI_FI), movie.getGenre());
+        assertEquals(Arrays.asList(EGenre.ACTION,EGenre.SCI_FI), movie.getGenreList());
 
         movie = new Movie("234", "pholon ki baraat","  Sci-Fi|Children's ");
-        assertEquals(Arrays.asList(EGenre.SCI_FI,EGenre.CHILDRENS), movie.getGenre());
+        assertEquals(Arrays.asList(EGenre.SCI_FI,EGenre.CHILDRENS), movie.getGenreList());
     }
 
     @Test

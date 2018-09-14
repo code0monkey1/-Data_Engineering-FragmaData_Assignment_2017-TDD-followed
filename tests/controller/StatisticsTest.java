@@ -1,9 +1,11 @@
 package controller;
 
 
-import org.junit.Before;
+import model.primaryObjects.CustomerInfo;
+import model.primaryObjects.MovieInfo;
+import model.primaryObjects.RatingInfo;
 import org.junit.Test;
-import tempHelperObjects.MovieViewCount;
+import helperObjects.MovieViewCount;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
@@ -13,43 +15,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class StatisticsTest {
 
-    public Statistics statistics;
-
-    @Before
-    public void setUp() throws Exception {
-
-        this.statistics = new Statistics(new MovieMapper(new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::"), 3),
-                new CustomerMapper(new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockCustomers.dat", "::"), 5),
-                new RatingsMapper(new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::"), 4));
-
-
-    }
 
     @Test
     public void movies_topNMostViewed() {
         //setup
-        FileParser movieMap = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
-
-        FileParser customergMap = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockCustomers.dat", "::");
-
-        FileParser ratingMap = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMoviesNMostViewed.dat", "::");
-
-        this.statistics = new Statistics(new MovieMapper(movieMap, 3),
-                new CustomerMapper(customergMap, 5),
-                new RatingsMapper(ratingMap, 4));
-
-        List<MovieViewCount> mostViewed2 = statistics.getTopNMostViewedMovies(2);
-        List<MovieViewCount> expectedTop2 = getExpectedTop2MovieList();
-        assertEquals(expectedTop2, mostViewed2);
+        MovieInfo movieInfo = getMovieInfo();
+        CustomerInfo customerInfo = getCustomerInfo();
+        RatingInfo ratingInfo = getRatingInfoForQuestion1();
 
 
-        List<MovieViewCount> mostViewed10 = statistics.getTopNMostViewedMovies(10);
-        List<MovieViewCount> expectedTop4 = getExpectedTop4MovieList();
+        Statistics statistics = new Statistics(customerInfo,
+                movieInfo,
+                ratingInfo);
 
-        assertEquals(expectedTop4, mostViewed10);
+        assertFalse(true);
+    }
+
+    private RatingInfo getRatingInfoForQuestion1() {
+        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMoviesNMostViewed.dat", "::");
+        RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
+
+
+        return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+    }
+
+    private CustomerInfo getCustomerInfo() {
+        FileParser customerParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockCustomers.dat", "::");
+        CustomerMapper customerMapper = new CustomerMapper(customerParser, 5);
+        return new CustomerInfo(customerMapper.getIdCustomerMap());
+    }
+
+    private MovieInfo getMovieInfo() {
+        FileParser movieParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        MovieMapper movieMapper = new MovieMapper(movieParser, 3);
+        return new MovieInfo(movieMapper.getIdMovieMap());
     }
 
     private List<MovieViewCount> getExpectedTop2MovieList() {
@@ -71,6 +74,31 @@ public class StatisticsTest {
     private FileParser getFileParser(String fileName, String parseToken) {
         FileParser fileParser = new FileParser(fileName, parseToken);
         return fileParser;
+    }
+
+    @Test
+    public void topNMovies_countCorrectWhenNisGreaterThanAvailableMovesWatched() {
+
+        CustomerInfo customerInfo = getCustomerInfo();
+        RatingInfo ratingInfo = getRatingInfo();
+        MovieInfo movieInfo = getMovieInfo();
+
+
+        Statistics statistics = new Statistics(customerInfo, movieInfo, ratingInfo);
+
+
+        int expected = 3;
+        int count = 0;
+        assertEquals(expected, count);
+
+    }
+
+    private RatingInfo getRatingInfo() {
+        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
+
+
+        return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
     }
 
 

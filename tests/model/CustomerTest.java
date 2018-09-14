@@ -3,6 +3,7 @@ package model;
 import model.customerFieldEnums.EAgeRange;
 import model.customerFieldEnums.EGender;
 import model.customerFieldEnums.EOccupation;
+import model.primaryObjects.Customer;
 import org.junit.Before;
 import org.junit.Test;
 
