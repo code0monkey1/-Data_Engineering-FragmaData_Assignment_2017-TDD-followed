@@ -49,16 +49,10 @@ public class UserInterface {
         int n;
         switch (option) {
             case "1":
-                System.out.println("To display top N most viewed movies with their movie names , enter the N number");
-                n = Integer.parseInt(reader.nextLine());
-                statistics.displayTopViewedMovies(n);
+                mostViewedMovies();
                 break;
             case "2":
-                System.out.println("To display top N most rated movies with their movie names , enter the N number");
-                n = Integer.parseInt(reader.nextLine());
-                System.out.println(" Mention the mininum accetpable view count ");
-                int minimum = Integer.parseInt(reader.nextLine());
-                statistics.displayTopRatedMovies(n, minimum);
+                mostRatedMovies();
                 break;
             case "3":
                 break;
@@ -66,6 +60,22 @@ public class UserInterface {
                 break;
 
         }
+    }
+
+    private void mostViewedMovies() {
+        int n;
+        System.out.println("To display top N most viewed movies with their movie names , enter the N number");
+        n = Integer.parseInt(reader.nextLine());
+        statistics.displayTopViewedMovies(n);
+    }
+
+    private void mostRatedMovies() {
+        int n;
+        System.out.println("To display top N most rated movies with their movie names , enter the N number");
+        n = Integer.parseInt(reader.nextLine());
+        System.out.println(" Mention the mininum accetpable view count ");
+        int minimum = Integer.parseInt(reader.nextLine());
+        statistics.displayTopRatedMovies(n, minimum);
     }
 
 }
