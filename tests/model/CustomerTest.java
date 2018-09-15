@@ -13,7 +13,7 @@ public class CustomerTest {
     private Customer customer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         ////UserID::Gender::Age::Occupation::Zip-code
         customer = new Customer("234", "F", "35", "5", "1234");
     }

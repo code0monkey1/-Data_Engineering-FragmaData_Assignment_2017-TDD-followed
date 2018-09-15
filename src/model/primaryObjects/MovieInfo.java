@@ -18,10 +18,9 @@ public class MovieInfo {
         Movie movie = this.idMovieMap.getOrDefault(movieID, null);
 
         if (movie == null) {
-            return "NO DOES NOT EXIST";
+            throw new IllegalArgumentException("movie does not exist");
         }
         return movie.getTitle();
-
 
     }
 
@@ -39,4 +38,6 @@ public class MovieInfo {
 
         return genreList;
     }
+
+
 }

@@ -10,6 +10,7 @@ public class UserInterface {
     private Scanner reader;
 
     public UserInterface(Statistics statistics) {
+
         this.statistics = statistics;
         this.reader = new Scanner(System.in);
     }
@@ -45,16 +46,19 @@ public class UserInterface {
     }
 
     public void executeOption(String option) {
-
+        int n;
         switch (option) {
             case "1":
                 System.out.println("To display top N most viewed movies with their movie names , enter the N number");
-                int n = Integer.parseInt(reader.nextLine());
-
-
-                statistics.displayTopNMoviesWithCount(n);
+                n = Integer.parseInt(reader.nextLine());
+                statistics.displayTopViewedMovies(n);
                 break;
             case "2":
+                System.out.println("To display top N most rated movies with their movie names , enter the N number");
+                n = Integer.parseInt(reader.nextLine());
+                System.out.println(" Mention the mininum accetpable view count ");
+                int minimum = Integer.parseInt(reader.nextLine());
+                statistics.displayTopRatedMovies(n, minimum);
                 break;
             case "3":
                 break;

@@ -1,12 +1,12 @@
 package helperObjects;
 
-public class MovieViewCount implements Comparable<MovieViewCount> {
+public class MovieView implements Comparable<MovieView> {
 
 
     private int movieID;
     private int count;
 
-    public MovieViewCount(int movieID, int count) {
+    public MovieView(int movieID, int count) {
         this.movieID = movieID;
         this.count = count;
     }
@@ -16,24 +16,27 @@ public class MovieViewCount implements Comparable<MovieViewCount> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MovieViewCount that = (MovieViewCount) o;
+        MovieView movieView = (MovieView) o;
 
-        return movieID == that.movieID;
+        if (movieID != movieView.movieID) return false;
+        return count == movieView.count;
     }
 
     @Override
     public int hashCode() {
-        return movieID;
+        int result = movieID;
+        result = 31 * result + count;
+        return result;
     }
 
     @Override
-    public int compareTo(MovieViewCount movieViewCount) {
-        return movieViewCount.count - this.count;
+    public int compareTo(MovieView movieView) {
+        return movieView.count - this.count;
     }
 
     @Override
     public String toString() {
-        return "MovieViewCount{" +
+        return "MovieView{" +
                 "movieID=" + movieID +
                 ", count=" + count +
                 '}';
@@ -47,7 +50,4 @@ public class MovieViewCount implements Comparable<MovieViewCount> {
         return count;
     }
 
-    public void incrementViewCount() {
-        this.count++;
-    }
 }

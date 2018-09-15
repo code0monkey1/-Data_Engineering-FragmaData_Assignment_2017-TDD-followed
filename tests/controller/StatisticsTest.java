@@ -1,11 +1,11 @@
 package controller;
 
 
+import helperObjects.MovieView;
 import model.primaryObjects.CustomerInfo;
 import model.primaryObjects.MovieInfo;
 import model.primaryObjects.RatingInfo;
 import org.junit.Test;
-import helperObjects.MovieViewCount;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class StatisticsTest {
 
@@ -32,11 +31,15 @@ public class StatisticsTest {
                 movieInfo,
                 ratingInfo);
 
-        assertFalse(true);
+        List<MovieView> expected = new ArrayList<>();
+        expected.add(new MovieView(4, 5));
+        expected.add(new MovieView(7, 3));
+
+        assertEquals(expected, statistics.getTopViewedMovies(2));
     }
 
     private RatingInfo getRatingInfoForQuestion1() {
-        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMoviesNMostViewed.dat", "::");
+        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatingsForMoviesNMostViewed.dat", "::");
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
 
 
@@ -55,18 +58,18 @@ public class StatisticsTest {
         return new MovieInfo(movieMapper.getIdMovieMap());
     }
 
-    private List<MovieViewCount> getExpectedTop2MovieList() {
-        List<MovieViewCount> expected = new ArrayList<>();
-        expected.add(new MovieViewCount(4, 5));
-        expected.add(new MovieViewCount(7, 3));
+    private List<MovieView> getExpectedTop2MovieList() {
+        List<MovieView> expected = new ArrayList<>();
+        expected.add(new MovieView(4, 5));
+        expected.add(new MovieView(7, 3));
         return expected;
     }
 
-    private List<MovieViewCount> getExpectedTop4MovieList() {
-        List<MovieViewCount> expected = new ArrayList<>();
-        expected.add(new MovieViewCount(4, 5));
-        expected.add(new MovieViewCount(7, 3));
-        expected.add(new MovieViewCount(1, 2));
+    private List<MovieView> getExpectedTop4MovieList() {
+        List<MovieView> expected = new ArrayList<>();
+        expected.add(new MovieView(4, 5));
+        expected.add(new MovieView(7, 3));
+        expected.add(new MovieView(1, 2));
         return expected;
     }
 
@@ -77,28 +80,28 @@ public class StatisticsTest {
     }
 
     @Test
-    public void topNMovies_countCorrectWhenNisGreaterThanAvailableMovesWatched() {
+    public void mostViewedMovies_whenCountExceedsLimit() {
 
         CustomerInfo customerInfo = getCustomerInfo();
-        RatingInfo ratingInfo = getRatingInfo();
+        RatingInfo ratingInfo = getRatingInfoForQuestion1();
         MovieInfo movieInfo = getMovieInfo();
 
 
         Statistics statistics = new Statistics(customerInfo, movieInfo, ratingInfo);
+        List<MovieView> expected = new ArrayList<>();
+        expected.add(new MovieView(4, 5));
+        expected.add(new MovieView(7, 3));
+        expected.add(new MovieView(1, 2));
 
-
-        int expected = 3;
-        int count = 0;
-        assertEquals(expected, count);
+        assertEquals(expected, statistics.getTopViewedMovies(10));
 
     }
 
     private RatingInfo getRatingInfo() {
         FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
-
-
-        return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+        RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+        return ratingInfo;
     }
 
 
