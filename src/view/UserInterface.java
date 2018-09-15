@@ -20,21 +20,21 @@ public class UserInterface {
 
         while (true) {
             displayOptions();
-            String option = reader.nextLine();
-            option = option.trim();
+            String choice = reader.nextLine();
+            choice = choice.trim();
 
-            if (stop(option)) {
+            if (isTerminationCondition(choice)) {
                 System.out.println("Program Exiting..... ");
                 break;
             } else {
-                executeOption(option);
+                executeOption(choice);
             }
 
         }
     }
 
-    private boolean stop(String option) {
-        return option.equals("0");
+    private boolean isTerminationCondition(String choice) {
+        return choice.equals("0");
     }
 
     public void displayOptions() {
