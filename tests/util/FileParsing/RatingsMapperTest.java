@@ -1,7 +1,7 @@
 package util.FileParsing;
 
 
-import model.primaryObjects.RatingAndTime;
+import model.primary.movie.RatingAndTime;
 import org.junit.Before;
 import org.junit.Test;
 import util.mapping.RatingsMapper;

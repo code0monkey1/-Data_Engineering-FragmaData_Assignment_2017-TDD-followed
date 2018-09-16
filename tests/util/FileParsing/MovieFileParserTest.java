@@ -1,14 +1,12 @@
 package util.FileParsing;
 
-import model.movieFiledEnums.EGenre;
-import model.primaryObjects.Movie;
-import model.primaryObjects.MovieInfo;
+import model.primary.movie.EGenre;
+import model.primary.movie.MovieInfo;
 import org.junit.Before;
 import org.junit.Test;
 import util.mapping.MovieMapper;
 
 import java.util.Arrays;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 

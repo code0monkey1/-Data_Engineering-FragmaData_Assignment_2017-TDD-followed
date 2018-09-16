@@ -1,7 +1,5 @@
-package model.primaryObjects;
+package model.primary.customer;
 
-
-import model.customerFieldEnums.EAgeRange;
 
 import java.util.Map;
 

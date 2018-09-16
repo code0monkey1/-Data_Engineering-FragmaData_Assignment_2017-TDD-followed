@@ -1,4 +1,4 @@
-package helperObjects;
+package model.helperObjects;
 
 public class MovieView implements Comparable<MovieView> {
 

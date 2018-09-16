@@ -1,8 +1,7 @@
-package model.primaryObjects;
+package model.primary.movie;
 
 import conditions.Condition;
 import conditions.MovieID;
-import model.movieFiledEnums.EGenre;
 
 import java.util.ArrayList;
 import java.util.Arrays;

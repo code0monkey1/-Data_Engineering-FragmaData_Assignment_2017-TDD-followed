@@ -1,7 +1,7 @@
 import controller.Statistics;
-import model.primaryObjects.CustomerInfo;
-import model.primaryObjects.MovieInfo;
-import model.primaryObjects.RatingInfo;
+import model.primary.customer.CustomerInfo;
+import model.primary.movie.MovieInfo;
+import model.primary.rating.RatingInfo;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;

@@ -1,7 +1,7 @@
 package model;
 
-import model.movieFiledEnums.EGenre;
-import model.primaryObjects.Movie;
+import model.primary.movie.EGenre;
+import model.primary.movie.Movie;
 import org.junit.Test;
 
 import java.util.Arrays;

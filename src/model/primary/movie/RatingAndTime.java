@@ -1,4 +1,4 @@
-package model.primaryObjects;
+package model.primary.movie;
 
 public class RatingAndTime {
 

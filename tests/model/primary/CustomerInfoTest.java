@@ -1,6 +1,8 @@
-package model.primaryObjects;
+package model.primary;
 
-import model.customerFieldEnums.EAgeRange;
+import model.primary.customer.Customer;
+import model.primary.customer.CustomerInfo;
+import model.primary.customer.EAgeRange;
 import org.junit.Before;
 import org.junit.Test;
 import util.FileParsing.FileParser;

@@ -1,4 +1,4 @@
-package model.customerFieldEnums;
+package model.primary.customer;
 
 public enum EAgeRange {
     UNDER_EIGHTEEN,

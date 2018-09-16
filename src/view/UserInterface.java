@@ -46,7 +46,7 @@ public class UserInterface {
     }
 
     public void executeOption(String option) {
-        int n;
+
         switch (option) {
             case "1":
                 mostViewedMovies();
@@ -73,7 +73,7 @@ public class UserInterface {
         int n;
         System.out.println("To display top N most rated movies with their movie names , enter the N number");
         n = Integer.parseInt(reader.nextLine());
-        System.out.println(" Mention the mininum accetpable view count ");
+        System.out.println(" Enter the minimum acceptable view count :");
         int minimum = Integer.parseInt(reader.nextLine());
         statistics.displayTopRatedMovies(n, minimum);
     }

@@ -2,7 +2,7 @@ package util.mapping;
 
 import conditions.Condition;
 import conditions.FieldCount;
-import model.primaryObjects.Customer;
+import model.primary.customer.Customer;
 import util.FileParsing.FileParser;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package model.movieFiledEnums;
+package model.primary.movie;
 
 public enum EGenre {
     ACTION,

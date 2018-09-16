@@ -1,9 +1,9 @@
 package util.FileParsing;
 
-import model.primaryObjects.Customer;
-import model.customerFieldEnums.EAgeRange;
-import model.customerFieldEnums.EGender;
-import model.customerFieldEnums.EOccupation;
+import model.primary.customer.Customer;
+import model.primary.customer.EAgeRange;
+import model.primary.customer.EGender;
+import model.primary.customer.EOccupation;
 import org.junit.Before;
 import org.junit.Test;
 import util.mapping.CustomerMapper;

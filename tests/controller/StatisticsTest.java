@@ -1,10 +1,10 @@
 package controller;
 
 
-import helperObjects.MovieView;
-import model.primaryObjects.CustomerInfo;
-import model.primaryObjects.MovieInfo;
-import model.primaryObjects.RatingInfo;
+import model.helperObjects.MovieView;
+import model.primary.customer.CustomerInfo;
+import model.primary.movie.MovieInfo;
+import model.primary.rating.RatingInfo;
 import org.junit.Test;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;

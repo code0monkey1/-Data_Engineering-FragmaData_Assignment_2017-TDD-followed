@@ -81,7 +81,7 @@ information are included in this data set.
 MOVIES FILE DESCRIPTION
 ================================================================================
 
-model.primaryObjects.Movie information is in the file "movies.dat" and is in the following
+model.primary.movie.Movie information is in the file "movies.dat" and is in the following
 format:
 
 MovieID::Title::Genres

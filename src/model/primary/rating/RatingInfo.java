@@ -1,4 +1,6 @@
-package model.primaryObjects;
+package model.primary.rating;
+
+import model.primary.movie.RatingAndTime;
 
 import java.util.HashMap;
 import java.util.Map;

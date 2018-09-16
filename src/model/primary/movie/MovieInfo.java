@@ -1,6 +1,4 @@
-package model.primaryObjects;
-
-import model.movieFiledEnums.EGenre;
+package model.primary.movie;
 
 import java.util.ArrayList;
 import java.util.List;

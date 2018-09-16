@@ -1,7 +1,7 @@
 package model;
 
 
-import model.primaryObjects.RatingAndTime;
+import model.primary.movie.RatingAndTime;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

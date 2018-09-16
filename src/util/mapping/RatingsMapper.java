@@ -4,7 +4,7 @@ import conditions.AllConditions;
 import conditions.Condition;
 import conditions.CustomerID;
 import conditions.MovieID;
-import model.primaryObjects.RatingAndTime;
+import model.primary.movie.RatingAndTime;
 import util.FileParsing.FileParser;
 
 import java.util.HashMap;

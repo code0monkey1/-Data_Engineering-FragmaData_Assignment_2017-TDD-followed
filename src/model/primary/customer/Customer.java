@@ -1,10 +1,7 @@
-package model.primaryObjects;
+package model.primary.customer;
 
 import conditions.Condition;
 import conditions.CustomerID;
-import model.customerFieldEnums.EAgeRange;
-import model.customerFieldEnums.EGender;
-import model.customerFieldEnums.EOccupation;
 
 public final class Customer {
 
