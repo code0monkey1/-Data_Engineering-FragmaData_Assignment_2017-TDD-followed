@@ -55,11 +55,22 @@ public class UserInterface {
                 mostRatedMovies();
                 break;
             case "3":
+                topRatedMoviesWithAgeCategorisation();
                 break;
             case "4":
                 break;
 
         }
+    }
+
+    private void topRatedMoviesWithAgeCategorisation() {
+        System.out.println("Enter N top movie count :");
+        int n = Integer.parseInt(reader.nextLine());
+
+        System.out.println("Enter M min view count : ");
+        int m = Integer.parseInt(reader.nextLine());
+
+        statistics.displayTopRatedMoviesWithAgeRangeCategorization(n, m);
     }
 
     private void mostViewedMovies() {

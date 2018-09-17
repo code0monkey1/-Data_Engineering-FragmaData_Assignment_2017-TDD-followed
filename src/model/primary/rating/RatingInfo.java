@@ -1,12 +1,16 @@
 package model.primary.rating;
 
+import model.primary.customer.CustomerInfo;
+import model.primary.customer.EAgeRange;
 import model.primary.movie.RatingAndTime;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class RatingInfo {
+
 
     private final Map<Integer, Map<Integer, RatingAndTime>> customerIdMovieIdRatingAndTimeMap;
 
@@ -45,5 +49,34 @@ public class RatingInfo {
             }
         }
         return movieIdRatings;
+    }
+
+
+    public Map<Integer, EnumMap<EAgeRange, Integer>> getMovieIdAgeRangeMap(CustomerInfo
+                                                                                   customerInfo) {
+
+        Map<Integer, EnumMap<EAgeRange, Integer>> movieIdAgeRangeMap = new HashMap<>();
+
+        for (Integer customerID : customerIdMovieIdRatingAndTimeMap.keySet()) {
+
+            EAgeRange ageRange = customerInfo.getAgeRange(customerID);
+
+            Map<Integer, RatingAndTime> idRatingAndTimeMap = customerIdMovieIdRatingAndTimeMap.get(customerID);
+
+            Set<Integer> movieIdSet = idRatingAndTimeMap.keySet();
+
+            for (Integer movieID : movieIdSet) {
+
+                EnumMap<EAgeRange, Integer> ageRangeCountMap = movieIdAgeRangeMap.getOrDefault(movieID, new EnumMap<>(EAgeRange.class));
+
+                int presentAgeRangeCount = ageRangeCountMap.getOrDefault(ageRange, 0);
+
+                ageRangeCountMap.put(ageRange, presentAgeRangeCount + 1);
+
+                movieIdAgeRangeMap.put(movieID, ageRangeCountMap);
+            }
+
+        }
+        return movieIdAgeRangeMap;
     }
 }

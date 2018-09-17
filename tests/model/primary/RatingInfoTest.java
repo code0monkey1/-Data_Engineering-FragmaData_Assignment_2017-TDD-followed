@@ -1,11 +1,15 @@
 package model.primary;
 
+import model.primary.customer.CustomerInfo;
+import model.primary.customer.EAgeRange;
 import model.primary.rating.RatingInfo;
 import org.junit.Before;
 import org.junit.Test;
 import util.FileParsing.FileParser;
+import util.mapping.CustomerMapper;
 import util.mapping.RatingsMapper;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +19,14 @@ import static org.junit.Assert.assertNotNull;
 
 public class RatingInfoTest {
     private FileParser fileParser;
+    private RatingInfo ratingInfo;
 
     @Before
     public void setUp() {
         fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatingsForMoviesNMostViewed.dat", "::");
+
+        RatingsMapper ratingsMapper = new RatingsMapper(fileParser, 4);
+        ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
     }
 
     @Test
@@ -79,8 +87,8 @@ public class RatingInfoTest {
 
         int resultViews = ratingInfo.getMovieIdViewsMap().get(4);
         int resultRatings = ratingInfo.getMovieIdRatingsMap().get(4);
-        System.out.println(expectedViews+"::"+resultViews);
-        System.out.println(expectedRating+"::"+resultRatings);
+        System.out.println(expectedViews + "::" + resultViews);
+        System.out.println(expectedRating + "::" + resultRatings);
         assertEquals(expectedViews, resultViews);
         assertEquals(expectedRating, resultRatings);
     }
@@ -105,6 +113,47 @@ public class RatingInfoTest {
         }
         assertNotNull(movieIdViews);
         return movieIdViews;
+    }
+
+    @Test
+    public void movieIdAgeRangeMap_isValid() {
+
+
+    }
+
+    @Test
+    public void rangeEnumMap_isValid() {
+
+        CustomerInfo customerInfo = new CustomerInfo(new CustomerMapper(new FileParser("users.dat", "::"), 5).getIdCustomerMap());
+
+        Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange = new HashMap<>();
+
+        List<List<String>> entries = this.fileParser.getRawList();
+
+        for (List<String> entry : entries) {
+
+            int userID = Integer.parseInt(entry.get(0));
+            int movieID = Integer.parseInt(entry.get(1));
+
+            EAgeRange userAgeRange = customerInfo.getAgeRange(userID);
+
+            EnumMap<EAgeRange, Integer> ageRangeMap = returnAgeRangeMap(movieIDAgeRange, movieID);
+
+            int presentAgeRangeCount = returnPresentAgeRangeCount(userAgeRange, ageRangeMap);
+
+            ageRangeMap.put(userAgeRange, presentAgeRangeCount + 1);
+            movieIDAgeRange.put(movieID, ageRangeMap);
+
+        }
+        assertEquals(movieIDAgeRange, ratingInfo.getMovieIdAgeRangeMap(customerInfo));
+    }
+
+    private int returnPresentAgeRangeCount(EAgeRange userAgeRange, EnumMap<EAgeRange, Integer> ageRangeMap) {
+        return ageRangeMap.getOrDefault(userAgeRange, 0);
+    }
+
+    private EnumMap<EAgeRange, Integer> returnAgeRangeMap(Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange, int movieID) {
+        return movieIDAgeRange.getOrDefault(movieID, new EnumMap<>(EAgeRange.class));
     }
 
 

@@ -23,7 +23,7 @@ public class CustomerInfo {
         Customer customer = idCustomerMap.getOrDefault(ID, null);
 
         if (customer == null)
-           throw  new IllegalArgumentException("Customer with given ID does not exist : " + ID);
+            throw new IllegalArgumentException("Customer with given ID does not exist : " + ID);
 
         return customer;
     }
