@@ -1,10 +1,12 @@
 package controller;
 
 
+import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
+import org.junit.Before;
 import org.junit.Test;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
@@ -17,7 +19,19 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class StatisticsTest {
+    private Statistics statistics;
 
+    @Before
+    public void setUp() {
+        MovieInfo movieInfo = getMovieInfo();
+        CustomerInfo customerInfo = getCustomerInfo();
+        RatingInfo ratingInfo = getRatingInfoForQuestion1();
+
+
+        this.statistics = new Statistics(customerInfo,
+                movieInfo,
+                ratingInfo);
+    }
 
     @Test
     public void movies_topNMostViewed() {
@@ -102,6 +116,17 @@ public class StatisticsTest {
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
         RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
         return ratingInfo;
+    }
+
+    @Test
+    public void ratingList_top3RatedMoviesWithMin2Views() {
+        List<MovieRating> expected = new ArrayList<>();
+        expected.add(new MovieRating(7, 13.0 / 3, 3));
+        expected.add(new MovieRating(1, 8.0 / 2, 2));
+        expected.add(new MovieRating(4, 20.0 / 5, 5));
+
+
+        assertEquals(expected, statistics.getTopRatedMovies(3, 2));
     }
 
 

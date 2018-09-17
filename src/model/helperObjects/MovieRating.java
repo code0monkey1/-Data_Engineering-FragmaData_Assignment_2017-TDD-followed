@@ -14,6 +14,15 @@ public class MovieRating implements Comparable<MovieRating> {
     }
 
     @Override
+    public String toString() {
+        return "MovieRating{" +
+                "rating=" + rating +
+                ", views=" + views +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
