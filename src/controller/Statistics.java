@@ -28,45 +28,13 @@ public final class Statistics {
     }
 
     public List<MovieView> getTopViewedMovies(int N) {
-        // 1. get a map <id,viewCount> from the ratingsInfo class
-        Map<Integer, Integer> movieIdViewCount = ratingInfo.getMovieIdViewsMap();
-        // 2. feed the id and movie count variables into an MovieView
-        // object
-        // 3. feed all the MovieView objects into a priority queue
-        PriorityQueue<MovieView> movieViewPriorityQueue = returnMovieViewQueue(movieIdViewCount);
-        // 4. poll the objects from the top
-        // 5. get List Of top polled objects and finally display
-        List<MovieView> topViewedMovies = returnTopViewedMovies(N, movieViewPriorityQueue);
-        // --> Get the movie name by using the MovieInfo class to get name from ID
-        return topViewedMovies;
+
+        return new TopViewedMovies(N).invoke();
     }
 
     public List<MovieRating> getTopRatedMovies(int N, int minViews) {
 
-
-        //1. get a map <movieId,ratingCount> from MovieInfo
-        Map<Integer, Integer> idRating = this.ratingInfo.getMovieIdRatingsMap();
-        //2. get a map of <id, viewCount> from movieInfo
-        Map<Integer, Integer> idView = this.ratingInfo.getMovieIdViewsMap();
-        //3. scan the ratingmap one by one by one for the (contition)
-        //4. Make MovieRating objects and put it into a priority queue
-        List<MovieRating> movieRatings = returnRatedMovies(minViews, idRating, idView);
-        //condition : the movie must have been viewed by at least 40 users
-        PriorityQueue<MovieRating> movieRatingQueue = returnRatedMovieQueue(movieRatings);
-        //5.poll the objects and put it into a list , finally display the list
-        List<MovieRating> topRatedMovies = returnTopRatedMoviesWhichFulfillCondition(N, movieRatingQueue);
-
-        return topRatedMovies;
-    }
-
-    private List<MovieRating> returnTopRatedMoviesWhichFulfillCondition(int N,
-                                                                        PriorityQueue<MovieRating> movieRatingQueue) {
-        List<MovieRating> topMoviesAsPerRating = new ArrayList<>();
-        int top = Math.min(N, movieRatingQueue.size());
-        for (int i = 0; i < top; i++) {
-            topMoviesAsPerRating.add(movieRatingQueue.poll());
-        }
-        return topMoviesAsPerRating;
+        return new TopRatedMovies(N, minViews).invoke();
     }
 
     private void printRatedMovies(List<MovieRating> topRatedMovies) {
@@ -89,39 +57,6 @@ public final class Statistics {
     }
 
 
-    private PriorityQueue<MovieRating> returnRatedMovieQueue(List<MovieRating> movieRatings) {
-        PriorityQueue<MovieRating> movieRatingPriorityQueue = new PriorityQueue<>();
-
-        for (MovieRating movie : movieRatings) {
-            movieRatingPriorityQueue.add(movie);
-        }
-
-        return movieRatingPriorityQueue;
-    }
-
-    private List<MovieRating> returnRatedMovies(int minViews,
-                                                Map<Integer, Integer> idRating,
-                                                Map<Integer, Integer> idView) {
-
-        List<MovieRating> movieRatings = new ArrayList<>();
-
-        for (int id : idRating.keySet()) {
-            int views = idView.get(id);
-            int rating = idRating.get(id);
-            MovieSeenByAtLeast minViewCondition = new MovieSeenByAtLeast(minViews, views);
-
-            if (minViewCondition.isValid()) {
-                double avjRating = returnAverageRating(rating, views);
-                MovieRating movie = new MovieRating(id, avjRating, views);
-                movieRatings.add(movie);
-            }
-        }
-        return movieRatings;
-    }
-
-    private double returnAverageRating(int rating, int views) {
-        return (1.0 * rating) / views;
-    }
 
     public void displayTopNMostViewedMovies(List<MovieView> topViewedMovies) {
 
@@ -132,29 +67,113 @@ public final class Statistics {
         }
     }
 
-    private List<MovieView> returnTopViewedMovies(int N, PriorityQueue<MovieView> movieViewPriorityQueue) {
 
-        int top = Math.min(movieViewPriorityQueue.size(), N);
-        List<MovieView> topViewedMovies = new ArrayList<>();
+    private class TopRatedMovies {
+        private int n;
+        private int minViews;
 
-        for (int i = 0; i < top; i++) {
-            MovieView movieView = movieViewPriorityQueue.poll();
-            topViewedMovies.add(movieView);
+        public TopRatedMovies(int N, int minViews) {
+            n = N;
+            this.minViews = minViews;
         }
-        return topViewedMovies;
+
+        public List<MovieRating> invoke() {
+            Map<Integer, Integer> idRating = Statistics.this.ratingInfo.getMovieIdRatingsMap();
+
+            Map<Integer, Integer> idView = Statistics.this.ratingInfo.getMovieIdViewsMap();
+
+            List<MovieRating> movieRatings = returnRatedMovies(minViews, idRating, idView);
+
+            PriorityQueue<MovieRating> movieRatingQueue = returnRatedMovieQueue(movieRatings);
+
+            List<MovieRating> topRatedMovies = returnTopRatedMoviesWhichFulfillCondition(n, movieRatingQueue);
+
+            return topRatedMovies;
+        }
+        private double returnAverageRating(int rating, int views) {
+            return (1.0 * rating) / views;
+        }
+
+        private List<MovieRating> returnRatedMovies(int minViews,
+                                                        Map<Integer, Integer> idRating,
+                                                        Map<Integer, Integer> idView) {
+
+            List<MovieRating> movieRatings = new ArrayList<>();
+
+            for (int id : idRating.keySet()) {
+                int views = idView.get(id);
+                int rating = idRating.get(id);
+                MovieSeenByAtLeast minViewCondition = new MovieSeenByAtLeast(minViews, views);
+
+                if (minViewCondition.isValid()) {
+                    double avjRating = returnAverageRating(rating, views);
+                    MovieRating movie = new MovieRating(id, avjRating, views);
+                    movieRatings.add(movie);
+                }
+            }
+            return movieRatings;
+        }
+
+        private PriorityQueue<MovieRating> returnRatedMovieQueue(List<MovieRating> movieRatings) {
+            PriorityQueue<MovieRating> movieRatingPriorityQueue = new PriorityQueue<>();
+
+            for (MovieRating movie : movieRatings) {
+                movieRatingPriorityQueue.add(movie);
+            }
+
+            return movieRatingPriorityQueue;
+        }
+
+        private List<MovieRating> returnTopRatedMoviesWhichFulfillCondition(int N,
+                                                                                PriorityQueue<MovieRating> movieRatingQueue) {
+            List<MovieRating> topMoviesAsPerRating = new ArrayList<>();
+            int top = Math.min(N, movieRatingQueue.size());
+            for (int i = 0; i < top; i++) {
+                topMoviesAsPerRating.add(movieRatingQueue.poll());
+            }
+            return topMoviesAsPerRating;
+        }
     }
 
-    private PriorityQueue<MovieView> returnMovieViewQueue(Map<Integer, Integer> movieIdViewCount) {
+    private class TopViewedMovies {
+        private int n;
 
-        PriorityQueue<MovieView> movieViewPriorityQueue = new PriorityQueue<>();
-        for (int id : movieIdViewCount.keySet()) {
-            int count = movieIdViewCount.get(id);
-
-            MovieView movieView = new MovieView(id, count);
-            movieViewPriorityQueue.add(movieView);
+        public TopViewedMovies(int N) {
+            n = N;
         }
-        return movieViewPriorityQueue;
+
+        public List<MovieView> invoke() {
+            Map<Integer, Integer> movieViews = ratingInfo.getMovieIdViewsMap();
+
+            PriorityQueue<MovieView> movieViewQueue = returnMovieViewPriorityQueue(movieViews);
+
+            List<MovieView> topViewedMovies = returnTopViewedMovies(n, movieViewQueue);
+
+            return topViewedMovies;
+        }
+
+        private PriorityQueue<MovieView> returnMovieViewPriorityQueue(Map<Integer, Integer> movieIdViewCount) {
+
+            PriorityQueue<MovieView> movieViewPriorityQueue = new PriorityQueue<>();
+            for (int id : movieIdViewCount.keySet()) {
+                int count = movieIdViewCount.get(id);
+
+                MovieView movieView = new MovieView(id, count);
+                movieViewPriorityQueue.add(movieView);
+            }
+            return movieViewPriorityQueue;
+        }
+
+        private List<MovieView> returnTopViewedMovies(int N, PriorityQueue<MovieView> movieViewPriorityQueue) {
+
+            int top = Math.min(movieViewPriorityQueue.size(), N);
+            List<MovieView> topViewedMovies = new ArrayList<>();
+
+            for (int i = 0; i < top; i++) {
+                MovieView movieView = movieViewPriorityQueue.poll();
+                topViewedMovies.add(movieView);
+            }
+            return topViewedMovies;
+        }
     }
-
-
 }
