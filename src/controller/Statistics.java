@@ -4,17 +4,28 @@ import conditions.MovieSeenByAtLeast;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
+import model.primary.customer.EAgeRange;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public final class Statistics {
 
+    public MovieInfo getMovieInfo() {
+        return movieInfo;
+    }
+
+    public CustomerInfo getCustomerInfo() {
+        return customerInfo;
+    }
+
+    public RatingInfo getRatingInfo() {
+        return ratingInfo;
+    }
+
     private final MovieInfo movieInfo;
+
     private final CustomerInfo customerInfo;
     private final RatingInfo ratingInfo;
 
@@ -37,6 +48,19 @@ public final class Statistics {
         return new TopRatedMovies(N, minViews).invoke();
     }
 
+
+    public Map<Integer, EnumMap<EAgeRange, Integer>> getMovieIdCustomerAgeRangeMap() {
+
+        Map<Integer, EnumMap<EAgeRange, Integer>> movieIdAgeMap = new HashMap<>();
+
+        // go through the list , getThe age range of person and put it in the map for movie
+        // return map
+
+        RatingInfo ratingInfo = this.ratingInfo;
+
+        return movieIdAgeMap;
+    }
+
     private void printRatedMovies(List<MovieRating> topRatedMovies) {
 
         for (MovieRating movie : topRatedMovies) {
@@ -55,7 +79,6 @@ public final class Statistics {
         displayTopNMostViewedMovies(viewedMovies);
 
     }
-
 
 
     public void displayTopNMostViewedMovies(List<MovieView> topViewedMovies) {
@@ -90,13 +113,14 @@ public final class Statistics {
 
             return topRatedMovies;
         }
+
         private double returnAverageRating(int rating, int views) {
             return (1.0 * rating) / views;
         }
 
         private List<MovieRating> returnRatedMovies(int minViews,
-                                                        Map<Integer, Integer> idRating,
-                                                        Map<Integer, Integer> idView) {
+                                                    Map<Integer, Integer> idRating,
+                                                    Map<Integer, Integer> idView) {
 
             List<MovieRating> movieRatings = new ArrayList<>();
 
@@ -125,7 +149,7 @@ public final class Statistics {
         }
 
         private List<MovieRating> returnTopRatedMoviesWhichFulfillCondition(int N,
-                                                                                PriorityQueue<MovieRating> movieRatingQueue) {
+                                                                            PriorityQueue<MovieRating> movieRatingQueue) {
             List<MovieRating> topMoviesAsPerRating = new ArrayList<>();
             int top = Math.min(N, movieRatingQueue.size());
             for (int i = 0; i < top; i++) {
@@ -176,4 +200,6 @@ public final class Statistics {
             return topViewedMovies;
         }
     }
+
+
 }
