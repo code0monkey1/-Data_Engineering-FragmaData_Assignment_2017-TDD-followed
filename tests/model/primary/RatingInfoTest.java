@@ -23,7 +23,7 @@ public class RatingInfoTest {
 
     @Before
     public void setUp() {
-        fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatingsForMoviesNMostViewed.dat", "::");
+        fileParser = new FileParser("mockRatingsForMoviesNMostViewed.dat", "::");
 
         RatingsMapper ratingsMapper = new RatingsMapper(fileParser, 4);
         ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
@@ -95,7 +95,7 @@ public class RatingInfoTest {
 
     private FileParser returnFileParser() {
 
-        FileParser fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::");
+        FileParser fileParser = new FileParser("mockRatings.dat", "::");
         assertNotNull(fileParser);
         return fileParser;
     }

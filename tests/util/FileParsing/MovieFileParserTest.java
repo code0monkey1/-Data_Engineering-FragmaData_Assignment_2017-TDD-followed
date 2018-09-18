@@ -16,7 +16,7 @@ public class MovieFileParserTest {
 
     @Before
     public void setUp() {
-        FileParser fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        FileParser fileParser = new FileParser("mockMovies.dat", "::");
         MovieMapper movieMapper = new MovieMapper(fileParser, 3);
         movieInfo = new MovieInfo(movieMapper.getIdMovieMap());
     }

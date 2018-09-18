@@ -16,8 +16,11 @@ import util.mapping.RatingsMapper;
 
 import java.util.*;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
+import org.hamcrest.*;
 public class StatisticsTest {
     private Statistics statistics;
 
@@ -40,7 +43,7 @@ public class StatisticsTest {
         CustomerInfo customerInfo = getCustomerInfo();
         RatingInfo ratingInfo = getRatingInfoForQuestion1();
 
-
+       
         Statistics statistics = new Statistics(customerInfo,
                 movieInfo,
                 ratingInfo);
@@ -53,39 +56,39 @@ public class StatisticsTest {
     }
 
     private RatingInfo getRatingInfoForQuestion1() {
-        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatingsForMoviesNMostViewed.dat", "::");
+        FileParser ratingParser = getFileParser("mockRatingsForMoviesNMostViewed.dat", "::");
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
-
+     
 
         return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
     }
 
     private CustomerInfo getCustomerInfo() {
-        FileParser customerParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockCustomers.dat", "::");
+        FileParser customerParser = getFileParser("mockCustomers.dat", "::");
         CustomerMapper customerMapper = new CustomerMapper(customerParser, 5);
         return new CustomerInfo(customerMapper.getIdCustomerMap());
     }
 
     private MovieInfo getMovieInfo() {
-        FileParser movieParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        FileParser movieParser = getFileParser("mockMovies.dat", "::");
         MovieMapper movieMapper = new MovieMapper(movieParser, 3);
         return new MovieInfo(movieMapper.getIdMovieMap());
     }
 
-    private List<MovieView> getExpectedTop2MovieList() {
-        List<MovieView> expected = new ArrayList<>();
-        expected.add(new MovieView(4, 5));
-        expected.add(new MovieView(7, 3));
-        return expected;
-    }
-
-    private List<MovieView> getExpectedTop4MovieList() {
-        List<MovieView> expected = new ArrayList<>();
-        expected.add(new MovieView(4, 5));
-        expected.add(new MovieView(7, 3));
-        expected.add(new MovieView(1, 2));
-        return expected;
-    }
+//    private List<MovieView> getExpectedTop2MovieList() {
+//        List<MovieView> expected = new ArrayList<>();
+//        expected.add(new MovieView(4, 5));
+//        expected.add(new MovieView(7, 3));
+//        return expected;
+//    }
+//
+//    private List<MovieView> getExpectedTop4MovieList() {
+//        List<MovieView> expected = new ArrayList<>();
+//        expected.add(new MovieView(4, 5));
+//        expected.add(new MovieView(7, 3));
+//        expected.add(new MovieView(1, 2));
+//        return expected;
+//    }
 
 
     private FileParser getFileParser(String fileName, String parseToken) {
@@ -111,12 +114,12 @@ public class StatisticsTest {
 
     }
 
-    private RatingInfo getRatingInfo() {
-        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
-        RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
-        RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
-        return ratingInfo;
-    }
+//    private RatingInfo getRatingInfo() {
+//        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+//        RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
+//        RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+//        return ratingInfo;
+//    }
 
     @Test
     public void ratingList_top3RatedMoviesWithMin2Views() {
@@ -129,40 +132,7 @@ public class StatisticsTest {
         assertEquals(expected, statistics.getTopRatedMovies(3, 2));
     }
 
-//    @Test
-//    public void rangeEnumMap_isValid() {
-//        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatingsForMoviesNMostViewed.dat", "::");
-//        CustomerInfo customerInfo = statistics.getCustomerInfo();
-//
-//        Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange = new HashMap<>();
-//
-//        List<List<String>> entries = ratingParser.getRawList();
-//
-//        for (List<String> entry : entries) {
-//
-//            int userID = Integer.parseInt(entry.get(0));
-//            int movieID = Integer.parseInt(entry.get(1));
-//
-//            EAgeRange userAgeRange = customerInfo.getAgeRange(userID);
-//
-//            EnumMap<EAgeRange, Integer> ageRangeMap = returnAgeRangeMap(movieIDAgeRange, movieID);
-//
-//            int presentAgeRangeCount = returnPresentAgeRangeCount(userAgeRange, ageRangeMap);
-//
-//            ageRangeMap.put(userAgeRange, presentAgeRangeCount + 1);
-//            movieIDAgeRange.put(movieID, ageRangeMap);
-//
-//        }
-//        assertEquals(movieIDAgeRange, statistics.getMovieIdCustomerAgeRangeMap(customerInfo));
-//    }
 
-    private int returnPresentAgeRangeCount(EAgeRange userAgeRange, EnumMap<EAgeRange, Integer> ageRangeMap) {
-        return ageRangeMap.getOrDefault(userAgeRange, 0);
-    }
-
-    private EnumMap<EAgeRange, Integer> returnAgeRangeMap(Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange, int movieID) {
-        return movieIDAgeRange.getOrDefault(movieID, new EnumMap<>(EAgeRange.class));
-    }
 
 
 }

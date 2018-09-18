@@ -12,7 +12,7 @@ public class FileParserTest {
 
     @Before
     public void setUp() throws Exception {
-        this.fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
+        this.fileParser = new FileParser("mockMovies.dat", "::");
     }
 
     @Test

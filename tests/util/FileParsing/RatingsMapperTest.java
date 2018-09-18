@@ -16,7 +16,7 @@ public class RatingsMapperTest {
 
     @Before
     public void setUp() throws Exception {
-        FileParser fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockRatings.dat", "::");
+        FileParser fileParser = new FileParser("mockRatings.dat", "::");
 
         this.ratingsMapper = new RatingsMapper(fileParser, 4);
         this.customerMoviesRatingAndTimeMap = ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap();

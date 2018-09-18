@@ -19,7 +19,7 @@ public class CustomerMapperTest {
 
     @Before
     public void setUp() throws Exception {
-        FileParser fileParser = new FileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockCustomers.dat", "::");
+        FileParser fileParser = new FileParser("mockCustomers.dat", "::");
         this.customerMapper = new CustomerMapper(fileParser, 5);
     }
 
