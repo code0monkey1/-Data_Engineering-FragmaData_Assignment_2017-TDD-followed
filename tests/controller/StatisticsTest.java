@@ -4,7 +4,6 @@ package controller;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
-import model.primary.customer.EAgeRange;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
 import org.junit.Before;
@@ -14,13 +13,13 @@ import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
 import util.mapping.RatingsMapper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
-import org.hamcrest.*;
 public class StatisticsTest {
     private Statistics statistics;
 
@@ -43,7 +42,7 @@ public class StatisticsTest {
         CustomerInfo customerInfo = getCustomerInfo();
         RatingInfo ratingInfo = getRatingInfoForQuestion1();
 
-       
+
         Statistics statistics = new Statistics(customerInfo,
                 movieInfo,
                 ratingInfo);
@@ -58,7 +57,7 @@ public class StatisticsTest {
     private RatingInfo getRatingInfoForQuestion1() {
         FileParser ratingParser = getFileParser("mockRatingsForMoviesNMostViewed.dat", "::");
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
-     
+
 
         return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
     }
@@ -132,7 +131,30 @@ public class StatisticsTest {
         assertEquals(expected, statistics.getTopRatedMovies(3, 2));
     }
 
+    @Test
+    public void topRatedViewerShipCount_top3MostViewedWithMin2Views() {
+        Map<Integer, HashMap> expected = new HashMap<>();
 
+        HashMap<Integer, Integer> firstInternalMap = new HashMap<>();
+        firstInternalMap.put(0, 0);
+        firstInternalMap.put(1, 2);
+        firstInternalMap.put(2, 0);
+        expected.put(7, firstInternalMap);
+
+        HashMap<Integer, Integer> secondInternalMap = new HashMap<>();
+        secondInternalMap.put(0, 1);
+        secondInternalMap.put(1, 0);
+        secondInternalMap.put(2, 1);
+        expected.put(1, secondInternalMap);
+
+        HashMap<Integer, Integer> thirdInternalMap = new HashMap<>();
+        thirdInternalMap .put(0, 0);
+        thirdInternalMap .put(1, 2);
+        thirdInternalMap .put(2, 2);
+        expected.put(4, thirdInternalMap);
+
+        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
+    }
 
 
 }
