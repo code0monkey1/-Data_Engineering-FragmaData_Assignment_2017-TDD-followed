@@ -18,7 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+
+
+import static org.junit.Assert.assertThat;
 
 public class StatisticsTest {
     private Statistics statistics;
@@ -153,7 +157,10 @@ public class StatisticsTest {
         thirdInternalMap .put(2, 2);
         expected.put(4, thirdInternalMap);
 
-        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
+
+        assertThat(expected,is(statistics.getMovieViewershipAgeRangeCount(3,2)));
+
+//        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
     }
 
 

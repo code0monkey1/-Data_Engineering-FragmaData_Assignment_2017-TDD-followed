@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d994c4d8-7315-4a4b-ab17-d0e69cb9cff9" name="Default" comment="changed imageName">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ).iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ).iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/controller/StatisticsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controller/StatisticsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +26,8 @@
       <file leaf-file-name="StatisticsTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/controller/StatisticsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="155" column="78" selection-start-line="155" selection-start-column="78" selection-end-line="155" selection-end-column="78" />
+            <state relative-caret-position="337">
+              <caret line="159" column="29" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/users.dat">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -213,10 +214,10 @@
     </enabled-run-configurations>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="641" />
-    <option name="y" value="64" />
-    <option name="width" value="837" />
-    <option name="height" value="727" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -270,6 +271,11 @@
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
+            <path>
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="hamcrest-library-1.3-sources" type="70bed36:NamedLibraryElementNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -283,9 +289,9 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/mockito-all-1.10.19.jar!/" />
+    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-examples" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable" />
   </component>
@@ -331,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views">
+  <component name="RunManager" selected="Application.Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -519,12 +525,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.18 at 15h 11m 18s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.18 at 15h 11m 37s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.18 at 15h 12m 00s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
@@ -547,6 +547,12 @@
       <configuration name="StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" configurationId="JUnit" />
     </history-entry>
     <history-entry file="StatisticsTest_topRatedViewerShipCount_top3MostViewedWithMin2Views - 2018.09.19 at 00h 03m 17s.xml">
+      <configuration name="StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StatisticsTest_topRatedViewerShipCount_top3MostViewedWithMin2Views - 2018.09.19 at 00h 21m 34s.xml">
+      <configuration name="StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="StatisticsTest_topRatedViewerShipCount_top3MostViewedWithMin2Views - 2018.09.19 at 00h 22m 59s.xml">
       <configuration name="StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -951,7 +957,7 @@
     <entry file="file://$PROJECT_DIR$/users.dat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -967,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/controller/StatisticsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="155" column="78" selection-start-line="155" selection-start-column="78" selection-end-line="155" selection-end-column="78" />
+        <state relative-caret-position="337">
+          <caret line="159" column="29" selection-start-line="159" selection-start-column="29" selection-end-line="159" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1052,7 +1058,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mockito-all-1.10.19</last-edited>
+          <last-edited>hamcrest-library-1.3-sources</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
