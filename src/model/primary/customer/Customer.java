@@ -162,4 +162,14 @@ public final class Customer {
     }
 
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", gender=" + gender +
+                ", ageRange=" + ageRange +
+                ", occupation=" + occupation +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }

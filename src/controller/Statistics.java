@@ -1,12 +1,14 @@
 package controller;
 
-import conditions.MovieSeenByAtLeast;
+import conditions.CountAtLeast;
+import model.helperObjects.CustomerRating;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
 import model.primary.customer.EAgeRange;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
+import util.Calculate;
 
 import java.util.*;
 
@@ -58,6 +60,69 @@ public final class Statistics {
         for (MovieRating movie : topRatedMovies) {
             System.out.printf("Movie : %s  ::  Rating : %.2f:: Views : %d %n", movieInfo.getTitle(movie.getId()), movie.getRating(), movie.getViews());
         }
+    }
+
+    public List<CustomerRating> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
+        // first get the customerid,rating map from rating infor
+        Map<Integer, Long> customerIdRatingMap = ratingInfo.getCustomerIdRatingMap();
+        //next get the customerid viewershipMap from the rating info
+        Map<Integer, Integer> customerIdViewershipMap = ratingInfo.getCustomerIdMoviesSeenCountMap();
+        // next filer out the customes that don't fulfill the min view condition
+        // and in the same function create Customer Rating objects and put it in a priority queue
+        PriorityQueue<CustomerRating> customerRatingsQueue = returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(minViewCount, customerIdRatingMap, customerIdViewershipMap);
+
+        List<CustomerRating> customers = returnCustomerRatingObjectList(top, customerRatingsQueue);
+        // finally get a list of the top N Customer Rating objects
+        return customers;
+    }
+
+    private void printCustomerMovieRatinglist(List<CustomerRating> customerRatings) {
+
+        for (CustomerRating customer : customerRatings) {
+            System.out.printf("The customer id is %d %n", customer.getId());
+            System.out.printf("The average rating given by the customer is %.2f %n", customer.getRating());
+            System.out.printf("The movie view count of the given customer is %d %n %n", customer.getViews());
+        }
+    }
+
+    public void displayTopCritics(int top, int views) {
+        List<CustomerRating> customers = getCustomersWithRatingSatisfyingMinViewCondition(top, views);
+        printCustomerMovieRatinglist(customers);
+    }
+
+    private List<CustomerRating> returnCustomerRatingObjectList(int top, PriorityQueue<CustomerRating> customerRatingsQueue) {
+        int count = Math.min(top, customerRatingsQueue.size());
+
+        List<CustomerRating> customers = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            customers.add(customerRatingsQueue.poll());
+        }
+        return customers;
+    }
+
+    private PriorityQueue<CustomerRating> returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(int minViewCount,
+                                                                                                           Map<Integer, Long> customerIdRatingMap,
+                                                                                                           Map<Integer, Integer> customerIdViewershipMap) {
+
+        PriorityQueue<CustomerRating> customerRatingsQueue = new PriorityQueue<>();
+
+        List<Integer> customerIds = ratingInfo.getAllCustomerIds();
+
+        for (int customerId : customerIds) {
+
+            long customerRatingCount = customerIdRatingMap.get(customerId);
+            int customerViewershipCount = customerIdViewershipMap.get(customerId);
+
+            CountAtLeast count = new CountAtLeast(minViewCount, customerViewershipCount);
+            if (count.isValid()) {
+                double average = Calculate.returnAverage(customerRatingCount, customerViewershipCount);
+                customerRatingsQueue.add(new CustomerRating(customerId, average, customerViewershipCount));
+            }
+
+        }
+
+        return customerRatingsQueue;
     }
 
     private void printRatedMoviesWithAgeCategory(List<MovieRating> topRatedMovies, Map<Integer, Map> movieIdAgeRangeMap) {
@@ -114,7 +179,7 @@ public final class Statistics {
         public List<MovieRating> invoke() {
             Map<Integer, Integer> idRating = Statistics.this.ratingInfo.getMovieIdRatingsMap();
 
-            Map<Integer, Integer> idView = Statistics.this.ratingInfo.getMovieIdViewsMap();
+            Map<Integer, Integer> idView = Statistics.this.ratingInfo.getMovieIdViewsCountMap();
 
             List<MovieRating> movieRatings = returnRatedMovies(minViews, idRating, idView);
 
@@ -125,9 +190,6 @@ public final class Statistics {
             return topRatedMovies;
         }
 
-        private double returnAverageRating(int rating, int views) {
-            return (1.0 * rating) / views;
-        }
 
         private List<MovieRating> returnRatedMovies(int minViews,
                                                     Map<Integer, Integer> idRating,
@@ -138,10 +200,10 @@ public final class Statistics {
             for (int id : idRating.keySet()) {
                 int views = idView.get(id);
                 int rating = idRating.get(id);
-                MovieSeenByAtLeast minViewCondition = new MovieSeenByAtLeast(minViews, views);
+                CountAtLeast minViewCondition = new CountAtLeast(minViews, views);
 
                 if (minViewCondition.isValid()) {
-                    double avjRating = returnAverageRating(rating, views);
+                    double avjRating = Calculate.returnAverage(rating, views);
                     MovieRating movie = new MovieRating(id, avjRating, views);
                     movieRatings.add(movie);
                 }
@@ -178,7 +240,7 @@ public final class Statistics {
         }
 
         public List<MovieView> invoke() {
-            Map<Integer, Integer> movieViews = ratingInfo.getMovieIdViewsMap();
+            Map<Integer, Integer> movieViews = ratingInfo.getMovieIdViewsCountMap();
 
             PriorityQueue<MovieView> movieViewQueue = returnMovieViewPriorityQueue(movieViews);
 

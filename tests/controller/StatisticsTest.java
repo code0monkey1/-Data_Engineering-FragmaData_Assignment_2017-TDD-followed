@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.helperObjects.CustomerRating;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
@@ -13,15 +14,11 @@ import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
 import util.mapping.RatingsMapper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertEquals;
-
-
 import static org.junit.Assert.assertThat;
 
 public class StatisticsTest {
@@ -152,15 +149,36 @@ public class StatisticsTest {
         expected.put(1, secondInternalMap);
 
         HashMap<Integer, Integer> thirdInternalMap = new HashMap<>();
-        thirdInternalMap .put(0, 0);
-        thirdInternalMap .put(1, 2);
-        thirdInternalMap .put(2, 2);
+        thirdInternalMap.put(0, 0);
+        thirdInternalMap.put(1, 2);
+        thirdInternalMap.put(2, 2);
         expected.put(4, thirdInternalMap);
 
+        Set<Integer> keys = expected.keySet();
+        assertThat(expected, hasKey(1));
 
-        assertThat(expected,is(statistics.getMovieViewershipAgeRangeCount(3,2)));
+        assertThat(expected, is(statistics.getMovieViewershipAgeRangeCount(3, 2)));
 
 //        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
+    }
+
+    @Test
+    public void top10critics_GivingMinimumRatingAndHavingMinimum1View() {
+        List<CustomerRating> customers = new ArrayList<>();
+        customers.add(new CustomerRating(2, 3.0, 1));
+        customers.add(new CustomerRating(3, 3.0, 1));
+        customers.add(new CustomerRating(6, 3.0, 1));
+        customers.add(new CustomerRating(4, 4.0, 1));
+        customers.add(new CustomerRating(9, 4.0, 1));
+        customers.add(new CustomerRating(10, 4.0, 1));
+        customers.add(new CustomerRating(7, 5.0, 1));
+        customers.add(new CustomerRating(8, 5.0, 1));
+        customers.add(new CustomerRating(1, 5.0, 1));
+        customers.add(new CustomerRating(5, 5.0, 1));
+
+        assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(10, 1));
+
+
     }
 
 

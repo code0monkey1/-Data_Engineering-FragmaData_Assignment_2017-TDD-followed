@@ -4,10 +4,7 @@ import model.primary.customer.CustomerInfo;
 import model.primary.customer.EAgeRange;
 import model.primary.movie.RatingAndTime;
 
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class RatingInfo {
 
@@ -19,7 +16,7 @@ public class RatingInfo {
     }
 
 
-    public Map<Integer, Integer> getMovieIdViewsMap() {
+    public Map<Integer, Integer> getMovieIdViewsCountMap() {
         Map<Integer, Integer> movieIdViewCount = new HashMap<>();
 
         for (Map<Integer, RatingAndTime> movieIdRatingAndTimeMap : customerIdMovieIdRatingAndTimeMap.values()) {
@@ -78,5 +75,47 @@ public class RatingInfo {
 
         }
         return movieIdAgeRangeMap;
+    }
+
+
+    public Map<Integer, Long> getCustomerIdRatingMap() {
+        Map<Integer, Long> customerIdRatingMap = new HashMap<>();
+
+        List<Integer> customerIDs = getAllCustomerIds();
+
+        for (int customerId : customerIDs) {
+            Map<Integer, RatingAndTime> movieIdRatingAndTimeMap = customerIdMovieIdRatingAndTimeMap.get(customerId);
+
+            Set<Integer> movieIds = movieIdRatingAndTimeMap.keySet();
+            long ratingCount = 0;
+
+            for (int movieId : movieIds) {
+                RatingAndTime ratingAndTime = movieIdRatingAndTimeMap.get(movieId);
+                ratingCount += ratingAndTime.getRating();
+            }
+            customerIdRatingMap.put(customerId, ratingCount);
+        }
+        return customerIdRatingMap;
+    }
+
+    public List<Integer> getAllCustomerIds() {
+        List<Integer> customerIdList = new ArrayList<>(customerIdMovieIdRatingAndTimeMap.keySet());
+        return customerIdList;
+    }
+
+    public Map<Integer, Integer> getCustomerIdMoviesSeenCountMap() {
+        Map<Integer, Integer> customerIdViewershipMap = new HashMap<>();
+
+        List<Integer> customerIdList = new ArrayList<>(customerIdMovieIdRatingAndTimeMap.keySet());
+
+        for (int customerId : customerIdList) {
+
+            Set<Integer> movieIdsSet = customerIdMovieIdRatingAndTimeMap.get(customerId).keySet();
+            int moviesWatched = movieIdsSet.size();
+
+            customerIdViewershipMap.put(customerId, moviesWatched);
+        }
+
+        return customerIdViewershipMap;
     }
 }

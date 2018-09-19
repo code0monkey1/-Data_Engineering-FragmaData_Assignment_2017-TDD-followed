@@ -43,8 +43,8 @@ public class RatingInfoTest {
         expected.put(1, 2);
 
 //        System.out.println(expected);
-//        System.out.println(ratingInfo.getMovieIdViewsMap());
-        assertEquals(expected, ratingInfo.getMovieIdViewsMap());
+//        System.out.println(ratingInfo.getMovieIdViewsCountMap());
+        assertEquals(expected, ratingInfo.getMovieIdViewsCountMap());
 
     }
 
@@ -85,7 +85,7 @@ public class RatingInfoTest {
         int expectedViews = returnMovieViewMapByParsingFile().get(4);
         int expectedRating = returnMovieRatingMapByParsingFile().get(4);
 
-        int resultViews = ratingInfo.getMovieIdViewsMap().get(4);
+        int resultViews = ratingInfo.getMovieIdViewsCountMap().get(4);
         int resultRatings = ratingInfo.getMovieIdRatingsMap().get(4);
         System.out.println(expectedViews + "::" + resultViews);
         System.out.println(expectedRating + "::" + resultRatings);
@@ -116,8 +116,15 @@ public class RatingInfoTest {
     }
 
     @Test
-    public void movieIdAgeRangeMap_isValid() {
+    public void userIdRatingMap_isValid() {
+        Map<Integer, Long> expectedIdRatings = new HashMap<>();
+        List<List<String>> lists = fileParser.getRawList();
 
+        for (List<String> entry : lists) {
+            expectedIdRatings.put(Integer.parseInt(entry.get(0)), Long.parseLong(entry.get(2)));
+        }
+
+        assertEquals(expectedIdRatings, ratingInfo.getCustomerIdRatingMap());
 
     }
 
@@ -154,6 +161,17 @@ public class RatingInfoTest {
 
     private EnumMap<EAgeRange, Integer> returnAgeRangeMap(Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange, int movieID) {
         return movieIDAgeRange.getOrDefault(movieID, new EnumMap<>(EAgeRange.class));
+    }
+
+    @Test
+    public void customerIdViewersCountMap_isValid() {
+        Map<Integer, Integer> customerIdViewerShip = new HashMap<>();
+
+         for(int i=1;i<=10;i++){
+             customerIdViewerShip.put(i,1);
+         }
+
+         assertEquals(customerIdViewerShip,ratingInfo.getCustomerIdMoviesSeenCountMap());
     }
 
 
