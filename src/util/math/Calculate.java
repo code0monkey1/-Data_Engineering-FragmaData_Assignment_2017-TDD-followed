@@ -1,4 +1,4 @@
-package util;
+package util.math;
 
 public final class Calculate {
     public static double returnAverage(int rating, int views) {

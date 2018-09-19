@@ -8,7 +8,7 @@ import model.primary.customer.CustomerInfo;
 import model.primary.customer.EAgeRange;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
-import util.Calculate;
+import util.math.Calculate;
 
 import java.util.*;
 
