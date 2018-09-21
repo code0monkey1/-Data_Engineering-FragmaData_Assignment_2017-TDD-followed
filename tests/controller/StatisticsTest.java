@@ -8,6 +8,7 @@ import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
@@ -162,8 +163,9 @@ public class StatisticsTest {
 //        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
     }
 
+
     @Test
-    public void top10critics_GivingMinimumRatingAndHavingMinimum1View() {
+    public void topCritics_GivingMinimumRatingAndHavingMinimum1View() {
         List<CustomerRating> customers = new ArrayList<>();
         customers.add(new CustomerRating(2, 3.0, 1));
         customers.add(new CustomerRating(3, 3.0, 1));
@@ -178,6 +180,15 @@ public class StatisticsTest {
 
         assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(10, 1));
 
+        customers.clear();
+        customers.add(new CustomerRating(2, 3.0, 1));
+        customers.add(new CustomerRating(3, 3.0, 1));
+        customers.add(new CustomerRating(6, 3.0, 1));
+        customers.add(new CustomerRating(4, 4.0, 1));
+        customers.add(new CustomerRating(9, 4.0, 1));
+        customers.add(new CustomerRating(10, 4.0, 1));
+
+        assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(6, 1));
 
     }
 

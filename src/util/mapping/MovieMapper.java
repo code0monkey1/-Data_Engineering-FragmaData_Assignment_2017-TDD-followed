@@ -24,7 +24,7 @@ public final class MovieMapper {
         // Entry format : MovieID , Title ,Genres
 
         List<List<String>> movieEntriesList = fileParser.getRawList();
-//        System.out.println(rawEntriesList);
+
 
         for (List<String> movieEntry : movieEntriesList) {
             Condition movieEntryFieldCount = new FieldCount(fields, movieEntry);

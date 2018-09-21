@@ -1,50 +1,66 @@
 package util.FileParsing;
 
-import wrappers.ListOfStringLists;
+import wrappers.RawEntries;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileParser {
     private final String fileName;
     private final String parseToken;
-    private ListOfStringLists rawList;
+    private RawEntries rawList;
 
 
     public FileParser(String fileName, String parseToken) {
         this.parseToken = parseToken;
-        this.rawList = returnEntriesList(fileName, parseToken);
         this.fileName = fileName;
-
+        this.rawList = returnRawEntries(fileName, parseToken);
     }
 
-    private ListOfStringLists returnEntriesList(String fileName, String parseToken) {
-        ListOfStringLists tempRawEntriesList = new ListOfStringLists();
+    private RawEntries returnRawEntries(String fileName,
+                                        String parseToken) {
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)))) {
+        RawEntries rawEntries = new RawEntries();
 
-            String line = "";
+        List<String> entries = new ArrayList<>();
 
-            while ((line = bufferedReader.readLine()) != null) {
+        entries = returnFileEntries(fileName, entries);
 
-                String[] entry = line.split(parseToken);
+        for (String rawEntry : entries) {
 
-                List<String> cleanEntriesList = returnCleanList(entry);
-
-                tempRawEntriesList.add(cleanEntriesList);
-            }
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            addEntry(parseToken, rawEntries, rawEntry);
         }
-        return tempRawEntriesList;
+
+        return rawEntries;
     }
 
-    private List<String> returnCleanList(String[] entry) {
+    private List<String> returnFileEntries(String fileName,
+                                           List<String> entries) {
+
+        try {
+            entries = Files.readAllLines(Paths.get(fileName));
+        } catch (IOException e) {
+
+            new IllegalArgumentException("Error Reading File : " + fileName);
+        }
+        return entries;
+    }
+
+    private void addEntry(String parseToken,
+                          RawEntries rawEntries,
+                          String rawEntry) {
+
+        List<String> entry = Arrays.asList(rawEntry.split(parseToken));
+        List<String> cleanEntry = returnCleanList(entry);
+
+        rawEntries.add(cleanEntry);
+    }
+
+    private List<String> returnCleanList(List<String> entry) {
         List<String> entryList = new ArrayList<>();
 
         for (String element : entry) {

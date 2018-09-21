@@ -41,12 +41,12 @@ public final class Statistics {
 
     public List<MovieView> getTopViewedMovies(int N) {
 
-        return new TopViewedMovies(N).invoke();
+        return new TopViewedMovies(N).getMoviesList();
     }
 
     public List<MovieRating> getTopRatedMovies(int N, int minViews) {
 
-        return new TopRatedMovies(N, minViews).invoke();
+        return new TopRatedMovies(N, minViews).getMoviesList();
     }
 
     public Map<Integer, Map> getMovieViewershipAgeRangeCount(int N, int minViews) {
@@ -54,6 +54,10 @@ public final class Statistics {
         return new TopRatedMoviesWithViewershipAgeCategorization(N, minViews).invoke();
     }
 
+    public List<CustomerRating> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
+        return new TopCritics(top, minViewCount).getCriticsList();
+
+    }
 
     private void printRatedMovies(List<MovieRating> topRatedMovies) {
 
@@ -62,21 +66,8 @@ public final class Statistics {
         }
     }
 
-    public List<CustomerRating> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
-        // first get the customerid,rating map from rating infor
-        Map<Integer, Long> customerIdRatingMap = ratingInfo.getCustomerIdRatingMap();
-        //next get the customerid viewershipMap from the rating info
-        Map<Integer, Integer> customerIdViewershipMap = ratingInfo.getCustomerIdMoviesSeenCountMap();
-        // next filer out the customes that don't fulfill the min view condition
-        // and in the same function create Customer Rating objects and put it in a priority queue
-        PriorityQueue<CustomerRating> customerRatingsQueue = returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(minViewCount, customerIdRatingMap, customerIdViewershipMap);
 
-        List<CustomerRating> customers = returnCustomerRatingObjectList(top, customerRatingsQueue);
-        // finally get a list of the top N Customer Rating objects
-        return customers;
-    }
-
-    private void printCustomerMovieRatinglist(List<CustomerRating> customerRatings) {
+    private void printCustomerMovieRatings(List<CustomerRating> customerRatings) {
 
         for (CustomerRating customer : customerRatings) {
             System.out.printf("The customer id is %d %n", customer.getId());
@@ -87,42 +78,7 @@ public final class Statistics {
 
     public void displayTopCritics(int top, int views) {
         List<CustomerRating> customers = getCustomersWithRatingSatisfyingMinViewCondition(top, views);
-        printCustomerMovieRatinglist(customers);
-    }
-
-    private List<CustomerRating> returnCustomerRatingObjectList(int top, PriorityQueue<CustomerRating> customerRatingsQueue) {
-        int count = Math.min(top, customerRatingsQueue.size());
-
-        List<CustomerRating> customers = new ArrayList<>();
-
-        for (int i = 0; i < count; i++) {
-            customers.add(customerRatingsQueue.poll());
-        }
-        return customers;
-    }
-
-    private PriorityQueue<CustomerRating> returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(int minViewCount,
-                                                                                                           Map<Integer, Long> customerIdRatingMap,
-                                                                                                           Map<Integer, Integer> customerIdViewershipMap) {
-
-        PriorityQueue<CustomerRating> customerRatingsQueue = new PriorityQueue<>();
-
-        List<Integer> customerIds = ratingInfo.getAllCustomerIds();
-
-        for (int customerId : customerIds) {
-
-            long customerRatingCount = customerIdRatingMap.get(customerId);
-            int customerViewershipCount = customerIdViewershipMap.get(customerId);
-
-            CountAtLeast count = new CountAtLeast(minViewCount, customerViewershipCount);
-            if (count.isValid()) {
-                double average = Calculate.returnAverage(customerRatingCount, customerViewershipCount);
-                customerRatingsQueue.add(new CustomerRating(customerId, average, customerViewershipCount));
-            }
-
-        }
-
-        return customerRatingsQueue;
+        printCustomerMovieRatings(customers);
     }
 
     private void printRatedMoviesWithAgeCategory(List<MovieRating> topRatedMovies, Map<Integer, Map> movieIdAgeRangeMap) {
@@ -176,7 +132,7 @@ public final class Statistics {
             this.minViews = minViews;
         }
 
-        public List<MovieRating> invoke() {
+        public List<MovieRating> getMoviesList() {
             Map<Integer, Integer> idRating = Statistics.this.ratingInfo.getMovieIdRatingsMap();
 
             Map<Integer, Integer> idView = Statistics.this.ratingInfo.getMovieIdViewsCountMap();
@@ -203,12 +159,16 @@ public final class Statistics {
                 CountAtLeast minViewCondition = new CountAtLeast(minViews, views);
 
                 if (minViewCondition.isValid()) {
-                    double avjRating = Calculate.returnAverage(rating, views);
-                    MovieRating movie = new MovieRating(id, avjRating, views);
+                    MovieRating movie = returnValidMovieObject(id, views, rating);
                     movieRatings.add(movie);
                 }
             }
             return movieRatings;
+        }
+
+        private MovieRating returnValidMovieObject(int id, int views, int rating) {
+            double avjRating = Calculate.returnAverage(rating, views);
+            return new MovieRating(id, avjRating, views);
         }
 
         private PriorityQueue<MovieRating> returnRatedMovieQueue(List<MovieRating> movieRatings) {
@@ -239,7 +199,7 @@ public final class Statistics {
             n = N;
         }
 
-        public List<MovieView> invoke() {
+        public List<MovieView> getMoviesList() {
             Map<Integer, Integer> movieViews = ratingInfo.getMovieIdViewsCountMap();
 
             PriorityQueue<MovieView> movieViewQueue = returnMovieViewPriorityQueue(movieViews);
@@ -285,7 +245,7 @@ public final class Statistics {
         }
 
         public Map<Integer, Map> invoke() {
-            Map<Integer, EnumMap<EAgeRange, Integer>> movieIdCustomerAgeRangeMap = returnMovieIdCustomerAgeRangeMap(n, minViews);
+            Map<Integer, EnumMap<EAgeRange, Integer>> movieIdCustomerAgeRangeMap = returnMovieIdCustomerAgeRange(n, minViews);
 
             List<MovieRating> movieRatingList = getTopRatedMovies(n, minViews);
             Map<Integer, Map> movieIdAgeRangeCount = new HashMap<>();
@@ -300,19 +260,20 @@ public final class Statistics {
         }
 
         private Map<Integer, Integer> returnAgeCategoryCountMap(MovieRating movie,
-                                                                Map<Integer, EnumMap<EAgeRange, Integer>> movieIdCustomerAgeRangeMap) {
+                                                                Map<Integer, EnumMap<EAgeRange, Integer>> movieViewerAgeDistribution) {
             Map<Integer, Integer> ageCategoryCount = new HashMap<>();
 
             int movieID = movie.getId();
             int[] ageRange = new int[3];
 
-            EnumMap<EAgeRange, Integer> ageRanges = movieIdCustomerAgeRangeMap.get(movieID);
+            EnumMap<EAgeRange, Integer> ageRanges = movieViewerAgeDistribution.get(movieID);
 
             ageRange[0] = ageRanges.getOrDefault(EAgeRange.UNDER_EIGHTEEN, 0);
             ageRange[1] = ageRanges.getOrDefault(EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR, 0);
             ageRange[2] = ageRanges.getOrDefault(EAgeRange.FORTY_FIVE_TO_FORTY_NINE, 0);
             ageRange[2] = ageRange[2] + ageRanges.getOrDefault(EAgeRange.FIFTY_TO_FIFTY_FIVE, 0);
             ageRange[2] = ageRange[2] + ageRanges.getOrDefault(EAgeRange.FIFTY_SIX_AND_OVER, 0);
+
 
             ageCategoryCount.put(0, ageRange[0]);
             ageCategoryCount.put(1, ageRange[1]);
@@ -322,7 +283,7 @@ public final class Statistics {
 
         }
 
-        private Map<Integer, EnumMap<EAgeRange, Integer>> returnMovieIdCustomerAgeRangeMap(int N, int minViews) {
+        private Map<Integer, EnumMap<EAgeRange, Integer>> returnMovieIdCustomerAgeRange(int N, int minViews) {
 
             Map<Integer, EnumMap<EAgeRange, Integer>> movieIdAgeMap = new HashMap<>();
 
@@ -339,4 +300,69 @@ public final class Statistics {
 
         }
     }
+
+    public class TopCritics {
+        private int top;
+        private int minViewCount;
+
+
+        public TopCritics(int top, int minViewCount) {
+            this.top = top;
+            this.minViewCount = minViewCount;
+
+        }
+
+        public List<CustomerRating> getCriticsList() {
+
+            Map<Integer, Long> customerIdRatingMap = ratingInfo.getCustomerIdRatingMap();
+
+            Map<Integer, Integer> customerIdViewershipMap = ratingInfo.getCustomerIdMoviesSeenCountMap();
+
+            PriorityQueue<CustomerRating> customerRatingsQueue = returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(minViewCount, customerIdRatingMap, customerIdViewershipMap);
+
+            List<CustomerRating> customers = returnCustomerRatingObjectList(top, customerRatingsQueue);
+
+
+            return customers;
+        }
+
+
+        private PriorityQueue<CustomerRating> returnCustomerRatingObjectsQueueAfterFulfillingViewCountCriteria(int minViewCount,
+                                                                                                               Map<Integer, Long> customerIdRatingMap,
+                                                                                                               Map<Integer, Integer> customerIdViewershipMap) {
+
+            PriorityQueue<CustomerRating> customerRatingsQueue = new PriorityQueue<>();
+
+            List<Integer> customerIds = ratingInfo.getAllCustomerIds();
+
+            for (int customerId : customerIds) {
+
+                long customerRatingCount = customerIdRatingMap.get(customerId);
+                int customerViewershipCount = customerIdViewershipMap.get(customerId);
+
+                CountAtLeast count = new CountAtLeast(minViewCount, customerViewershipCount);
+                if (count.isValid()) {
+                    double average = Calculate.returnAverage(customerRatingCount, customerViewershipCount);
+                    customerRatingsQueue.add(new CustomerRating(customerId, average, customerViewershipCount));
+                }
+
+            }
+
+            return customerRatingsQueue;
+        }
+
+        private List<CustomerRating> returnCustomerRatingObjectList(int top, PriorityQueue<CustomerRating> customerRatingsQueue) {
+            int count = Math.min(top, customerRatingsQueue.size());
+
+            List<CustomerRating> customers = new ArrayList<>();
+
+            for (int i = 0; i < count; i++) {
+                customers.add(customerRatingsQueue.poll());
+            }
+            return customers;
+        }
+
+
+    }
+
 }

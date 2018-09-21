@@ -19,4 +19,6 @@ public class FieldCount implements Condition {
     public int getListSize() {
         return list.size();
     }
+
+
 }

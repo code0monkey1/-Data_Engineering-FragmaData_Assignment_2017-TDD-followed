@@ -2,18 +2,18 @@ package conditions;
 
 public class CountAtLeast implements Condition {
 
-    private int viewCount;
-    private int expectedViewCount;
+    private int count;
+    private int expectedCount;
 
-    public CountAtLeast(int expectedViewCount,
-                        int viewCount) {
+    public CountAtLeast(int expectedCount,
+                        int count) {
 
-        this.viewCount = viewCount;
-        this.expectedViewCount = expectedViewCount;
+        this.count = count;
+        this.expectedCount = expectedCount;
     }
 
     @Override
     public boolean isValid() {
-        return viewCount >= expectedViewCount;
+        return count >= expectedCount;
     }
 }

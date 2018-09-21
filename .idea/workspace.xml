@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d994c4d8-7315-4a4b-ab17-d0e69cb9cff9" name="Default" comment="changed imageName">
+      <change afterPath="$PROJECT_DIR$/src/wrappers/RawEntries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conditions/CountAtLeast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/conditions/CountAtLeast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conditions/FieldCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/conditions/FieldCount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Calculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/math/Calculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/FileParsing/FileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FileParsing/FileParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/mapping/MovieMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/mapping/MovieMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wrappers/ListOfStringLists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controller/StatisticsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controller/StatisticsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,72 +26,29 @@
     <option name="PARALLEL_COMPILATION" value="true" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Fragma__Data_2017_movies_pre_interview_assignment___Entry_Level_Java_Developer_Role___TDD$All_in_Fragma__Data_2017_movies_pre_interview_assignment___Entry_Level_Java_Developer_Role__.ic" NAME="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) Coverage Results" MODIFIED="1537378787991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Fragma__Data_2017_movies_pre_interview_assignment___Entry_Level_Java_Developer_Role___TDD$All_in_Fragma__Data_2017_movies_pre_interview_assignment___Entry_Level_Java_Developer_Role__.ic" NAME="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) Coverage Results" MODIFIED="1537384408478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Condition.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/Condition.java">
+      <file leaf-file-name="RawEntries.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/wrappers/RawEntries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountAtLeast.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/CountAtLeast.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/CustomerID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FieldCount.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/FieldCount.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Calculate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/math/Calculate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RatingsMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/mapping/RatingsMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovieMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/mapping/MovieMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="348">
+              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#219#220#0" expanded="true" />
+                <element signature="e#258#259#0" expanded="true" />
+                <element signature="e#204#205#0" expanded="true" />
+                <element signature="e#244#245#0" expanded="true" />
+                <element signature="e#287#288#0" expanded="true" />
+                <element signature="e#320#321#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,26 +56,84 @@
       <file leaf-file-name="CustomerMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/mapping/CustomerMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="510">
+              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MovieMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/mapping/MovieMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MovieMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/wrappers/MovieMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RatingsMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/wrappers/RatingsMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/wrappers/CustomerMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RatingsMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/mapping/RatingsMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="20" column="96" lean-forward="true" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+            <state relative-caret-position="178">
+              <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MovieID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/MovieID.java">
+      <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="-434">
+              <caret line="51" column="43" lean-forward="true" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+              <folding>
+                <element signature="e#758#759#0" expanded="true" />
+                <element signature="e#799#800#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Integer.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="768" column="24" lean-forward="true" selection-start-line="768" selection-start-column="24" selection-end-line="768" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -149,13 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/util/FileParsing/FileParser.java" />
-        <option value="$PROJECT_DIR$/src/util/MovieMapper.java" />
-        <option value="$PROJECT_DIR$/src/util/FileParsing/CustomerMapper.java" />
-        <option value="$PROJECT_DIR$/src/util/FileParsing/RatingsMapper.java" />
-        <option value="$PROJECT_DIR$/src/util/mapping/MovieMapper.java" />
-        <option value="$PROJECT_DIR$/src/mockObjects/mockMoviesNMostViewed.dat" />
-        <option value="$PROJECT_DIR$/src/model/Movie.java" />
         <option value="$PROJECT_DIR$/src/conditions/MovieID.java" />
         <option value="$PROJECT_DIR$/src/conditions/MovieViewedByAtLeastNviewers.java" />
         <option value="$PROJECT_DIR$/src/tempHelperObjects/MovieViewCount.java" />
@@ -195,21 +210,29 @@
         <option value="$PROJECT_DIR$/tests/model/primary/RatingInfoTest.java" />
         <option value="$PROJECT_DIR$/src/util/Calculate.java" />
         <option value="$PROJECT_DIR$/src/model/primary/rating/RatingInfo.java" />
-        <option value="$PROJECT_DIR$/tests/controller/StatisticsTest.java" />
         <option value="$PROJECT_DIR$/src/model/primary/customer/Customer.java" />
         <option value="$PROJECT_DIR$/src/model/helperObjects/CustomerRating.java" />
+        <option value="$PROJECT_DIR$/tests/controller/StatisticsTest.java" />
+        <option value="$PROJECT_DIR$/src/conditions/CountAtLeast.java" />
         <option value="$PROJECT_DIR$/src/controller/Statistics.java" />
+        <option value="$PROJECT_DIR$/src/wrappers/ListOfStringLists.java" />
+        <option value="$PROJECT_DIR$/src/conditions/FieldCount.java" />
+        <option value="$PROJECT_DIR$/src/util/FileParsing/FileParser.java" />
         <option value="$PROJECT_DIR$/src/view/UserInterface.java" />
+        <option value="$PROJECT_DIR$/src/util/mapping/MovieMapper.java" />
+        <option value="$PROJECT_DIR$/src/wrappers/CustomerMap.java" />
+        <option value="$PROJECT_DIR$/src/wrappers/RawEntries.java" />
       </list>
     </option>
   </component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
-      <run-configuration type="JUnit" name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
       <run-configuration type="JUnit" name="RatingInfoTest.customerIdViewersCountMap_isValid" />
+      <run-configuration type="JUnit" name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
+      <run-configuration type="JUnit" name="StatisticsTest" />
     </enabled-run-configurations>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -223,7 +246,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -263,7 +285,29 @@
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="primary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="primary" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="mapping" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
@@ -274,32 +318,8 @@
             <path>
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="primary" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="FileParsing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="wrappers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
@@ -314,6 +334,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -322,6 +343,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-examples" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -370,7 +392,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )">
+  <component name="RunManager" selected="Application.RawEntries">
+    <configuration name="RawEntries" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="wrappers.RawEntries" />
+      <module name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="wrappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -414,20 +447,20 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="RatingInfoTest.userIdRatingMap_isValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StatisticsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.primary.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="model.primary" />
-      <option name="MAIN_CLASS_NAME" value="model.primary.RatingInfoTest" />
-      <option name="METHOD_NAME" value="userIdRatingMap_isValid" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.StatisticsTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -450,29 +483,6 @@
       <option name="PACKAGE_NAME" value="controller" />
       <option name="MAIN_CLASS_NAME" value="controller.StatisticsTest" />
       <option name="METHOD_NAME" value="top10critics_GivingMinimumRatingAndHavingMinimum1View" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.StatisticsTest" />
-      <option name="METHOD_NAME" value="topRatedViewerShipCount_top3MostViewedWithMin2Views" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -524,18 +534,18 @@
     <list>
       <item itemvalue="Application.Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
       <item itemvalue="JUnit.All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
-      <item itemvalue="JUnit.StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" />
-      <item itemvalue="JUnit.RatingInfoTest.userIdRatingMap_isValid" />
       <item itemvalue="JUnit.RatingInfoTest.customerIdViewersCountMap_isValid" />
       <item itemvalue="JUnit.StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" />
+      <item itemvalue="JUnit.StatisticsTest" />
+      <item itemvalue="Application.RawEntries" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RawEntries" />
         <item itemvalue="JUnit.All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
+        <item itemvalue="JUnit.StatisticsTest" />
         <item itemvalue="JUnit.StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" />
         <item itemvalue="JUnit.RatingInfoTest.customerIdViewersCountMap_isValid" />
-        <item itemvalue="JUnit.RatingInfoTest.userIdRatingMap_isValid" />
-        <item itemvalue="JUnit.StatisticsTest.topRatedViewerShipCount_top3MostViewedWithMin2Views" />
       </list>
     </recent_temporary>
   </component>
@@ -558,67 +568,94 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StatisticsTest_top10critics_GivingMinimumRatingAndHavingMinimum1View - 2018.09.19 at 19h 47m 29s.xml">
-      <configuration name="StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StatisticsTest_top10critics_GivingMinimumRatingAndHavingMinimum1View - 2018.09.19 at 19h 50m 02s.xml">
-      <configuration name="StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StatisticsTest_top10critics_GivingMinimumRatingAndHavingMinimum1View - 2018.09.19 at 19h 52m 57s.xml">
-      <configuration name="StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StatisticsTest_top10critics_GivingMinimumRatingAndHavingMinimum1View - 2018.09.19 at 19h 54m 41s.xml">
-      <configuration name="StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="StatisticsTest_top10critics_GivingMinimumRatingAndHavingMinimum1View - 2018.09.19 at 20h 18m 08s.xml">
-      <configuration name="StatisticsTest.top10critics_GivingMinimumRatingAndHavingMinimum1View" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.19 at 20h 30m 05s.xml">
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 48m 06s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.19 at 20h 30m 19s.xml">
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 48m 15s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.19 at 22h 34m 11s.xml">
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 48m 59s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.19 at 22h 35m 13s.xml">
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 51m 02s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.19 at 23h 09m 52s.xml">
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 54m 05s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 54m 15s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 54m 54s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 55m 14s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 56m 15s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.21 at 20h 56m 22s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="PlantUML" order="5" />
+      <window_info anchor="right" id="PlantUML" order="6" />
       <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4969743" weight="0.32933104" />
-      <window_info anchor="right" id="Palette&#9;" order="0" />
+      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4969743" weight="0.17324185" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5030257" side_tool="true" weight="0.17161717" />
       <window_info anchor="bottom" id="TMC Test Results" order="10" sideWeight="0.49924356" weight="0.32838285" />
-      <window_info anchor="right" id="Maven Projects" order="2" />
-      <window_info anchor="right" auto_hide="true" id="Run" order="7" type="SLIDING" weight="0.29954615" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49848714" weight="0.0" />
-      <window_info active="true" anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.24886535" />
+      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.27382752" />
       <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49848714" weight="0.32838285" />
       <window_info id="Designer" order="0" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49669966" visible="true" weight="0.20574887" />
-      <window_info anchor="right" id="TMC Project List" order="6" weight="0.098335855" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49669966" visible="true" weight="0.16944024" />
+      <window_info anchor="right" id="TMC Project List" order="7" weight="0.098335855" />
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32761577" />
       <window_info id="Structure" order="3" sideWeight="0.5029762" side_tool="true" weight="0.2065053" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24962178" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.39933994" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24962178" />
       <window_info id="Favorites" order="2" sideWeight="0.5033003" side_tool="true" weight="0.31770045" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39933994" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="5" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.31013617" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="TMC Project List" order="7" weight="0.098335855" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49848714" weight="0.0" />
+      <window_info anchor="bottom" id="Problems" order="11" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49669966" visible="true" weight="0.2246596" />
+      <window_info id="Structure" order="3" sideWeight="0.5029762" side_tool="true" weight="0.2065053" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24962178" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="right" id="PlantUML" order="6" />
+      <window_info anchor="right" auto_hide="true" id="Run" order="8" type="SLIDING" weight="0.29954615" />
+      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4969743" weight="0.32933104" />
+      <window_info id="Designer" order="0" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32761577" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39933994" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" visible="true" weight="0.31013617" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5030257" side_tool="true" weight="0.17161717" />
+      <window_info anchor="bottom" id="TMC Test Results" order="10" sideWeight="0.49924356" weight="0.32838285" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.5033003" side_tool="true" weight="0.31770045" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49848714" weight="0.32838285" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -637,41 +674,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mockRatings.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="57" lean-forward="true" selection-start-line="78" selection-start-column="57" selection-end-line="78" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/conditions/MovieViewedByN_OrMore.java" />
-    <entry file="file://$PROJECT_DIR$/mockMovies.dat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockRatings.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="181" column="21" lean-forward="true" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Double.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -771,20 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/MovieFileParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/FileParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/CustomerMapperTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -796,13 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/RatingsMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -868,47 +849,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/controller/StatisticsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="170" column="20" selection-start-line="170" selection-start-column="20" selection-end-line="170" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/helperObjects/CustomerRating.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
-          <folding>
-            <element signature="e#661#662#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="89" column="48" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -919,24 +863,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conditions/AllConditions.java">
+    <entry file="file://$PROJECT_DIR$/src/util/math/Calculate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conditions/Condition.java">
+    <entry file="file://$PROJECT_DIR$/tests/controller/StatisticsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="654">
+          <caret line="181" selection-start-line="181" selection-end-line="181" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conditions/CountAtLeast.java">
+    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/FileParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="153">
+          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/MovieFileParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/util/FileParsing/RatingsMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-43">
+          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="184" column="35" selection-start-line="184" selection-start-column="35" selection-end-line="184" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conditions/FieldCount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -947,52 +925,127 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/conditions/CountAtLeast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conditions/Condition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conditions/AllConditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/conditions/MovieID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/conditions/FieldCount.java">
+    <entry file="file://$PROJECT_DIR$/src/util/FileParsing/FileParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="289">
+          <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+          <folding>
+            <element signature="e#1927#1928#0" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/math/Calculate.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/mapping/RatingsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/mapping/MovieMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/mapping/CustomerMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state relative-caret-position="152">
+          <caret line="768" column="24" lean-forward="true" selection-start-line="768" selection-start-column="24" selection-end-line="768" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="20" column="96" lean-forward="true" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+        <state relative-caret-position="178">
+          <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-434">
+          <caret line="51" column="43" lean-forward="true" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+          <folding>
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/mapping/MovieMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/mapping/CustomerMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/mapping/RatingsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wrappers/CustomerMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wrappers/RatingsMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wrappers/MovieMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wrappers/RawEntries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
