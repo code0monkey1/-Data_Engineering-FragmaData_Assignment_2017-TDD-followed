@@ -4,6 +4,7 @@ import conditions.Condition;
 import conditions.FieldCount;
 import model.primary.customer.Customer;
 import util.FileParsing.FileParser;
+import wrappers.CustomerMap;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,14 +13,14 @@ import java.util.Map;
 public final class CustomerMapper {
 
 
-    private final Map<Integer, Customer> idCustomerMap;
+    private final CustomerMap idCustomerMap;
 
     public CustomerMapper(FileParser fileParser, int fields) {
         this.idCustomerMap = returnIdCustomerMap(fileParser,fields);
     }
 
-    private Map<Integer, Customer> returnIdCustomerMap(FileParser fileParser, int fields) {
-        Map<Integer, Customer> tempIDCustomerMap = new HashMap<>();
+    private CustomerMap returnIdCustomerMap(FileParser fileParser, int fields) {
+        CustomerMap tempIDCustomerMap = new CustomerMap();
 
         List<List<String>> customerList = fileParser.getRawList();
 

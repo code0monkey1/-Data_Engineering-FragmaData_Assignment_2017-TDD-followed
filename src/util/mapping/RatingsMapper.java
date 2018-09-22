@@ -6,6 +6,7 @@ import conditions.CustomerID;
 import conditions.MovieID;
 import model.primary.movie.RatingAndTime;
 import util.FileParsing.FileParser;
+import wrappers.RatingsMap;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,25 +21,23 @@ import java.util.Map;
 //        Each user has at least 20 ratings
 
 public final class RatingsMapper {
-    private Map<Integer, Map<Integer, RatingAndTime>> customerIDMovieIDRatingAndTimeMap;
+    private RatingsMap customerIDMovieIDRatingAndTimeMap;
 
     public RatingsMapper(FileParser fileParser, int fields) {
 
-        customerIDMovieIDRatingAndTimeMap = returnCustomerMovieRatingMap(fileParser, fields);
+        customerIDMovieIDRatingAndTimeMap = returnRatingsMap(fileParser, fields);
 
     }
 
 
-    private Map<Integer, Map<Integer, RatingAndTime>> returnCustomerMovieRatingMap(FileParser fileParser, int fields) {
+    private RatingsMap returnRatingsMap(FileParser fileParser, int fields) {
 
         List<List<String>> rawEntriesList = fileParser.getRawList();
-        Map<Integer, Map<Integer, RatingAndTime>> tempCustomerMovieRatingMap = new HashMap<>();
+        RatingsMap tempCustomerMovieRatingMap = new RatingsMap();
 
         for (List<String> rawEntry : rawEntriesList) {
 
-            if (!hasValidFields(rawEntry, fields)) continue; // ignore entry with invalid fields
-
-            //extract info of each entry
+            if (!hasValidFields(rawEntry, fields)) continue;
 
             String customerId = rawEntry.get(0);
             String movieId = rawEntry.get(1);
@@ -54,7 +53,7 @@ public final class RatingsMapper {
 
             //find out if map entry for user exists , if not assign a new hashmap
 
-            Map<Integer, RatingAndTime> movieIdRatingTimeMap = tempCustomerMovieRatingMap.getOrDefault(CUSTOMER_ID, new HashMap<>());
+            Map<Integer, RatingAndTime> movieIdRatingTimeMap =tempCustomerMovieRatingMap.getOrDefault(CUSTOMER_ID, new HashMap<>());
 
             String rating = rawEntry.get(2);
             String timeStamp = rawEntry.get(3);
@@ -84,7 +83,7 @@ public final class RatingsMapper {
         return ratingAndTime;
     }
 
-    public Map<Integer, Map<Integer, RatingAndTime>> getCustomerIDMovieIDRatingAndTimeMap() {
+    public RatingsMap getCustomerIDMovieIDRatingAndTimeMap() {
         return customerIDMovieIDRatingAndTimeMap;
     }
 

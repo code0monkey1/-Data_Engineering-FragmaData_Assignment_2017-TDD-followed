@@ -3,15 +3,17 @@ package model.primary.rating;
 import model.primary.customer.CustomerInfo;
 import model.primary.customer.EAgeRange;
 import model.primary.movie.RatingAndTime;
+import wrappers.MovieMap;
+import wrappers.RatingsMap;
 
 import java.util.*;
 
 public class RatingInfo {
 
 
-    private final Map<Integer, Map<Integer, RatingAndTime>> customerIdMovieIdRatingAndTimeMap;
+    private final RatingsMap customerIdMovieIdRatingAndTimeMap;
 
-    public RatingInfo(Map<Integer, Map<Integer, RatingAndTime>> customerIdMovieIdRatingAndTimeMap) {
+    public RatingInfo(RatingsMap customerIdMovieIdRatingAndTimeMap) {
         this.customerIdMovieIdRatingAndTimeMap = customerIdMovieIdRatingAndTimeMap;
     }
 

@@ -4,23 +4,23 @@ import conditions.Condition;
 import conditions.FieldCount;
 import model.primary.movie.Movie;
 import util.FileParsing.FileParser;
+import wrappers.MovieMap;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class MovieMapper {
 
-    private Map<Integer, Movie> idMovieMap;
+    private MovieMap idMovieMap;
 
 
     public MovieMapper(FileParser fileParser, int fields) {
-        this.idMovieMap = returnIdMovieMap(fileParser, fields);
+        this.idMovieMap = returnMovieMap(fileParser, fields);
     }
 
-    private Map<Integer, Movie> returnIdMovieMap(FileParser fileParser, int fields) {
+    private MovieMap returnMovieMap(FileParser fileParser, int fields) {
 
-        Map<Integer, Movie> tempIdMoviesMap = new HashMap<>();
+        MovieMap tempIdMoviesMap = new MovieMap();
         // Entry format : MovieID , Title ,Genres
 
         List<List<String>> movieEntriesList = fileParser.getRawList();

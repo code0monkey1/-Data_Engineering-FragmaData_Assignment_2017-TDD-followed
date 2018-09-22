@@ -1,6 +1,6 @@
 package util.FileParsing;
 
-import wrappers.RawEntries;
+import wrappers.EntriesList;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +12,7 @@ import java.util.List;
 public class FileParser {
     private final String fileName;
     private final String parseToken;
-    private RawEntries rawList;
+    private EntriesList rawList;
 
 
     public FileParser(String fileName, String parseToken) {
@@ -21,10 +21,10 @@ public class FileParser {
         this.rawList = returnRawEntries(fileName, parseToken);
     }
 
-    private RawEntries returnRawEntries(String fileName,
-                                        String parseToken) {
+    private EntriesList returnRawEntries(String fileName,
+                                         String parseToken) {
 
-        RawEntries rawEntries = new RawEntries();
+        EntriesList entriesList = new EntriesList();
 
         List<String> entries = new ArrayList<>();
 
@@ -32,10 +32,10 @@ public class FileParser {
 
         for (String rawEntry : entries) {
 
-            addEntry(parseToken, rawEntries, rawEntry);
+            addEntry(parseToken, entriesList, rawEntry);
         }
 
-        return rawEntries;
+        return entriesList;
     }
 
     private List<String> returnFileEntries(String fileName,
@@ -51,13 +51,13 @@ public class FileParser {
     }
 
     private void addEntry(String parseToken,
-                          RawEntries rawEntries,
+                          EntriesList entriesList,
                           String rawEntry) {
 
         List<String> entry = Arrays.asList(rawEntry.split(parseToken));
         List<String> cleanEntry = returnCleanList(entry);
 
-        rawEntries.add(cleanEntry);
+        entriesList.add(cleanEntry);
     }
 
     private List<String> returnCleanList(List<String> entry) {
@@ -71,6 +71,6 @@ public class FileParser {
 
 
     public List<List<String>> getRawList() {
-        return rawList.getListOfLists();
+        return rawList;
     }
 }
