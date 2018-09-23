@@ -11,22 +11,44 @@ import view.UserInterface;
 public class Application {
 
     public static void main(String[] args) {
+        execute();
+    }
 
-        MovieMapper movieMapper = new MovieMapper(new FileParser("movies.dat", "::"), 3);
-        MovieInfo movieInfo = new MovieInfo(movieMapper.getIdMovieMap());
+    private static void execute() {
+        Statistics statistics = initiateStatistics();
+        initiateUI(statistics);
+    }
 
-        CustomerMapper customerMapper = new CustomerMapper(new FileParser("users.dat", "::"), 5);
-        CustomerInfo customerInfo = new CustomerInfo(customerMapper.getIdCustomerMap());
+    private static Statistics initiateStatistics() {
+        MovieInfo movieInfo = processMovies();
+        CustomerInfo customerInfo = processCustomers();
+        RatingInfo ratingInfo = processRatings();
 
-        RatingsMapper ratingsMapper = new RatingsMapper(new FileParser("ratings.dat", "::"), 4);
-        RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+        return new Statistics(customerInfo, movieInfo, ratingInfo);
+    }
 
-
-        Statistics statistics = new Statistics(customerInfo, movieInfo, ratingInfo);
-
+    private static void initiateUI(Statistics statistics) {
         UserInterface userInterface = new UserInterface(statistics);
 
         userInterface.start();
+    }
+
+    private static RatingInfo processRatings() {
+        FileParser ratingsFile = new FileParser("ratings.dat", "::");
+        RatingsMapper ratingsMapper = new RatingsMapper(ratingsFile, 4);
+        return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+    }
+
+    private static CustomerInfo processCustomers() {
+        FileParser customerFile = new FileParser("users.dat", "::");
+        CustomerMapper customerMapper = new CustomerMapper(customerFile, 5);
+        return new CustomerInfo(customerMapper.getIdCustomerMap());
+    }
+
+    private static MovieInfo processMovies() {
+        FileParser movieFile = new FileParser("movies.dat", "::");
+        MovieMapper movieMapper = new MovieMapper(movieFile, 3);
+        return new MovieInfo(movieMapper.getIdMovieMap());
     }
 
 }

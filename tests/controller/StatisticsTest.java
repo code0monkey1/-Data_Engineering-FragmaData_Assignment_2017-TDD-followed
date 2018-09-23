@@ -1,14 +1,13 @@
 package controller;
 
 
-import model.helperObjects.CustomerRating;
+import model.helperObjects.Critic;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
@@ -166,27 +165,27 @@ public class StatisticsTest {
 
     @Test
     public void topCritics_GivingMinimumRatingAndHavingMinimum1View() {
-        List<CustomerRating> customers = new ArrayList<>();
-        customers.add(new CustomerRating(2, 3.0, 1));
-        customers.add(new CustomerRating(3, 3.0, 1));
-        customers.add(new CustomerRating(6, 3.0, 1));
-        customers.add(new CustomerRating(4, 4.0, 1));
-        customers.add(new CustomerRating(9, 4.0, 1));
-        customers.add(new CustomerRating(10, 4.0, 1));
-        customers.add(new CustomerRating(7, 5.0, 1));
-        customers.add(new CustomerRating(8, 5.0, 1));
-        customers.add(new CustomerRating(1, 5.0, 1));
-        customers.add(new CustomerRating(5, 5.0, 1));
+        List<Critic> customers = new ArrayList<>();
+        customers.add(new Critic(2, 3.0, 1));
+        customers.add(new Critic(3, 3.0, 1));
+        customers.add(new Critic(6, 3.0, 1));
+        customers.add(new Critic(4, 4.0, 1));
+        customers.add(new Critic(9, 4.0, 1));
+        customers.add(new Critic(10, 4.0, 1));
+        customers.add(new Critic(7, 5.0, 1));
+        customers.add(new Critic(8, 5.0, 1));
+        customers.add(new Critic(1, 5.0, 1));
+        customers.add(new Critic(5, 5.0, 1));
 
         assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(10, 1));
 
         customers.clear();
-        customers.add(new CustomerRating(2, 3.0, 1));
-        customers.add(new CustomerRating(3, 3.0, 1));
-        customers.add(new CustomerRating(6, 3.0, 1));
-        customers.add(new CustomerRating(4, 4.0, 1));
-        customers.add(new CustomerRating(9, 4.0, 1));
-        customers.add(new CustomerRating(10, 4.0, 1));
+        customers.add(new Critic(2, 3.0, 1));
+        customers.add(new Critic(3, 3.0, 1));
+        customers.add(new Critic(6, 3.0, 1));
+        customers.add(new Critic(4, 4.0, 1));
+        customers.add(new Critic(9, 4.0, 1));
+        customers.add(new Critic(10, 4.0, 1));
 
         assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(6, 1));
 

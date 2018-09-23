@@ -1,20 +1,20 @@
 package model.helperObjects;
 
-public class CustomerRating implements Comparable<CustomerRating> {
+public class Critic implements Comparable<Critic> {
 
 
     private double rating;
     private int id;
     private int views;
 
-    public CustomerRating(int id, double rating, int views) {
+    public Critic(int id, double rating, int views) {
         this.id = id;
         this.rating = rating;
         this.views = views;
     }
 
     @Override
-    public int compareTo(CustomerRating o) {
+    public int compareTo(Critic o) {
         return Double.compare(this.rating, o.rating);
     }
 
@@ -23,7 +23,7 @@ public class CustomerRating implements Comparable<CustomerRating> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CustomerRating that = (CustomerRating) o;
+        Critic that = (Critic) o;
 
         return id == that.id;
     }
@@ -47,7 +47,7 @@ public class CustomerRating implements Comparable<CustomerRating> {
 
     @Override
     public String toString() {
-        return "CustomerRating{" +
+        return "Critic{" +
                 "rating=" + rating +
                 ", id=" + id +
                 ", views=" + views +

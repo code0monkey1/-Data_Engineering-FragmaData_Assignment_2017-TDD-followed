@@ -56,7 +56,7 @@ public class TopRatedMovies {
     }
 
     private MovieRating validMovieObject(int id, int views, int rating) {
-        double avjRating = Calculate.returnAverage(rating, views);
+        double avjRating = Calculate.average(rating, views);
         return new MovieRating(id, avjRating, views);
     }
 

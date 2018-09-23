@@ -1,6 +1,6 @@
 package controller;
 
-import model.helperObjects.CustomerRating;
+import model.helperObjects.Critic;
 import model.helperObjects.MovieRating;
 import model.helperObjects.MovieView;
 import model.primary.customer.CustomerInfo;
@@ -40,7 +40,7 @@ public final class Statistics {
         return new TopRatedMoviesViewership(N, minViews,ratingInfo,customerInfo).invoke();
     }
 
-    public List<CustomerRating> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
+    public List<Critic> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
         return new TopCritics(top, minViewCount, ratingInfo).getCriticsList();
 
     }
@@ -54,9 +54,9 @@ public final class Statistics {
     }
 
 
-    private void printCustomerMovieRatings(List<CustomerRating> customerRatings) {
+    private void printCustomerMovieRatings(List<Critic> critics) {
 
-        for (CustomerRating customer : customerRatings) {
+        for (Critic customer : critics) {
             System.out.printf("The customer id is %d %n", customer.getId());
             System.out.printf("The average rating given" +
                     " by the customer is %.2f %n", customer.getRating());
@@ -66,7 +66,7 @@ public final class Statistics {
     }
 
     public void displayTopCritics(int top, int views) {
-        List<CustomerRating> customers = getCustomersWithRatingSatisfyingMinViewCondition(top, views);
+        List<Critic> customers =  getCustomersWithRatingSatisfyingMinViewCondition(top, views);
         printCustomerMovieRatings(customers);
     }
 

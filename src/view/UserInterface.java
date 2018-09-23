@@ -21,7 +21,7 @@ public class UserInterface {
         while (true) {
             displayOptions();
 
-            int choice = returnChoice();
+            int choice = choice();
 
             if (isTerminationCondition(choice)) {
                 System.out.println("Program Exiting..... ");
@@ -39,19 +39,41 @@ public class UserInterface {
 
     public void displayOptions() {
 
-        System.out.println("\nTo display top N most viewed movies with their movie names \nEnter : 1\n");
+        topMoviesText();
 
-        System.out.println("To display top N Rated Movies (Condition : movies should be rated/viewed by at least 40 users \nEnter : 2\n");
+        topRatedMoviesText();
 
-        System.out.println("To display top N Rated Movies (Condition : movies should be rated/viewed by at least 40 users \n and their their viewership among Young , Young Adult and Adult users \nEnter : 3\n");
+        topRatedMoviesWithViewsText();
 
-        System.out.println("To display top N critics (Customers  who have given the lowest Ratings) (Condition : should have rated at least 40 movies) \nEnter : 4 \n");
-
+        topCriticsText();
     }
 
-    public void executeOption(int option) {
+    private void topCriticsText() {
+        System.out.println("To display top N critics (Customers " +
+                " who have given the lowest Ratings) (Condition : " +
+                "should have rated at least 40 movies) \nEnter : 4 \n");
+    }
 
-        switch (option) {
+    private void topRatedMoviesWithViewsText() {
+        System.out.println("To display top N Rated Movies (Condition : movies " +
+                "should be rated/viewed by at least 40 users \n and " +
+                "their viewership among Young , Young Adult and Adult" +
+                " users \nEnter : 3\n");
+    }
+
+    private void topRatedMoviesText() {
+        System.out.println("To display top N Rated Movies (Condition : movies " +
+                "should be rated/viewed by at least 40 users \nEnter : 2\n");
+    }
+
+    private void topMoviesText() {
+        System.out.println("\nTo display top N most viewed movies with their" +
+                " movie names \n Enter : 1\n");
+    }
+
+    public void executeOption(int choice) {
+
+        switch (choice) {
             case 1:
                 mostViewedMovies();
                 break;
@@ -73,29 +95,29 @@ public class UserInterface {
 
         System.out.println("Enter the top N number of critics you want to see :");
 
-        int critics = returnChoice();
+        int critics = choice();
 
         System.out.println("Enter the minimum movies they should have watched ");
 
-        int minMovies = returnChoice();
+        int minMovies = choice();
 
         statistics.displayTopCritics(critics, minMovies);
     }
 
-    private int returnChoice() {
-        int n = 0;
+    private int choice() {
+        int choice = 0;
         String option = "";
 
         try {
             option = reader.nextLine();
-            n = Integer.parseInt(option);
+            choice = Integer.parseInt(option);
 
         } catch (NumberFormatException e) {
 
             throw new NumberFormatException(String.format("The input : \"" +
                     " %s \" is not a number !!", option));
         }
-        return n;
+        return choice;
     }
 
     private void invalidOption() {
@@ -110,31 +132,33 @@ public class UserInterface {
 
     private void topRatedMoviesWithAgeCategorisation() {
         System.out.println("Enter N top movie count :");
-        int movies = returnChoice();
+        int movies = choice();
 
         System.out.println("Enter M min view count : ");
-        int views = returnChoice();
+        int views = choice();
 
         statistics.displayTopRatedMoviesWithAgeRange(movies, views);
     }
 
     private void mostViewedMovies() {
         int movies;
-        System.out.println("To display top N most viewed movies with their movie names , enter the number");
+        System.out.println("To display top N most viewed movies" +
+                " with their movie names , enter the number");
 
-        movies = returnChoice();
+        movies = choice();
 
         statistics.displayTopViewedMovies(movies);
     }
 
     private void mostRatedMovies() {
         int movies;
-        System.out.println("To display top N most rated movies with their movie names , enter the number");
-        movies = returnChoice();
+        System.out.println("To display top N most rated movies " +
+                "with their movie names , enter the number");
+        movies = choice();
 
         System.out.println(" Enter the minimum acceptable view count :");
 
-        int views = returnChoice();
+        int views = choice();
 
         statistics.displayTopRatedMovies(movies, views);
     }
