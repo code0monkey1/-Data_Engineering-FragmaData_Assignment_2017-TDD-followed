@@ -6,7 +6,6 @@ import model.primary.customer.Customer;
 import util.FileParsing.FileParser;
 import wrappers.CustomerMap;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,10 +15,10 @@ public final class CustomerMapper {
     private final CustomerMap idCustomerMap;
 
     public CustomerMapper(FileParser fileParser, int fields) {
-        this.idCustomerMap = returnIdCustomerMap(fileParser,fields);
+        this.idCustomerMap = customerMap(fileParser,fields);
     }
 
-    private CustomerMap returnIdCustomerMap(FileParser fileParser, int fields) {
+    private CustomerMap customerMap(FileParser fileParser, int fields) {
         CustomerMap tempIDCustomerMap = new CustomerMap();
 
         List<List<String>> customerList = fileParser.getRawList();
@@ -32,7 +31,7 @@ public final class CustomerMapper {
             if (!customerEntryFieldCount.isValid()) {
                 throw new IllegalArgumentException("illegal field size");
             } else {
-                Customer customer = returnCustomer(customerEntry);
+                Customer customer = customer(customerEntry);
                 tempIDCustomerMap.put(customer.getId(), customer);
             }
 
@@ -41,7 +40,7 @@ public final class CustomerMapper {
     }
 
 
-    private Customer returnCustomer(List<String> customerEntry) {
+    private Customer customer(List<String> customerEntry) {
 
         String id = customerEntry.get(0);
         String gender = customerEntry.get(1);

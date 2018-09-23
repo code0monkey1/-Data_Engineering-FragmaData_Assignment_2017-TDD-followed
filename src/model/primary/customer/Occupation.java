@@ -1,6 +1,6 @@
 package model.primary.customer;
 
-public enum EOccupation {
+public enum Occupation {
 
     OTHER_OR_NOT_SPECIFIED,
     ACADEMIC_EDUCATOR,

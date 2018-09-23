@@ -1,9 +1,9 @@
 package util.FileParsing;
 
 import model.primary.customer.Customer;
-import model.primary.customer.EAgeRange;
-import model.primary.customer.EGender;
-import model.primary.customer.EOccupation;
+import model.primary.customer.AgeRange;
+import model.primary.customer.Gender;
+import model.primary.customer.Occupation;
 import org.junit.Before;
 import org.junit.Test;
 import util.mapping.CustomerMapper;
@@ -27,16 +27,16 @@ public class CustomerMapperTest {
     public void customer_genderIsValid() {
         Map<Integer, Customer> idCustomerMap = customerMapper.getIdCustomerMap();
 
-        assertEquals(EGender.FEMALE, idCustomerMap.get(1).getGender());
-        assertEquals(EGender.MALE, idCustomerMap.get(9).getGender());
+        assertEquals(Gender.FEMALE, idCustomerMap.get(1).getGender());
+        assertEquals(Gender.MALE, idCustomerMap.get(9).getGender());
     }
 
     @Test
     public void customer_ageRangeIsValid() {
         Map<Integer, Customer> idCustomerMap = customerMapper.getIdCustomerMap();
 
-        assertEquals(EAgeRange.UNDER_EIGHTEEN, idCustomerMap.get(1).getAgeRange());
-        assertEquals(EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR, idCustomerMap.get(9).getAgeRange());
+        assertEquals(AgeRange.UNDER_EIGHTEEN, idCustomerMap.get(1).getAgeRange());
+        assertEquals(AgeRange.TWENTY_FIVE_TO_THIRTY_FOUR, idCustomerMap.get(9).getAgeRange());
 
     }
 
@@ -44,8 +44,8 @@ public class CustomerMapperTest {
     public void customer_occupationIsValid() {
         Map<Integer, Customer> idCustomerMap = customerMapper.getIdCustomerMap();
 
-        assertEquals(EOccupation.K_TWELVE_STUDENT, idCustomerMap.get(1).getOccupation());
-        assertEquals(EOccupation.TECHNICIAN_ENGINEER, idCustomerMap.get(9).getOccupation());
+        assertEquals(Occupation.K_TWELVE_STUDENT, idCustomerMap.get(1).getOccupation());
+        assertEquals(Occupation.TECHNICIAN_ENGINEER, idCustomerMap.get(9).getOccupation());
 
     }
 

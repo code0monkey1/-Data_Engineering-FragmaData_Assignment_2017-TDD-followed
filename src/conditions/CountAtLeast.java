@@ -1,9 +1,9 @@
 package conditions;
 
-public class CountAtLeast implements Condition {
+public final class CountAtLeast implements Condition {
 
-    private int count;
-    private int expectedCount;
+    private final  int count;
+    private final int expectedCount;
 
     public CountAtLeast(int expectedCount,
                         int count) {

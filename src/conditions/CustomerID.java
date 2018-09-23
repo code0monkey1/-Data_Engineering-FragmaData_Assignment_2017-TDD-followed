@@ -1,7 +1,7 @@
 package conditions;
 
-public class CustomerID implements Condition {
-    private int id;
+public final class CustomerID implements Condition {
+    private final int id;
     private final int min = 1;
     private final int max = 6040;
 

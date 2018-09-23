@@ -1,6 +1,6 @@
 package util.FileParsing;
 
-import model.primary.movie.EGenre;
+import model.primary.movie.Genre;
 import model.primary.movie.MovieInfo;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,9 +24,9 @@ public class MovieFileParserTest {
     @Test
     public void map_genreListValid() {
 
-        assertEquals(Arrays.asList(EGenre.ANIMATION, EGenre.CHILDRENS, EGenre.COMEDY), movieInfo.getGenreList(1));
-        assertEquals(Arrays.asList(EGenre.ACTION, EGenre.ADVENTURE, EGenre.THRILLER), movieInfo.getGenreList(10));
-        assertEquals(Arrays.asList(EGenre.ADVENTURE, EGenre.CHILDRENS), movieInfo.getGenreList(8));
+        assertEquals(Arrays.asList(Genre.ANIMATION, Genre.CHILDRENS, Genre.COMEDY), movieInfo.getGenreList(1));
+        assertEquals(Arrays.asList(Genre.ACTION, Genre.ADVENTURE, Genre.THRILLER), movieInfo.getGenreList(10));
+        assertEquals(Arrays.asList(Genre.ADVENTURE, Genre.CHILDRENS), movieInfo.getGenreList(8));
 
     }
 

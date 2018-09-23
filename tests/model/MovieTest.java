@@ -1,6 +1,6 @@
 package model;
 
-import model.primary.movie.EGenre;
+import model.primary.movie.Genre;
 import model.primary.movie.Movie;
 import org.junit.Test;
 
@@ -22,10 +22,10 @@ public class MovieTest {
     @Test
     public void genre_defined() {
         Movie movie = new Movie("234", "pholon ki baraat", " Action|Sci-Fi ");
-        assertEquals(Arrays.asList(EGenre.ACTION,EGenre.SCI_FI), movie.getGenreList());
+        assertEquals(Arrays.asList(Genre.ACTION,Genre.SCI_FI), movie.getGenreList());
 
         movie = new Movie("234", "pholon ki baraat","  Sci-Fi|Children's ");
-        assertEquals(Arrays.asList(EGenre.SCI_FI,EGenre.CHILDRENS), movie.getGenreList());
+        assertEquals(Arrays.asList(Genre.SCI_FI,Genre.CHILDRENS), movie.getGenreList());
     }
 
     @Test

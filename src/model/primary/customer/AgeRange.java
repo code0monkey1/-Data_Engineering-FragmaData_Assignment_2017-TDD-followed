@@ -1,6 +1,6 @@
 package model.primary.customer;
 
-public enum EAgeRange {
+public enum AgeRange {
     UNDER_EIGHTEEN,
     EIGHTEEN_TO_TWENTY_FOUR,
     TWENTY_FIVE_TO_THIRTY_FOUR,

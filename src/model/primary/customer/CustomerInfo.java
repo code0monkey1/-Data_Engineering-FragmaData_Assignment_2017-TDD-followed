@@ -11,10 +11,10 @@ public class CustomerInfo {
         this.idCustomerMap = idCustomerMap;
     }
 
-    public EAgeRange getAgeRange(int ID) {
+    public AgeRange getAgeRange(int ID) {
 
         Customer customer = getCustomer(ID);
-        EAgeRange ageRange = customer.getAgeRange();
+        AgeRange ageRange = customer.getAgeRange();
 
         return ageRange;
     }

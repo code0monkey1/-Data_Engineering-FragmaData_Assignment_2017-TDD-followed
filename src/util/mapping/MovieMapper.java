@@ -15,10 +15,10 @@ public final class MovieMapper {
 
 
     public MovieMapper(FileParser fileParser, int fields) {
-        this.idMovieMap = returnMovieMap(fileParser, fields);
+        this.idMovieMap = movieMap(fileParser, fields);
     }
 
-    private MovieMap returnMovieMap(FileParser fileParser, int fields) {
+    private MovieMap movieMap(FileParser fileParser, int fields) {
 
         MovieMap tempIdMoviesMap = new MovieMap();
         // Entry format : MovieID , Title ,Genres
@@ -33,14 +33,14 @@ public final class MovieMapper {
                 throw new IllegalArgumentException("fields size illegal");
             }
 
-            Movie movie = returnMovie(movieEntry);
+            Movie movie = movie(movieEntry);
             tempIdMoviesMap.put(movie.getId(), movie);
         }
 
         return tempIdMoviesMap;
     }
 
-    private Movie returnMovie(List<String> movieEntry) {
+    private Movie movie(List<String> movieEntry) {
 
         String id = movieEntry.get(0).trim();
         String title = movieEntry.get(1).trim();

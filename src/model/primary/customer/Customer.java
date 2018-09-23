@@ -6,9 +6,9 @@ import conditions.CustomerID;
 public final class Customer {
 
     private final int id;
-    private final EGender gender;
-    private EAgeRange ageRange;
-    private EOccupation occupation;
+    private final Gender gender;
+    private AgeRange ageRange;
+    private Occupation occupation;
     private String zipCode;
 
     //UserID::Gender::Age::Occupation::Zip-code
@@ -18,14 +18,14 @@ public final class Customer {
                     String occupation,
                     String zipCode) {
 
-        this.id = returnID(id);
-        this.gender = returnGender(gender);
-        this.ageRange = returnAgeRange(age);
-        this.occupation = returnOccupation(occupation);
+        this.id = ID(id);
+        this.gender = gender(gender);
+        this.ageRange = ageRange(age);
+        this.occupation = occupation(occupation);
         this.zipCode = zipCode;
     }
 
-    private EOccupation returnOccupation(String occupation) {
+    private Occupation occupation(String occupation) {
         occupation = occupation.trim();
 
         final int OCCUPATION_INDEX = Integer.parseInt(occupation);
@@ -33,14 +33,14 @@ public final class Customer {
         if (!occupationIndexInRange(OCCUPATION_INDEX))
             throw new IllegalArgumentException("undefined occupation");
 
-        final EOccupation eOccupation = returnOccupationType(OCCUPATION_INDEX);
+        final Occupation eOccupation = occupationType(OCCUPATION_INDEX);
 
         return eOccupation;
 
     }
 
-    private EOccupation returnOccupationType(int OCCUPATION_INDEX) {
-        EOccupation values[] = EOccupation.values();
+    private Occupation occupationType(int OCCUPATION_INDEX) {
+        Occupation values[] = Occupation.values();
 
         return values[OCCUPATION_INDEX];
 // From the  Document :
@@ -71,14 +71,14 @@ public final class Customer {
         return OCCUPATION >= 0 && OCCUPATION <= 20;
     }
 
-    private EAgeRange returnAgeRange(String age) {
+    private AgeRange ageRange(String age) {
         age = age.trim();
 
         final int AGE = Integer.parseInt(age);
 
         if (!ageGreaterThanZero(AGE)) throw new IllegalArgumentException("age is negative or zero");
 
-        return returnRange(AGE);
+        return range(AGE);
     }
 
 
@@ -86,30 +86,30 @@ public final class Customer {
         return AGE > 0;
     }
 
-    private EAgeRange returnRange(int AGE) {
+    private AgeRange range(int AGE) {
 
         switch (AGE) {
 
             case 1:
-                return EAgeRange.UNDER_EIGHTEEN;
+                return AgeRange.UNDER_EIGHTEEN;
 
             case 18:
-                return EAgeRange.EIGHTEEN_TO_TWENTY_FOUR;
+                return AgeRange.EIGHTEEN_TO_TWENTY_FOUR;
 
             case 25:
-                return EAgeRange.TWENTY_FIVE_TO_THIRTY_FOUR;
+                return AgeRange.TWENTY_FIVE_TO_THIRTY_FOUR;
 
             case 35:
-                return EAgeRange.THIRTY_FIVE_TO_FORTY_FOUR;
+                return AgeRange.THIRTY_FIVE_TO_FORTY_FOUR;
 
             case 45:
-                return EAgeRange.FORTY_FIVE_TO_FORTY_NINE;
+                return AgeRange.FORTY_FIVE_TO_FORTY_NINE;
 
             case 50:
-                return EAgeRange.FIFTY_TO_FIFTY_FIVE;
+                return AgeRange.FIFTY_TO_FIFTY_FIVE;
 
             case 56:
-                return EAgeRange.FIFTY_SIX_AND_OVER;
+                return AgeRange.FIFTY_SIX_AND_OVER;
 
             default:
                 throw new IllegalArgumentException(" age not in permissible range ");
@@ -117,7 +117,7 @@ public final class Customer {
     }
 
 
-    private int returnID(String id) {
+    private int ID(String id) {
         id = id.trim();
         int ID = Integer.parseInt(id);
 
@@ -128,13 +128,13 @@ public final class Customer {
     }
 
 
-    private EGender returnGender(String gender) {
+    private Gender gender(String gender) {
         gender = gender.trim();
 
         if (gender.equals("M")) {
-            return EGender.MALE;
+            return Gender.MALE;
         } else if (gender.equals("F")) {
-            return EGender.FEMALE;
+            return Gender.FEMALE;
         } else {
             throw new IllegalArgumentException("gender not male or female");
         }
@@ -145,15 +145,15 @@ public final class Customer {
         return id;
     }
 
-    public EGender getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public EAgeRange getAgeRange() {
+    public AgeRange getAgeRange() {
         return ageRange;
     }
 
-    public EOccupation getOccupation() {
+    public Occupation getOccupation() {
         return occupation;
     }
 

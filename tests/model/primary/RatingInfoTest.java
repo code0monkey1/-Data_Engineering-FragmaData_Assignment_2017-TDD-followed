@@ -1,7 +1,7 @@
 package model.primary;
 
 import model.primary.customer.CustomerInfo;
-import model.primary.customer.EAgeRange;
+import model.primary.customer.AgeRange;
 import model.primary.rating.RatingInfo;
 import org.junit.Before;
 import org.junit.Test;
@@ -133,7 +133,7 @@ public class RatingInfoTest {
 
         CustomerInfo customerInfo = new CustomerInfo(new CustomerMapper(new FileParser("users.dat", "::"), 5).getIdCustomerMap());
 
-        Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange = new HashMap<>();
+        Map<Integer, EnumMap<AgeRange, Integer>> movieIDAgeRange = new HashMap<>();
 
         List<List<String>> entries = this.fileParser.getRawList();
 
@@ -142,9 +142,9 @@ public class RatingInfoTest {
             int userID = Integer.parseInt(entry.get(0));
             int movieID = Integer.parseInt(entry.get(1));
 
-            EAgeRange userAgeRange = customerInfo.getAgeRange(userID);
+            AgeRange userAgeRange = customerInfo.getAgeRange(userID);
 
-            EnumMap<EAgeRange, Integer> ageRangeMap = returnAgeRangeMap(movieIDAgeRange, movieID);
+            EnumMap<AgeRange, Integer> ageRangeMap = returnAgeRangeMap(movieIDAgeRange, movieID);
 
             int presentAgeRangeCount = returnPresentAgeRangeCount(userAgeRange, ageRangeMap);
 
@@ -155,12 +155,12 @@ public class RatingInfoTest {
         assertEquals(movieIDAgeRange, ratingInfo.getMovieIdAgeRangeMap(customerInfo));
     }
 
-    private int returnPresentAgeRangeCount(EAgeRange userAgeRange, EnumMap<EAgeRange, Integer> ageRangeMap) {
+    private int returnPresentAgeRangeCount(AgeRange userAgeRange, EnumMap<AgeRange, Integer> ageRangeMap) {
         return ageRangeMap.getOrDefault(userAgeRange, 0);
     }
 
-    private EnumMap<EAgeRange, Integer> returnAgeRangeMap(Map<Integer, EnumMap<EAgeRange, Integer>> movieIDAgeRange, int movieID) {
-        return movieIDAgeRange.getOrDefault(movieID, new EnumMap<>(EAgeRange.class));
+    private EnumMap<AgeRange, Integer> returnAgeRangeMap(Map<Integer, EnumMap<AgeRange, Integer>> movieIDAgeRange, int movieID) {
+        return movieIDAgeRange.getOrDefault(movieID, new EnumMap<>(AgeRange.class));
     }
 
     @Test

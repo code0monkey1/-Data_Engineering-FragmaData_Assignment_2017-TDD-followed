@@ -2,7 +2,7 @@ package conditions;
 
 import java.util.List;
 
-public class FieldCount implements Condition {
+public final class FieldCount implements Condition {
     private final List<String> list;
     private final int fields;
 

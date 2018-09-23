@@ -1,8 +1,8 @@
 package model;
 
-import model.primary.customer.EAgeRange;
-import model.primary.customer.EGender;
-import model.primary.customer.EOccupation;
+import model.primary.customer.AgeRange;
+import model.primary.customer.Gender;
+import model.primary.customer.Occupation;
 import model.primary.customer.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,25 +56,25 @@ public class CustomerTest {
     @Test
     public void ageRange_assigned() {
         customer = new Customer("1", "M", "18", "12", "1234");
-        assertEquals(EAgeRange.EIGHTEEN_TO_TWENTY_FOUR, customer.getAgeRange());
+        assertEquals(AgeRange.EIGHTEEN_TO_TWENTY_FOUR, customer.getAgeRange());
         customer = new Customer("1", "M", "1", "12", "1234");
-        assertEquals(EAgeRange.UNDER_EIGHTEEN, customer.getAgeRange());
+        assertEquals(AgeRange.UNDER_EIGHTEEN, customer.getAgeRange());
     }
 
     @Test
     public void gender_assigned() {
         customer = new Customer("1", "M", "18", "12", "1234");
-        assertEquals(EGender.MALE, customer.getGender());
+        assertEquals(Gender.MALE, customer.getGender());
         customer = new Customer("1", "F", "18", "12", "1234");
-        assertEquals(EGender.FEMALE, customer.getGender());
+        assertEquals(Gender.FEMALE, customer.getGender());
     }
 
     @Test
     public void occupation_assigned() {
         customer = new Customer("1", "M", "18", "12", "1234");
-        assertEquals(EOccupation.PROGRAMMER, customer.getOccupation());
+        assertEquals(Occupation.PROGRAMMER, customer.getOccupation());
         customer = new Customer("1", "M", "18", "16", "1234");
-        assertEquals(EOccupation.SELF_EMPLOYED, customer.getOccupation());
+        assertEquals(Occupation.SELF_EMPLOYED, customer.getOccupation());
     }
 
     @Test

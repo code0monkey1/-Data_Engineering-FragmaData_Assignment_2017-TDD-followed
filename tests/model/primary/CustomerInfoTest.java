@@ -2,7 +2,7 @@ package model.primary;
 
 import model.primary.customer.Customer;
 import model.primary.customer.CustomerInfo;
-import model.primary.customer.EAgeRange;
+import model.primary.customer.AgeRange;
 import org.junit.Before;
 import org.junit.Test;
 import util.FileParsing.FileParser;
@@ -29,8 +29,8 @@ public class CustomerInfoTest {
 
     @Test
     public void getAgeRange_correctIdGivesCorrectRange() {
-        EAgeRange expected = EAgeRange.UNDER_EIGHTEEN;
-        EAgeRange ageRange = customerInfo.getAgeRange(1);
+        AgeRange expected = AgeRange.UNDER_EIGHTEEN;
+        AgeRange ageRange = customerInfo.getAgeRange(1);
 
         assertEquals(expected, ageRange);
     }

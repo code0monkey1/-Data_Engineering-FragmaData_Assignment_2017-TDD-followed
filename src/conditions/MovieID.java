@@ -1,8 +1,8 @@
 package conditions;
 
-public class MovieID implements Condition {
+public final class MovieID implements Condition {
 
-    private int id;
+    private final int id;
     private final int min = 1;
     private final int max = 3952;
 

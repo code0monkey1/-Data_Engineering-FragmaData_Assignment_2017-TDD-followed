@@ -1,8 +1,8 @@
 package conditions;
 
-public class AllConditions implements Condition {
+public final class AllConditions implements Condition {
 
-    private Condition[] conditions;
+    private final Condition[] conditions;
 
     public AllConditions(Condition... conditions) {
         this.conditions = conditions;

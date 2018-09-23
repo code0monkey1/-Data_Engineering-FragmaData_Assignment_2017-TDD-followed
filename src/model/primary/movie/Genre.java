@@ -1,6 +1,6 @@
 package model.primary.movie;
 
-public enum EGenre {
+public enum Genre {
     ACTION,
     ADVENTURE,
     ANIMATION,

@@ -18,17 +18,17 @@ public class FileParser {
     public FileParser(String fileName, String parseToken) {
         this.parseToken = parseToken;
         this.fileName = fileName;
-        this.rawList = returnRawEntries(fileName, parseToken);
+        this.rawList = rawEntries(fileName, parseToken);
     }
 
-    private EntriesList returnRawEntries(String fileName,
-                                         String parseToken) {
+    private EntriesList rawEntries(String fileName,
+                                   String parseToken) {
 
         EntriesList entriesList = new EntriesList();
 
         List<String> entries = new ArrayList<>();
 
-        entries = returnFileEntries(fileName, entries);
+        entries = fileEntries(fileName, entries);
 
         for (String rawEntry : entries) {
 
@@ -38,8 +38,8 @@ public class FileParser {
         return entriesList;
     }
 
-    private List<String> returnFileEntries(String fileName,
-                                           List<String> entries) {
+    private List<String> fileEntries(String fileName,
+                                     List<String> entries) {
 
         try {
             entries = Files.readAllLines(Paths.get(fileName));
@@ -55,12 +55,12 @@ public class FileParser {
                           String rawEntry) {
 
         List<String> entry = Arrays.asList(rawEntry.split(parseToken));
-        List<String> cleanEntry = returnCleanList(entry);
+        List<String> cleanEntry = cleanList(entry);
 
         entriesList.add(cleanEntry);
     }
 
-    private List<String> returnCleanList(List<String> entry) {
+    private List<String> cleanList(List<String> entry) {
         List<String> entryList = new ArrayList<>();
 
         for (String element : entry) {

@@ -11,21 +11,21 @@ import java.util.List;
 public final class Movie {
     private final int id;
     private final String title;
-    private final List<EGenre> genreList;
+    private final List<Genre> genreList;
 
 
     public Movie(String id,
                  String title,
                  String Genre) {
 
-        this.id = returnID(id);
+        this.id = ID(id);
         this.title = title;
-        this.genreList = returnGenreList(Genre);
+        this.genreList = generateList(Genre);
 
     }
 
 
-    private int returnID(String id) {
+    private int ID(String id) {
 
         int ID = Integer.parseInt(id);
         Condition movieID = new MovieID(ID);
@@ -36,18 +36,18 @@ public final class Movie {
     }
 
 
-    private List<EGenre> returnGenreList(String GenreString) {
-        List<String> GenreStringList = returnGenreStringList(GenreString);
-        List<EGenre> genreList = new ArrayList<>();
+    private List<Genre> generateList(String GenreString) {
+        List<String> GenreStringList = genreStringList(GenreString);
+        List<Genre> genreList = new ArrayList<>();
 
         for (String genre : GenreStringList) {
-            int genreIndex = returnGenreIndex(genre);
-            genreList.add(returnGenre(genreIndex));
+            int genreIndex = genreIndex(genre);
+            genreList.add(genre(genreIndex));
         }
         return genreList;
     }
 
-    private List<String> returnGenreStringList(String genre) {
+    private List<String> genreStringList(String genre) {
         List<String> genreList = new ArrayList<>();
 
         String[] genreArray = genre.split("\\|");
@@ -59,13 +59,13 @@ public final class Movie {
         return genreList;
     }
 
-    private EGenre returnGenre(int index) {
-        EGenre[] genreArray = EGenre.values();
+    private Genre genre(int index) {
+        Genre[] genreArray = Genre.values();
         return genreArray[index];
     }
 
 
-    private int returnGenreIndex(String genre) {
+    private int genreIndex(String genre) {
         genre = genre.trim();
 
         List<String> genreList = Arrays.asList("Action",
@@ -109,7 +109,7 @@ public final class Movie {
         return title;
     }
 
-    public List<EGenre> getGenreList() {
+    public List<Genre> getGenreList() {
         return genreList;
     }
 }

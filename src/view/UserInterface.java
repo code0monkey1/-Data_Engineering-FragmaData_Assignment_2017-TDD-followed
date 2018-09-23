@@ -115,7 +115,7 @@ public class UserInterface {
         System.out.println("Enter M min view count : ");
         int views = returnChoice();
 
-        statistics.displayTopRatedMoviesWithAgeRangeCategorization(movies, views);
+        statistics.displayTopRatedMoviesWithAgeRange(movies, views);
     }
 
     private void mostViewedMovies() {

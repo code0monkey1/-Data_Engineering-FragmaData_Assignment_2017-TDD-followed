@@ -22,15 +22,15 @@ public class MovieInfo {
 
     }
 
-    public List<EGenre> getGenreList(int movieID) {
+    public List<Genre> getGenreList(int movieID) {
         Movie movie = this.idMovieMap.getOrDefault(movieID, null);
 
-        List<EGenre> genreList = new ArrayList<>();
+        List<Genre> genreList = new ArrayList<>();
 
         if (movie == null) {
             return genreList;
         } else {
-            List<EGenre> genre = movie.getGenreList();
+            List<Genre> genre = movie.getGenreList();
             genreList.addAll(genre);
         }
 
