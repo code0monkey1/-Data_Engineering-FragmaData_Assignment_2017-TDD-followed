@@ -6,6 +6,7 @@ import util.FileParsing.FileParser;
 import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
 import util.mapping.RatingsMapper;
+import view.DisplayStatistics;
 import view.UserInterface;
 
 public class Application {
@@ -28,7 +29,8 @@ public class Application {
     }
 
     private static void initiateUI(Statistics statistics) {
-        UserInterface userInterface = new UserInterface(statistics);
+        DisplayStatistics displayStatistics = new DisplayStatistics(statistics);
+        UserInterface userInterface = new UserInterface(statistics, displayStatistics);
         userInterface.start();
     }
 

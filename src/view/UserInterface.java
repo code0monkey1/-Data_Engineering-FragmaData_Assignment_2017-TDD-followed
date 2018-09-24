@@ -6,11 +6,12 @@ import util.IO.IO;
 public class UserInterface {
 
     private Statistics statistics;
+    private DisplayStatistics displayStatistics;
 
-    public UserInterface(Statistics statistics) {
+    public UserInterface(Statistics statistics, DisplayStatistics displayStatistics) {
 
         this.statistics = statistics;
-
+        this.displayStatistics = displayStatistics;
     }
 
 
@@ -33,7 +34,7 @@ public class UserInterface {
 
     public void displayChoices() {
 
-        new Display().invoke();
+        displayStatistics.invoke();
     }
 
     private boolean isTerminationChoice(int i) {
@@ -45,19 +46,19 @@ public class UserInterface {
 
         switch (choice) {
             case 1:
-                statistics.topViewedMovies();
+                displayStatistics.topViewedMovies();
                 break;
             case 2:
-                statistics.topRatedMovies();
+                displayStatistics.topRatedMovies();
                 break;
             case 3:
-                statistics.topRatedMoviesWithAgeCategorisation();
+                displayStatistics.topRatedMoviesWithAgeCategorisation();
                 break;
             case 4:
-                statistics.topCritics();
+                displayStatistics.topCritics();
                 break;
             default:
-                statistics.invalidChoice();
+                displayStatistics.invalidChoice();
         }
     }
 
