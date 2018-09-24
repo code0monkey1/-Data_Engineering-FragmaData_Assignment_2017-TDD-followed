@@ -1,16 +1,14 @@
 package view;
 
-import controller.Statistics;
 import util.IO.IO;
 
 public class UserInterface {
 
-    private Statistics statistics;
+
     private DisplayStatistics displayStatistics;
 
-    public UserInterface(Statistics statistics, DisplayStatistics displayStatistics) {
+    public UserInterface(DisplayStatistics displayStatistics) {
 
-        this.statistics = statistics;
         this.displayStatistics = displayStatistics;
     }
 

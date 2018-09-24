@@ -12,12 +12,9 @@ import view.UserInterface;
 public class Application {
 
     public static void main(String[] args) {
-        execute();
-    }
-
-    private static void execute() {
         Statistics statistics = processStatistics();
-        initiateUI(statistics);
+        DisplayStatistics displayStatistics = new DisplayStatistics(statistics);
+        initiateUI(displayStatistics);
     }
 
     private static Statistics processStatistics() {
@@ -28,9 +25,8 @@ public class Application {
         return new Statistics(customerInfo, movieInfo, ratingInfo);
     }
 
-    private static void initiateUI(Statistics statistics) {
-        DisplayStatistics displayStatistics = new DisplayStatistics(statistics);
-        UserInterface userInterface = new UserInterface(statistics, displayStatistics);
+    private static void initiateUI(DisplayStatistics displayStatistics) {
+        UserInterface userInterface = new UserInterface(displayStatistics);
         userInterface.start();
     }
 

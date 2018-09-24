@@ -76,7 +76,6 @@ public final class Statistics {
 
     }
 
-
     public void displayTopCritics(int top, int views) {
 
         List<Critic> customers = getTopCritics(top, views);
@@ -85,7 +84,7 @@ public final class Statistics {
     }
 
     private void printRatedMoviesWithAgeCategory(List<RatedMovie> topRatedMovies,
-                                                Map<Integer, Map> movieIdAgeRangeMap) {
+                                                 Map<Integer, Map> movieIdAgeRangeMap) {
 
         for (RatedMovie movie : topRatedMovies)
             movieRatingDescriptionString(movieIdAgeRangeMap, movie);
@@ -93,7 +92,7 @@ public final class Statistics {
     }
 
     private void movieRatingDescriptionString(Map<Integer, Map> movieIdAgeRangeMap,
-                                             RatedMovie movie) {
+                                              RatedMovie movie) {
 
         System.out.printf("Movie : %s  ::  Rating : %.2f:: Views : %d %n",
                 movieInfo.getTitle(movie.getId()),
@@ -109,7 +108,8 @@ public final class Statistics {
 
         System.out.printf("Number of young viewers : %d %n" +
                         "Number of adult viewers : %d %n" +
-                        "Number of old viewers : %d %n %n", movieIdMap.get(0),
+                        "Number of old viewers : %d %n %n",
+                movieIdMap.get(0),
                 movieIdMap.get(1),
                 movieIdMap.get(2));
     }

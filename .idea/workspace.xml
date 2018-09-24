@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d994c4d8-7315-4a4b-ab17-d0e69cb9cff9" name="Default" comment="changed imageName">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DisplayStatistics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/UserInterface.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,26 +26,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MovieID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/MovieID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-              <folding>
-                <element signature="e#191#192#0" expanded="true" />
-                <element signature="e#219#220#0" expanded="true" />
-                <element signature="e#265#266#0" expanded="true" />
-                <element signature="e#310#311#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TopCritics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/TopCritics.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="935">
               <caret line="70" column="81" lean-forward="true" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopRatedMovies.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMovies.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TopRatedMoviesViewership.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMoviesViewership.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,28 +76,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <file leaf-file-name="TopViewedMovies.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/TopViewedMovies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="59" lean-forward="true" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
-              <folding>
-                <element signature="e#391#392#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewedMovie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/helperObjects/ViewedMovie.java">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="e#548#549#0" expanded="true" />
-                <element signature="e#578#579#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -113,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Statistics.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Statistics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+            <state relative-caret-position="1326">
+              <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,20 +127,8 @@
       <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountAtLeast.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/conditions/CountAtLeast.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#393#394#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -227,10 +214,10 @@
         <option value="$PROJECT_DIR$/src/util/IO/IO.java" />
         <option value="$PROJECT_DIR$/src/util/FileParsing/FileParser.java" />
         <option value="$PROJECT_DIR$/src/view/Display.java" />
-        <option value="$PROJECT_DIR$/src/Application.java" />
         <option value="$PROJECT_DIR$/src/view/DisplayStatistics.java" />
-        <option value="$PROJECT_DIR$/src/view/UserInterface.java" />
         <option value="$PROJECT_DIR$/src/controller/Statistics.java" />
+        <option value="$PROJECT_DIR$/src/view/UserInterface.java" />
+        <option value="$PROJECT_DIR$/src/Application.java" />
       </list>
     </option>
   </component>
@@ -284,6 +271,13 @@
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="primary" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD" type="b2602c69:ProjectViewProjectNode" />
@@ -373,7 +367,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )">
+  <component name="RunManager" selected="JUnit.All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )">
     <configuration name="EntriesList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="wrappers.EntriesList" />
       <module name="Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" />
@@ -549,18 +543,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 29m 56s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 30m 07s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 30m 18s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 30m 50s.xml">
-      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 31m 04s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
@@ -579,6 +561,18 @@
     <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 34m 19s.xml">
       <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 34m 53s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 35m 06s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 21h 35m 40s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Fragma__Data_2017_movies_pre_interview_assignment_(_Entry_Level_Java_Developer_Role_) - 2018.09.24 at 22h 08m 27s.xml">
+      <configuration name="All in Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role )" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -591,7 +585,7 @@
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5030257" side_tool="true" weight="0.17161717" />
       <window_info anchor="bottom" id="TMC Test Results" order="10" sideWeight="0.49924356" weight="0.32838285" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="right" id="Run" order="8" sideWeight="0.4974271" visible="true" weight="0.20726173" />
+      <window_info anchor="right" id="Run" order="8" sideWeight="0.4974271" visible="true" weight="0.25340393" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49848714" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49848714" weight="0.32838285" />
       <window_info id="Designer" order="0" />
@@ -879,33 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TopViewedMovies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMoviesViewership.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMovies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/conditions/AllConditions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -982,13 +949,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
+    <entry file="file://$PROJECT_DIR$/src/view/DisplayStatistics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="59" lean-forward="true" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+        <state relative-caret-position="178">
+          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
           <folding>
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#416#417#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#147#148#0" expanded="true" />
+            <element signature="e#191#192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1003,32 +981,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/DisplayStatistics.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMovies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+        <state relative-caret-position="382">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#147#148#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TopRatedMoviesViewership.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/TopViewedMovies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+        <state relative-caret-position="187">
+          <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Statistics.java">
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
     </entry>
