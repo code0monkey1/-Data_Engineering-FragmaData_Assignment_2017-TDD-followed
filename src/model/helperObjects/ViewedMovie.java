@@ -1,42 +1,40 @@
 package model.helperObjects;
 
-public class MovieView implements Comparable<MovieView> {
+public class ViewedMovie implements Comparable<ViewedMovie> {
 
 
     private int movieID;
     private int count;
 
-    public MovieView(int movieID, int count) {
+    public ViewedMovie(int movieID, int count) {
         this.movieID = movieID;
         this.count = count;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MovieView movieView = (MovieView) o;
+        ViewedMovie viewedMovie = (ViewedMovie) o;
 
-        if (movieID != movieView.movieID) return false;
-        return count == movieView.count;
+        return movieID == viewedMovie.movieID;
     }
 
     @Override
     public int hashCode() {
-        int result = movieID;
-        result = 31 * result + count;
-        return result;
+        return movieID;
     }
 
     @Override
-    public int compareTo(MovieView movieView) {
-        return movieView.count - this.count;
+    public int compareTo(ViewedMovie viewedMovie) {
+        return viewedMovie.count - this.count;
     }
 
     @Override
     public String toString() {
-        return "MovieView{" +
+        return "ViewedMovie{" +
                 "movieID=" + movieID +
                 ", count=" + count +
                 '}';

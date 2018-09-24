@@ -1,13 +1,13 @@
 package model.helperObjects;
 
-public class MovieRating implements Comparable<MovieRating> {
+public class RatedMovie implements Comparable<RatedMovie> {
 
 
     private double rating;
     private int views;
     private int id;
 
-    public MovieRating(int id, double rating, int views) {
+    public RatedMovie(int id, double rating, int views) {
         this.id = id;
         this.rating = rating;
         this.views = views;
@@ -15,7 +15,7 @@ public class MovieRating implements Comparable<MovieRating> {
 
     @Override
     public String toString() {
-        return "MovieRating{" +
+        return "RatedMovie{" +
                 "rating=" + rating +
                 ", views=" + views +
                 ", id=" + id +
@@ -27,7 +27,7 @@ public class MovieRating implements Comparable<MovieRating> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MovieRating that = (MovieRating) o;
+        RatedMovie that = (RatedMovie) o;
 
         return id == that.id;
     }
@@ -46,8 +46,8 @@ public class MovieRating implements Comparable<MovieRating> {
     }
 
     @Override
-    public int compareTo(MovieRating movieRating) {
-        return Double.compare(movieRating.rating, this.rating);
+    public int compareTo(RatedMovie ratedMovie) {
+        return Double.compare(ratedMovie.rating, this.rating);
     }
 
     public int getViews() {

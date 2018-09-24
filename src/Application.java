@@ -15,11 +15,11 @@ public class Application {
     }
 
     private static void execute() {
-        Statistics statistics = initiateStatistics();
+        Statistics statistics = processStatistics();
         initiateUI(statistics);
     }
 
-    private static Statistics initiateStatistics() {
+    private static Statistics processStatistics() {
         MovieInfo movieInfo = processMovies();
         CustomerInfo customerInfo = processCustomers();
         RatingInfo ratingInfo = processRatings();
@@ -29,7 +29,6 @@ public class Application {
 
     private static void initiateUI(Statistics statistics) {
         UserInterface userInterface = new UserInterface(statistics);
-
         userInterface.start();
     }
 

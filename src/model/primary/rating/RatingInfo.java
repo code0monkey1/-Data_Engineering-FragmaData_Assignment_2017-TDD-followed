@@ -1,5 +1,6 @@
 package model.primary.rating;
 
+import model.helperObjects.Critic;
 import model.primary.customer.CustomerInfo;
 import model.primary.customer.AgeRange;
 import model.primary.movie.RatingAndTime;
@@ -118,5 +119,16 @@ public class RatingInfo {
         }
 
         return customerIdViewershipMap;
+    }
+
+    public void printCustomerMovieRatings(List<Critic> critics) {
+
+        for (Critic critic : critics) {
+            System.out.printf("The customer id is %d %n", critic.getId());
+            System.out.printf("The average rating given" +
+                    " by the customer is %.2f %n", critic.getRating());
+            System.out.printf("The movie view count of " +
+                    "the given customer is %d %n %n", critic.getViews());
+        }
     }
 }

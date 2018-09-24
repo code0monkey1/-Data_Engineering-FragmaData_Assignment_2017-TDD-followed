@@ -10,6 +10,8 @@ public final class Customer {
     private AgeRange ageRange;
     private Occupation occupation;
     private String zipCode;
+    private final int MIN = 0;
+    private final int MAX = 20;
 
     //UserID::Gender::Age::Occupation::Zip-code
     public Customer(String id,
@@ -68,7 +70,7 @@ public final class Customer {
     }
 
     private boolean occupationIndexInRange(int OCCUPATION) {
-        return OCCUPATION >= 0 && OCCUPATION <= 20;
+        return OCCUPATION >= MIN && OCCUPATION <= MAX;
     }
 
     private AgeRange ageRange(String age) {

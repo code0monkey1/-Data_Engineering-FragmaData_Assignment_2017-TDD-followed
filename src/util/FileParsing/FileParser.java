@@ -10,14 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FileParser {
-    private final String fileName;
-    private final String parseToken;
+
     private EntriesList rawList;
 
-
     public FileParser(String fileName, String parseToken) {
-        this.parseToken = parseToken;
-        this.fileName = fileName;
         this.rawList = rawEntries(fileName, parseToken);
     }
 

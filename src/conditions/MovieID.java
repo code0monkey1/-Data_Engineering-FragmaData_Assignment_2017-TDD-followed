@@ -3,8 +3,8 @@ package conditions;
 public final class MovieID implements Condition {
 
     private final int id;
-    private final int min = 1;
-    private final int max = 3952;
+    private final int MIN = 1;
+    private final int MAX = 3952;
 
     public MovieID(int id) {
         this.id = id;
@@ -12,7 +12,7 @@ public final class MovieID implements Condition {
 
     @Override
     public boolean isValid() {
-        return id >= min && id <= max;
+        return id >= MIN && id <= MAX;
     }
 
 

@@ -89,11 +89,12 @@ public final class Movie {
 
         int genreIndex = genreList.indexOf(genre);
 
-        if (!genreIndexFound(genreIndex)) {
+        if (!genreIndexFound(genreIndex))
             throw new IllegalArgumentException("Genre index not found" +
                     " genre : " + genre + " movie title : " +
                     this.title);
-        }
+
+
         return genreIndex;
     }
 

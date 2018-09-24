@@ -2,8 +2,8 @@ package controller;
 
 
 import model.helperObjects.Critic;
-import model.helperObjects.MovieRating;
-import model.helperObjects.MovieView;
+import model.helperObjects.RatedMovie;
+import model.helperObjects.ViewedMovie;
 import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
@@ -48,19 +48,23 @@ public class StatisticsTest {
                 movieInfo,
                 ratingInfo);
 
-        List<MovieView> expected = new ArrayList<>();
-        expected.add(new MovieView(4, 5));
-        expected.add(new MovieView(7, 3));
+        List<ViewedMovie> expected = new ArrayList<>();
+        expected.add(new ViewedMovie(4, 5));
+        expected.add(new ViewedMovie(7, 3));
 
         assertEquals(expected, statistics.getTopViewedMovies(2));
     }
 
     private RatingInfo getRatingInfoForQuestion1() {
-        FileParser ratingParser = getFileParser("mockRatingsForMoviesNMostViewed.dat", "::");
+        FileParser ratingParser = ratingParser();
         RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
 
 
         return new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
+    }
+
+    private FileParser ratingParser() {
+        return getFileParser("mockRatingsForMoviesNMostViewed.dat", "::");
     }
 
     private CustomerInfo getCustomerInfo() {
@@ -74,21 +78,6 @@ public class StatisticsTest {
         MovieMapper movieMapper = new MovieMapper(movieParser, 3);
         return new MovieInfo(movieMapper.getIdMovieMap());
     }
-
-//    private List<MovieView> getExpectedTop2MovieList() {
-//        List<MovieView> expected = new ArrayList<>();
-//        expected.add(new MovieView(4, 5));
-//        expected.add(new MovieView(7, 3));
-//        return expected;
-//    }
-//
-//    private List<MovieView> getExpectedTop4MovieList() {
-//        List<MovieView> expected = new ArrayList<>();
-//        expected.add(new MovieView(4, 5));
-//        expected.add(new MovieView(7, 3));
-//        expected.add(new MovieView(1, 2));
-//        return expected;
-//    }
 
 
     private FileParser getFileParser(String fileName, String parseToken) {
@@ -105,10 +94,10 @@ public class StatisticsTest {
 
 
         Statistics statistics = new Statistics(customerInfo, movieInfo, ratingInfo);
-        List<MovieView> expected = new ArrayList<>();
-        expected.add(new MovieView(4, 5));
-        expected.add(new MovieView(7, 3));
-        expected.add(new MovieView(1, 2));
+        List<ViewedMovie> expected = new ArrayList<>();
+        expected.add(new ViewedMovie(4, 5));
+        expected.add(new ViewedMovie(7, 3));
+        expected.add(new ViewedMovie(1, 2));
 
         assertEquals(expected, statistics.getTopViewedMovies(10));
 
@@ -123,10 +112,10 @@ public class StatisticsTest {
 
     @Test
     public void ratingList_top3RatedMoviesWithMin2Views() {
-        List<MovieRating> expected = new ArrayList<>();
-        expected.add(new MovieRating(7, 13.0 / 3, 3));
-        expected.add(new MovieRating(1, 8.0 / 2, 2));
-        expected.add(new MovieRating(4, 20.0 / 5, 5));
+        List<RatedMovie> expected = new ArrayList<>();
+        expected.add(new RatedMovie(7, 13.0 / 3, 3));
+        expected.add(new RatedMovie(1, 8.0 / 2, 2));
+        expected.add(new RatedMovie(4, 20.0 / 5, 5));
 
 
         assertEquals(expected, statistics.getTopRatedMovies(3, 2));
@@ -157,9 +146,9 @@ public class StatisticsTest {
         Set<Integer> keys = expected.keySet();
         assertThat(expected, hasKey(1));
 
-        assertThat(expected, is(statistics.getMovieViewershipAgeRangeCount(3, 2)));
+        assertThat(expected, is(statistics.getTopRatedMoviesViewership(3, 2)));
 
-//        assertEquals(expected, statistics.getMovieViewershipAgeRangeCount(3, 2));
+//        assertEquals(expected, statistics.getTopRatedMoviesViewership(3, 2));
     }
 
 
@@ -177,7 +166,7 @@ public class StatisticsTest {
         customers.add(new Critic(1, 5.0, 1));
         customers.add(new Critic(5, 5.0, 1));
 
-        assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(10, 1));
+        assertEquals(customers, statistics.getTopCritics(10, 1));
 
         customers.clear();
         customers.add(new Critic(2, 3.0, 1));
@@ -187,7 +176,7 @@ public class StatisticsTest {
         customers.add(new Critic(9, 4.0, 1));
         customers.add(new Critic(10, 4.0, 1));
 
-        assertEquals(customers, statistics.getCustomersWithRatingSatisfyingMinViewCondition(6, 1));
+        assertEquals(customers, statistics.getTopCritics(6, 1));
 
     }
 

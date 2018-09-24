@@ -1,6 +1,6 @@
 package controller;
 
-import model.helperObjects.MovieView;
+import model.helperObjects.ViewedMovie;
 import model.primary.rating.RatingInfo;
 
 import java.util.ArrayList;
@@ -12,41 +12,42 @@ public class TopViewedMovies {
     private int n;
     private RatingInfo ratingInfo;
 
-    public TopViewedMovies(int N, RatingInfo ratingInfo) {
-        n = N;
-        this.ratingInfo=ratingInfo;
+    public TopViewedMovies(int n,
+                           RatingInfo ratingInfo) {
+        this.n = n;
+        this.ratingInfo = ratingInfo;
     }
 
-    public List<MovieView> getMoviesList() {
+    public List<ViewedMovie> getMoviesList() {
         Map<Integer, Integer> movieViews = ratingInfo.getMovieIdViewsCountMap();
 
-        PriorityQueue<MovieView> movieViewQueue = movieViewPriorityQueue(movieViews);
+        PriorityQueue<ViewedMovie> viewedMovieQueue = movieViewPriorityQueue(movieViews);
 
-        List<MovieView> topViewedMovies = topViewedMovies(n, movieViewQueue);
+        List<ViewedMovie> topViewedMovies = topViewedMovies(n, viewedMovieQueue);
 
         return topViewedMovies;
     }
 
-    private PriorityQueue<MovieView> movieViewPriorityQueue(Map<Integer, Integer> movieIdViewCount) {
+    private PriorityQueue<ViewedMovie> movieViewPriorityQueue(Map<Integer, Integer> movieIdViewCount) {
 
-        PriorityQueue<MovieView> movieViewPriorityQueue = new PriorityQueue<>();
+        PriorityQueue<ViewedMovie> viewedMoviePriorityQueue = new PriorityQueue<>();
         for (int id : movieIdViewCount.keySet()) {
             int count = movieIdViewCount.get(id);
 
-            MovieView movieView = new MovieView(id, count);
-            movieViewPriorityQueue.add(movieView);
+            ViewedMovie viewedMovie = new ViewedMovie(id, count);
+            viewedMoviePriorityQueue.add(viewedMovie);
         }
-        return movieViewPriorityQueue;
+        return viewedMoviePriorityQueue;
     }
 
-    private List<MovieView> topViewedMovies(int N, PriorityQueue<MovieView> movieViewPriorityQueue) {
+    private List<ViewedMovie> topViewedMovies(int N, PriorityQueue<ViewedMovie> viewedMoviePriorityQueue) {
 
-        int top = Math.min(movieViewPriorityQueue.size(), N);
-        List<MovieView> topViewedMovies = new ArrayList<>();
+        int top = Math.min(viewedMoviePriorityQueue.size(), N);
+        List<ViewedMovie> topViewedMovies = new ArrayList<>();
 
         for (int i = 0; i < top; i++) {
-            MovieView movieView = movieViewPriorityQueue.poll();
-            topViewedMovies.add(movieView);
+            ViewedMovie viewedMovie = viewedMoviePriorityQueue.poll();
+            topViewedMovies.add(viewedMovie);
         }
         return topViewedMovies;
     }

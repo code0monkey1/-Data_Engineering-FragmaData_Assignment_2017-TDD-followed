@@ -1,5 +1,7 @@
 package model.primary.movie;
 
+import model.helperObjects.RatedMovie;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +17,9 @@ public class MovieInfo {
 
         Movie movie = this.idMovieMap.getOrDefault(movieID, null);
 
-        if (movie == null) {
+        if (movie == null)
             throw new IllegalArgumentException("movie does not exist");
-        }
+
         return movie.getTitle();
 
     }
@@ -27,9 +29,9 @@ public class MovieInfo {
 
         List<Genre> genreList = new ArrayList<>();
 
-        if (movie == null) {
+        if (movie == null)
             return genreList;
-        } else {
+        else {
             List<Genre> genre = movie.getGenreList();
             genreList.addAll(genre);
         }
@@ -38,4 +40,14 @@ public class MovieInfo {
     }
 
 
+    public void printRatedMovies(List<RatedMovie> topRatedMovies) {
+
+        for (RatedMovie movie : topRatedMovies)
+            System.out.printf("Movie : %s  ::  Rating : %.2f:: " +
+                            "Views : %d %n",
+                    getTitle(movie.getId()),
+                    movie.getRating(),
+                    movie.getViews());
+
+    }
 }

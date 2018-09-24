@@ -28,9 +28,9 @@ public final class CustomerMapper {
 
             Condition customerEntryFieldCount = new FieldCount(fields, customerEntry);
 
-            if (!customerEntryFieldCount.isValid()) {
+            if (!customerEntryFieldCount.isValid())
                 throw new IllegalArgumentException("illegal field size");
-            } else {
+             else {
                 Customer customer = customer(customerEntry);
                 tempIDCustomerMap.put(customer.getId(), customer);
             }

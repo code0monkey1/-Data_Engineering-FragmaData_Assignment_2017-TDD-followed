@@ -1,7 +1,7 @@
 package controller;
 
 import conditions.CountAtLeast;
-import model.helperObjects.MovieRating;
+import model.helperObjects.RatedMovie;
 import model.primary.rating.RatingInfo;
 import util.math.Calculate;
 
@@ -11,72 +11,81 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class TopRatedMovies {
-    private int n;
+    private int top;
     private int minViews;
-    private RatingInfo ratingInfo;
+    private Map<Integer, Integer> idRatingsMap;
+    private Map<Integer, Integer> idViewCountMap;
+    private List<RatedMovie> ratedMovies;
+    private PriorityQueue<RatedMovie> ratedMoviePriorityQueue;
+    private List<RatedMovie> topRatedMovies;
 
-    public TopRatedMovies(int N, int minViews, RatingInfo ratingInfo) {
-        n = N;
+    public TopRatedMovies(int top,
+                          int minViews,
+                          RatingInfo ratingInfo) {
+        this.top = top;
         this.minViews = minViews;
-        this.ratingInfo = ratingInfo;
+        this.idRatingsMap = ratingInfo.getMovieIdRatingsMap();
+        this.idViewCountMap = ratingInfo.getMovieIdViewsCountMap();
+        this.ratedMovies = new ArrayList<>();
+        this.ratedMoviePriorityQueue = new PriorityQueue<>();
+        this.topRatedMovies = new ArrayList<>();
     }
 
-    public List<MovieRating> getMoviesList() {
-        Map<Integer, Integer> idRating = ratingInfo.getMovieIdRatingsMap();
+    public List<RatedMovie> getMovieList() {
 
-        Map<Integer, Integer> idView = ratingInfo.getMovieIdViewsCountMap();
+        ratedMovies = ratedMovies();
 
-        List<MovieRating> movieRatings = ratedMovies(minViews, idRating, idView);
+        PriorityQueue<RatedMovie> movieQueue = movieQueue(ratedMovies);
 
-        PriorityQueue<MovieRating> movieRatingQueue = ratedMovieQueue(movieRatings);
-
-        List<MovieRating> topRatedMovies = topRatedMoviesWhichFulfillCondition(n, movieRatingQueue);
+        List<RatedMovie> topRatedMovies = topRatedMovies(top, movieQueue);
 
         return topRatedMovies;
     }
 
 
-    private List<MovieRating> ratedMovies(int minViews,
-                                          Map<Integer, Integer> idRating,
-                                          Map<Integer, Integer> idView) {
+    private List<RatedMovie> ratedMovies() {
 
-        List<MovieRating> movieRatings = new ArrayList<>();
+        for (int id : idRatingsMap.keySet())
+            addMovieToList(id);
 
-        for (int id : idRating.keySet()) {
-            int views = idView.get(id);
-            int rating = idRating.get(id);
-            CountAtLeast minViewCondition = new CountAtLeast(minViews, views);
-
-            if (minViewCondition.isValid()) {
-                MovieRating movie = validMovieObject(id, views, rating);
-                movieRatings.add(movie);
-            }
-        }
-        return movieRatings;
+        return ratedMovies;
     }
 
-    private MovieRating validMovieObject(int id, int views, int rating) {
+    private void addMovieToList(int id) {
+
+        int views = idViewCountMap.get(id);
+        CountAtLeast minViewCondition = new CountAtLeast(minViews, views);
+
+        if (minViewCondition.isValid()) {
+            RatedMovie movie = ratedMovie(id);
+            ratedMovies.add(movie);
+        }
+    }
+
+    private RatedMovie ratedMovie(int id) {
+        int views = idViewCountMap.get(id);
+        int rating = idRatingsMap.get(id);
+
         double avjRating = Calculate.average(rating, views);
-        return new MovieRating(id, avjRating, views);
+
+        return new RatedMovie(id, avjRating, views);
     }
 
-    private PriorityQueue<MovieRating> ratedMovieQueue(List<MovieRating> movieRatings) {
-        PriorityQueue<MovieRating> movieRatingPriorityQueue = new PriorityQueue<>();
+    private PriorityQueue<RatedMovie> movieQueue(List<RatedMovie> ratedMovies) {
 
-        for (MovieRating movie : movieRatings) {
-            movieRatingPriorityQueue.add(movie);
-        }
+        for (RatedMovie movie : ratedMovies)
+            ratedMoviePriorityQueue.add(movie);
 
-        return movieRatingPriorityQueue;
+        return ratedMoviePriorityQueue;
     }
 
-    private List<MovieRating> topRatedMoviesWhichFulfillCondition(int N,
-                                                                  PriorityQueue<MovieRating> movieRatingQueue) {
-        List<MovieRating> topMoviesAsPerRating = new ArrayList<>();
-        int top = Math.min(N, movieRatingQueue.size());
-        for (int i = 0; i < top; i++) {
-            topMoviesAsPerRating.add(movieRatingQueue.poll());
-        }
-        return topMoviesAsPerRating;
+    private List<RatedMovie> topRatedMovies(int N,
+                                            PriorityQueue<RatedMovie> ratedMovieQueue) {
+        int top = Math.min(N, ratedMovieQueue.size());
+
+        for (int i = 0; i < top; i++)
+            topRatedMovies.add(ratedMovieQueue.poll());
+
+        return topRatedMovies;
     }
 }

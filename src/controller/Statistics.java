@@ -1,11 +1,12 @@
 package controller;
 
 import model.helperObjects.Critic;
-import model.helperObjects.MovieRating;
-import model.helperObjects.MovieView;
+import model.helperObjects.RatedMovie;
+import model.helperObjects.ViewedMovie;
 import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
+import util.IO.IO;
 
 import java.util.List;
 import java.util.Map;
@@ -25,92 +26,133 @@ public final class Statistics {
         this.ratingInfo = ratingInfo;
     }
 
-    public List<MovieView> getTopViewedMovies(int N) {
+    public List<ViewedMovie> getTopViewedMovies(int N) {
 
         return new TopViewedMovies(N, ratingInfo).getMoviesList();
     }
 
-    public List<MovieRating> getTopRatedMovies(int N, int minViews) {
+    public List<RatedMovie> getTopRatedMovies(int N, int minViews) {
 
-        return new TopRatedMovies(N, minViews, ratingInfo).getMoviesList();
+        return new TopRatedMovies(N, minViews, ratingInfo).getMovieList();
     }
 
-    public Map<Integer, Map> getMovieViewershipAgeRangeCount(int N, int minViews) {
+    public Map<Integer, Map> getTopRatedMoviesViewership(int N, int minViews) {
 
-        return new TopRatedMoviesViewership(N, minViews,ratingInfo,customerInfo).invoke();
+        return new TopRatedMoviesViewership(N, minViews, ratingInfo, customerInfo).invoke();
     }
 
-    public List<Critic> getCustomersWithRatingSatisfyingMinViewCondition(int top, int minViewCount) {
-        return new TopCritics(top, minViewCount, ratingInfo).getCriticsList();
+    public List<Critic> getTopCritics(int top, int minViewCount) {
+        return new TopCritics(top, minViewCount, ratingInfo).getCritics();
 
-    }
-
-    private void printRatedMovies(List<MovieRating> topRatedMovies) {
-
-        for (MovieRating movie : topRatedMovies) {
-            System.out.printf("Movie : %s  ::  Rating : %.2f:: " +
-                    "Views : %d %n", movieInfo.getTitle(movie.getId()), movie.getRating(), movie.getViews());
-        }
-    }
-
-
-    private void printCustomerMovieRatings(List<Critic> critics) {
-
-        for (Critic customer : critics) {
-            System.out.printf("The customer id is %d %n", customer.getId());
-            System.out.printf("The average rating given" +
-                    " by the customer is %.2f %n", customer.getRating());
-            System.out.printf("The movie view count of " +
-                    "the given customer is %d %n %n", customer.getViews());
-        }
-    }
-
-    public void displayTopCritics(int top, int views) {
-        List<Critic> customers =  getCustomersWithRatingSatisfyingMinViewCondition(top, views);
-        printCustomerMovieRatings(customers);
-    }
-
-    private void printRatedMoviesWithAgeCategory(List<MovieRating> topRatedMovies, Map<Integer, Map> movieIdAgeRangeMap) {
-
-        for (MovieRating movie : topRatedMovies) {
-            System.out.printf("Movie : %s  ::  Rating : %.2f:: Views : %d %n", movieInfo.getTitle(movie.getId()), movie.getRating(), movie.getViews());
-            Map<Integer, Map> movieIdMap = movieIdAgeRangeMap.get(movie.getId());
-            System.out.printf("Number of young viewers : %d %n" +
-                            "Number of adult viewers : %d %n" +
-                            "Number of old viewers : %d %n %n", movieIdMap.get(0),
-                    movieIdMap.get(1),
-                    movieIdMap.get(2));
-        }
     }
 
     public void displayTopRatedMoviesWithAgeRange(int top, int min) {
-        List<MovieRating> movieRatings = getTopRatedMovies(top, min);
-        Map<Integer, Map> movieIdAgeRangeMap = getMovieViewershipAgeRangeCount(top, min);
-        printRatedMoviesWithAgeCategory(movieRatings, movieIdAgeRangeMap);
+        List<RatedMovie> ratedMovies = getTopRatedMovies(top, min);
+        Map<Integer, Map> movieIdAgeRangeMap = getTopRatedMoviesViewership(top, min);
+        printRatedMoviesWithAgeCategory(ratedMovies, movieIdAgeRangeMap);
     }
 
     public void displayTopRatedMovies(int top, int min) {
-        List<MovieRating> movieRatings = getTopRatedMovies(top, min);
-        printRatedMovies(movieRatings);
+        List<RatedMovie> ratedMovies = getTopRatedMovies(top, min);
+        movieInfo.printRatedMovies(ratedMovies);
     }
 
     public void displayTopViewedMovies(int top) {
 
-        List<MovieView> viewedMovies = getTopViewedMovies(top);
-        displayTopNMostViewedMovies(viewedMovies);
+        List<ViewedMovie> viewedMovies = getTopViewedMovies(top);
 
-    }
-
-
-    public void displayTopNMostViewedMovies(List<MovieView> topViewedMovies) {
-
-        for (MovieView movie : topViewedMovies) {
+        for (ViewedMovie movie : viewedMovies) {
             String movieTitle = this.movieInfo.getTitle(movie.getMovieID());
             int viewCount = movie.getCount();
             System.out.printf("Movie : %s :: Views : %d %n ", movieTitle, viewCount);
         }
+
     }
 
 
+    public void displayTopCritics(int top, int views) {
+        List<Critic> customers = getTopCritics(top, views);
+        ratingInfo.printCustomerMovieRatings(customers);
+    }
 
+    private void printRatedMoviesWithAgeCategory(List<RatedMovie> topRatedMovies,
+                                                 Map<Integer, Map> movieIdAgeRangeMap) {
+
+        for (RatedMovie movie : topRatedMovies)
+            movieRatingDescriptionString(movieIdAgeRangeMap, movie);
+
+    }
+
+    private void movieRatingDescriptionString(Map<Integer, Map> movieIdAgeRangeMap,
+                                              RatedMovie movie) {
+        System.out.printf("Movie : %s  ::  Rating : %.2f:: Views : %d %n", movieInfo.getTitle(movie.getId()), movie.getRating(), movie.getViews());
+        Map<Integer, Map> movieIdMap = movieIdAgeRangeMap.get(movie.getId());
+
+        viewershipDescription(movieIdMap);
+    }
+
+    private void viewershipDescription(Map<Integer, Map> movieIdMap) {
+        System.out.printf("Number of young viewers : %d %n" +
+                        "Number of adult viewers : %d %n" +
+                        "Number of old viewers : %d %n %n", movieIdMap.get(0),
+                movieIdMap.get(1),
+                movieIdMap.get(2));
+    }
+
+
+    public void invalidChoice() {
+        String warning = "";
+
+        warning += "XXXXXXXXXXXXXXXXXXXXXXXX\n";
+        warning += "Invalid option!! Enter valid option:\n";
+        warning += "XXXXXXXXXXXXXXXXXXXXXXXX\n";
+
+        System.out.println(warning);
+    }
+
+    public void topCritics() {
+
+        System.out.println("Enter the top N number of critics you want to see :");
+
+        int critics = IO.inputInt();
+
+        System.out.println("Enter the minimum movies they should have watched ");
+
+        int minMovies = IO.inputInt();
+
+        displayTopCritics(critics, minMovies);
+    }
+
+    public void topRatedMoviesWithAgeCategorisation() {
+        System.out.println("Enter N top movie count :");
+        int movies = IO.inputInt();
+
+        System.out.println("Enter M min view count : ");
+        int views = IO.inputInt();
+
+        displayTopRatedMoviesWithAgeRange(movies, views);
+    }
+
+    public void topViewedMovies() {
+        int movies;
+        System.out.println("To display top N most viewed movies" +
+                " with their movie names , enter the number");
+
+        movies = IO.inputInt();
+
+        displayTopViewedMovies(movies);
+    }
+
+    public void topRatedMovies() {
+        int movies;
+        System.out.println("To display top N most rated movies " +
+                "with their movie names , enter the number");
+        movies = IO.inputInt();
+
+        System.out.println(" Enter the minimum acceptable view count :");
+
+        int views = IO.inputInt();
+
+        displayTopRatedMovies(movies, views);
+    }
 }
