@@ -12,8 +12,8 @@ public class TopViewedMovies {
     private int n;
     private RatingInfo ratingInfo;
 
-    public TopViewedMovies(int n,
-                           RatingInfo ratingInfo) {
+
+    public TopViewedMovies(int n, RatingInfo ratingInfo) {
         this.n = n;
         this.ratingInfo = ratingInfo;
     }

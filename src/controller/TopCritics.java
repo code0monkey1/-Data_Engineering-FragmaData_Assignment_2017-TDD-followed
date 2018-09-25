@@ -19,6 +19,7 @@ public class TopCritics {
     private final List<Integer> customerIds;
 
 
+
     public TopCritics(int top, int minViewCount, RatingInfo ratingInfo) {
         this.top = top;
         this.minViewCount = minViewCount;
@@ -26,6 +27,7 @@ public class TopCritics {
         customerIdRating = ratingInfo.getCustomerIdRatingMap();
         customerIdView = ratingInfo.getCustomerIdMoviesSeenCountMap();
         customerIds = ratingInfo.getAllCustomerIds();
+
     }
 
     public List<Critic> getCritics() {

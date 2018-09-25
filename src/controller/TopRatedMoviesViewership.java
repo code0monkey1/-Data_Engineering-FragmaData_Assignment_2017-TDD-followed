@@ -4,6 +4,7 @@ import model.helperObjects.RatedMovie;
 import model.primary.customer.AgeRange;
 import model.primary.customer.CustomerInfo;
 import model.primary.rating.RatingInfo;
+import wrappers.MovieAgeRangeMap;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -15,6 +16,8 @@ public class TopRatedMoviesViewership {
     private int minViews;
     private RatingInfo ratingInfo;
     private CustomerInfo customerInfo;
+    private MovieAgeRangeMap movieAgeRangeMap;
+
 
     public TopRatedMoviesViewership(int top,
                                     int minViews,
@@ -27,13 +30,14 @@ public class TopRatedMoviesViewership {
     }
 
     public Map<Integer, Map> invoke() {
-        Map<Integer, EnumMap<AgeRange, Integer>> movieIdCustomerAgeRangeMap = movieIdCustomerAgeRange(top, minViews);
+
+        movieAgeRangeMap = movieIdCustomerAgeRange(top, minViews);
 
         List<RatedMovie> ratedMovieList = new TopRatedMovies(top, minViews, ratingInfo).getMovieList();
         Map<Integer, Map> movieIdAgeRangeCount = new HashMap<>();
 
         for (RatedMovie movie : ratedMovieList) {
-            Map<Integer, Integer> ageCategoryCount = ageCategoryCountMap(movie, movieIdCustomerAgeRangeMap);
+            Map<Integer, Integer> ageCategoryCount = ageCategoryCountMap(movie, movieAgeRangeMap);
 
             movieIdAgeRangeCount.put(movie.getId(), ageCategoryCount);
         }
@@ -65,13 +69,14 @@ public class TopRatedMoviesViewership {
 
     }
 
-    private Map<Integer, EnumMap<AgeRange, Integer>> movieIdCustomerAgeRange(int N, int minViews) {
+    private MovieAgeRangeMap movieIdCustomerAgeRange(int N, int minViews) {
 
-        Map<Integer, EnumMap<AgeRange, Integer>> movieIdAgeMap = new HashMap<>();
+       MovieAgeRangeMap movieIdAgeMap = new MovieAgeRangeMap();
 
         // go through the list , getThe age range of person and put it in the map for movie
-        List<RatedMovie> ratedMovieList = new TopRatedMovies(N, minViews, ratingInfo).getMovieList();
+        List<RatedMovie> ratedMovieList = new TopRatedMovies(N, minViews,ratingInfo).getMovieList();
         Map<Integer, EnumMap<AgeRange, Integer>> movieIdAgeRangeMap = ratingInfo.getMovieIdAgeRangeMap(customerInfo);
+        ratingInfo.getMovieIdAgeRangeMap(customerInfo);
 
         // go through movie and for movie ID , fill the Emum Map
         for (RatedMovie movie : ratedMovieList) {

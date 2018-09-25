@@ -6,24 +6,23 @@ import model.helperObjects.ViewedMovie;
 import model.primary.customer.CustomerInfo;
 import model.primary.movie.MovieInfo;
 import model.primary.rating.RatingInfo;
+import util.InfoLoader.InfoLoader;
 
 import java.util.List;
 import java.util.Map;
 
 public final class Statistics {
 
-    private final MovieInfo movieInfo;
-    private final CustomerInfo customerInfo;
-    private final RatingInfo ratingInfo;
+    private MovieInfo movieInfo;
+    private RatingInfo ratingInfo;
+    private CustomerInfo customerInfo;
 
 
-    public Statistics(CustomerInfo customerInfo,
-                      MovieInfo movieInfo,
-                      RatingInfo ratingInfo) {
+    public Statistics(InfoLoader info) {
 
-        this.movieInfo = movieInfo;
-        this.customerInfo = customerInfo;
-        this.ratingInfo = ratingInfo;
+        this.movieInfo = info.loadMovieInfo();
+        this.ratingInfo = info.loadRatingInfo();
+        this.customerInfo = info.loadCustomerInfo();
     }
 
     public List<ViewedMovie> getTopViewedMovies(int N) {
@@ -33,7 +32,9 @@ public final class Statistics {
 
     public List<RatedMovie> getTopRatedMovies(int N, int minViews) {
 
-        return new TopRatedMovies(N, minViews, ratingInfo).getMovieList();
+        return new TopRatedMovies(N,
+                minViews,
+                ratingInfo).getMovieList();
     }
 
     public Map<Integer, Map> getTopRatedMoviesViewership(int N, int minViews) {
@@ -43,7 +44,9 @@ public final class Statistics {
 
     public List<Critic> getTopCritics(int top, int minViewCount) {
 
-        return new TopCritics(top, minViewCount, ratingInfo).getCritics();
+        return new TopCritics(top,
+                minViewCount,
+                ratingInfo).getCritics();
 
     }
 
@@ -53,7 +56,8 @@ public final class Statistics {
 
         Map<Integer, Map> movieIdAgeRangeMap = getTopRatedMoviesViewership(top, min);
 
-        printRatedMoviesWithAgeCategory(ratedMovies, movieIdAgeRangeMap);
+        printRatedMoviesWithAgeCategory(ratedMovies,
+                movieIdAgeRangeMap);
     }
 
     public void displayTopRatedMovies(int top, int min) {
@@ -61,9 +65,10 @@ public final class Statistics {
         movieInfo.printRatedMovies(ratedMovies);
     }
 
-    public void displayTopViewedMovies(int top) {
+        public void displayTopViewedMovies(int top) {
 
         List<ViewedMovie> viewedMovies = getTopViewedMovies(top);
+
 
         for (ViewedMovie movie : viewedMovies) {
 

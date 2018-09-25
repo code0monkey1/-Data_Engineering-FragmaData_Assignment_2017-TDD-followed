@@ -2,6 +2,7 @@ package controller;
 
 
 import model.helperObjects.Critic;
+import model.helperObjects.MockFileInfoLoader;
 import model.helperObjects.RatedMovie;
 import model.helperObjects.ViewedMovie;
 import model.primary.customer.CustomerInfo;
@@ -10,6 +11,7 @@ import model.primary.rating.RatingInfo;
 import org.junit.Before;
 import org.junit.Test;
 import util.FileParsing.FileParser;
+import util.InfoLoader.InfoLoader;
 import util.mapping.CustomerMapper;
 import util.mapping.MovieMapper;
 import util.mapping.RatingsMapper;
@@ -26,27 +28,14 @@ public class StatisticsTest {
 
     @Before
     public void setUp() {
-        MovieInfo movieInfo = getMovieInfo();
-        CustomerInfo customerInfo = getCustomerInfo();
-        RatingInfo ratingInfo = getRatingInfoForQuestion1();
 
-
-        this.statistics = new Statistics(customerInfo,
-                movieInfo,
-                ratingInfo);
+        InfoLoader fileLoader= new MockFileInfoLoader();
+        statistics=new Statistics(fileLoader);
     }
 
     @Test
     public void movies_topNMostViewed() {
         //setup
-        MovieInfo movieInfo = getMovieInfo();
-        CustomerInfo customerInfo = getCustomerInfo();
-        RatingInfo ratingInfo = getRatingInfoForQuestion1();
-
-
-        Statistics statistics = new Statistics(customerInfo,
-                movieInfo,
-                ratingInfo);
 
         List<ViewedMovie> expected = new ArrayList<>();
         expected.add(new ViewedMovie(4, 5));
@@ -67,14 +56,9 @@ public class StatisticsTest {
         return getFileParser("mockRatingsForMoviesNMostViewed.dat", "::");
     }
 
-    private CustomerInfo getCustomerInfo() {
-        FileParser customerParser = getFileParser("mockCustomers.dat", "::");
-        CustomerMapper customerMapper = new CustomerMapper(customerParser, 5);
-        return new CustomerInfo(customerMapper.getIdCustomerMap());
-    }
 
     private MovieInfo getMovieInfo() {
-        FileParser movieParser = getFileParser("mockMovies.dat", "::");
+        FileParser movieParser = new FileParser("mockMovies.dat", "::");
         MovieMapper movieMapper = new MovieMapper(movieParser, 3);
         return new MovieInfo(movieMapper.getIdMovieMap());
     }
@@ -88,12 +72,6 @@ public class StatisticsTest {
     @Test
     public void mostViewedMovies_whenCountExceedsLimit() {
 
-        CustomerInfo customerInfo = getCustomerInfo();
-        RatingInfo ratingInfo = getRatingInfoForQuestion1();
-        MovieInfo movieInfo = getMovieInfo();
-
-
-        Statistics statistics = new Statistics(customerInfo, movieInfo, ratingInfo);
         List<ViewedMovie> expected = new ArrayList<>();
         expected.add(new ViewedMovie(4, 5));
         expected.add(new ViewedMovie(7, 3));
@@ -103,12 +81,6 @@ public class StatisticsTest {
 
     }
 
-//    private RatingInfo getRatingInfo() {
-//        FileParser ratingParser = getFileParser("C:\\Users\\Chiranjeev\\Desktop\\MyCode\\Competitive\\Fragma  Data 2017 movies pre interview assignment ( Entry Level Java Developer Role ) TDD\\src\\mockObjects\\mockMovies.dat", "::");
-//        RatingsMapper ratingsMapper = new RatingsMapper(ratingParser, 4);
-//        RatingInfo ratingInfo = new RatingInfo(ratingsMapper.getCustomerIDMovieIDRatingAndTimeMap());
-//        return ratingInfo;
-//    }
 
     @Test
     public void ratingList_top3RatedMoviesWithMin2Views() {
