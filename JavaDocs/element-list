@@ -1,0 +1,16 @@
+application
+conditions
+controller
+model
+model.helperObjects
+model.primary
+model.primary.customer
+model.primary.movie
+model.primary.rating
+util.FileParsing
+util.InfoLoader
+util.IO
+util.mapping
+util.math
+view
+wrappers

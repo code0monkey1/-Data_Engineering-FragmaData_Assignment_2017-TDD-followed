@@ -4,6 +4,7 @@ import model.helperObjects.Critic;
 import model.primary.customer.CustomerInfo;
 import model.primary.customer.AgeRange;
 import model.primary.movie.RatingAndTime;
+import wrappers.MovieAgeRangeMap;
 import wrappers.RatingsMap;
 
 import java.util.*;
@@ -51,10 +52,9 @@ public class RatingInfo {
     }
 
 
-    public Map<Integer, EnumMap<AgeRange, Integer>> getMovieIdAgeRangeMap(CustomerInfo
-                                                                                   customerInfo) {
+    public MovieAgeRangeMap getMovieIdAgeRangeMap(CustomerInfo customerInfo) {
 
-        Map<Integer, EnumMap<AgeRange, Integer>> movieIdAgeRangeMap = new HashMap<>();
+        MovieAgeRangeMap movieIdAgeRangeMap = new MovieAgeRangeMap();
 
         for (Integer customerID : customerIdMovieIdRatingAndTimeMap.keySet()) {
 
