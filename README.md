@@ -11,7 +11,7 @@ https://grouplens.org/datasets/movielens/1m/
 Complexity analysis : 
 ----------------------------------------------
 The time and space complexity is O(n) for all operatings ... where n is the largest number in the given categories .
-As all hashmap lookup operations are amortized constant time operations and all the objects are in memory while the program is running .
+All hashmap entry/lookup operations are performed in amortized constant time operations and all the objects are in memory while the program is running .
 
 -----------------------------------------------
 
