@@ -3,16 +3,25 @@
 ---------------------
 Assignment : 
 ---------------------
+
 <img src="images/fd1.png" width="1000" >
 ----------
+Question 1:
+
 <img src="images/q1.png" width="1000" >
 ----------
+Question 2:
+
 <img src="images/q2.png" width="1000" >
 ----------
+Question 3:
+
 <img src="images/q3.png" width="1000" >
 ----------
+Question 4:
+
 <img src="images/q4.png" width="1000" >
-----------
+
 <B>The dataset can be downloaded from the link :</B>
 https://grouplens.org/datasets/movielens/1m/
 ----------------------------------------------
